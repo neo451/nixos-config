@@ -150,7 +150,7 @@
       glow # markdown previewer in terminal
 
       zathura
-      zathuraPkgs
+      # zathuraPkgs
 
       # need another source
       # follow
