@@ -9,7 +9,10 @@
     ./hardware-configuration.nix
   ];
   nix.settings = {
-    substituters = [ "https://mirrors.ustc.edu.cn/nix-channels/store" ];
+    substituters = [
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+    ];
     experimental-features = [ "nix-command" "flakes" ];
   };
 
@@ -141,13 +144,13 @@
       libreoffice
       wechat-uos
       qcm
-      spotify
       # inputs.zen-browser.packages."${system}".default
 
       # need another source
       # follow
       # discord
       # obsidian
+      # spotify
 
       # ladders
       mihomo-party
