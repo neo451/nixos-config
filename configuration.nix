@@ -131,6 +131,7 @@
       neovide
       libreoffice
       netease-cloud-music-gtk
+      zotero
 
       # tui
       yazi
