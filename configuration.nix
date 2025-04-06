@@ -148,6 +148,11 @@
       lua-language-server
       stylua
 
+      # ladders
+      mihomo-party
+      # clash-verge-rev
+      # hiddify-app
+
       # inputs.zen-browser.packages."${system}".default
 
       # need another source
@@ -179,9 +184,10 @@
     ripgrep
     pandoc
 
-    mihomo-party
-    # clash-verge-rev
-    # hiddify-app
+    dig
+    fzf
+    fd
+
     fish
 
     # compilers
