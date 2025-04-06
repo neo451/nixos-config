@@ -173,6 +173,7 @@
     vim
     wget
     neovim
+    xclip
     git
     gh
     ripgrep
@@ -186,6 +187,7 @@
     # compilers
     clang
     zig
+    luajit
   ];
   environment.variables.EDITOR = "nvim";
 
