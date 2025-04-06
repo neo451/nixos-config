@@ -138,10 +138,19 @@
       wechat-uos
       anki
       neovide
-      # obsidian
       libreoffice
       wechat-uos
-      # inputs.zen-browser.packages."${system}".default
+      inputs.zen-browser.packages."${system}".default
+
+      # need another source
+      # follow
+      # discord
+      # obsidian
+
+      # ladders
+      mihomo-party
+      # clash-verge-rev
+      # hiddify-app
 
       # nix
       nixd
@@ -150,15 +159,6 @@
       # lua
       lua-language-server
       stylua
-
-      # ladders
-      mihomo-party
-      # clash-verge-rev
-      # hiddify-app
-
-      # need another source
-      # follow
-      # discord
     ];
   };
 
