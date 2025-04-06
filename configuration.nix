@@ -131,6 +131,9 @@
       neovide
       libreoffice
 
+      # tui
+      yazi
+
       # music 
       qcm
       mpv
