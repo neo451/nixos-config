@@ -146,7 +146,7 @@
       # need another source
       # follow
       # discord
-      # obsidian
+      obsidian
       # spotify
       # inputs.zen-browser.packages."${system}".default
 
