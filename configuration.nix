@@ -175,6 +175,7 @@
     neovim
     git
     gh
+    ripgrep
 
     mihomo-party
     # clash-verge-rev
