@@ -168,6 +168,9 @@
       lua-language-server
       stylua
 
+      # markdown
+      prettierd
+
       # dependencies
       imagemagick
       tectonic
