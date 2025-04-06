@@ -176,6 +176,7 @@
     git
     gh
     ripgrep
+    pandoc
 
     mihomo-party
     # clash-verge-rev
