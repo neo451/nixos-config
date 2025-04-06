@@ -183,6 +183,14 @@
     };
   };
 
+  programs.fish = {
+    enable = true;
+    shellAbbrs = {
+      nrs = "~/scripts/rebuild-os";
+      pushn = "~/scripts/push-notes";
+    };
+  };
+
   programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
