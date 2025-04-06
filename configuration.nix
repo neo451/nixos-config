@@ -130,6 +130,7 @@
       anki
       neovide
       libreoffice
+      netease-cloud-music-gtk
 
       # tui
       yazi
