@@ -138,7 +138,7 @@
       wechat-uos
       anki
       neovide
-      # obsidian
+      obsidian
 
       # nix
       nixd
