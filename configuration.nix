@@ -150,6 +150,9 @@
       hugo # static site generator
       glow # markdown previewer in terminal
 
+      # fun
+      supercollider
+
       # need another source
       # follow
       # discord
