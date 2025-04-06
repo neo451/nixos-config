@@ -150,7 +150,7 @@
       # follow
       # discord
       # obsidian
-      # spotify
+      spotify
 
       # ladders
       mihomo-party
