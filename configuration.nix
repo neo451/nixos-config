@@ -144,8 +144,11 @@
       anki
       neovide
       libreoffice
+
+      # music 
       qcm
-      # inputs.zen-browser.packages."${system}".default
+      mpv
+      vlc
 
       # productivity
       hugo # static site generator
@@ -159,6 +162,7 @@
       # discord
       # obsidian
       # spotify
+      # inputs.zen-browser.packages."${system}".default
 
       # ladders
       mihomo-party
