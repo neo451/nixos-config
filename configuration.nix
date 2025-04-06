@@ -163,10 +163,11 @@
       lua-language-server
       stylua
 
-      # terminal render tools
+      # dependencies
       imagemagick
       tectonic
-      mermaid-cli
+      sqlite
+      # mermaid-cli
     ];
   };
 
