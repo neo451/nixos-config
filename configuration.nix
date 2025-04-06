@@ -149,7 +149,8 @@
       hugo # static site generator
       glow # markdown previewer in terminal
 
-      zathura-with-plugins
+      zathura
+      zathuraPkgs
 
       # need another source
       # follow
