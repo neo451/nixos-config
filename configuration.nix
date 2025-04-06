@@ -19,6 +19,7 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
+      configurationLimit = 10;
       extraEntries = ''
         			menuentry "Windows" {
         				search --file --no-floppy --set=root /EFI/Microsoft/Boot/bootmgfw/efi
@@ -31,8 +32,15 @@
       efiSysMountPoint = "/boot";
     };
   };
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
+
+  # do garbage collection weekly to keep disk usage low
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+
+  nix.settings.auto-optimise-store = true;
 
   networking.hostName = "nixos"; # Define your hostname.
 
