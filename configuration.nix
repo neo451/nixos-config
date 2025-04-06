@@ -153,7 +153,8 @@
       # clash-verge-rev
       # hiddify-app
 
-      # inputs.zen-browser.packages."${system}".default
+      inputs.zen-browser.packages."${system}".default
+      libreoffice
 
       # need another source
       # follow
