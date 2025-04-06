@@ -151,9 +151,9 @@
       # inputs.zen-browser.packages."${system}".default
 
       # ladders
-      # mihomo-party
-      # clash-verge-rev
-      # hiddify-app
+      mihomo-party
+      clash-verge-rev
+      hiddify-app
       nekoray
 
       # nix
