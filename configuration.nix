@@ -169,7 +169,7 @@
       stylua
 
       # markdown
-      prettierd
+      markdownlint-cli2
 
       # dependencies
       imagemagick
