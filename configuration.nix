@@ -142,15 +142,18 @@
       anki
       neovide
       libreoffice
-      wechat-uos
       qcm
       # inputs.zen-browser.packages."${system}".default
+
+      # productivity
+      hugo # static site generator
+      glow # markdown previewer in terminal
 
       # need another source
       # follow
       # discord
       # obsidian
-      spotify
+      # spotify
 
       # ladders
       mihomo-party
