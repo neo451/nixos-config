@@ -177,7 +177,7 @@
       tectonic
       sqlite
       mermaid-cli
-      rime-ls
+      # rime-ls
     ];
   };
 
