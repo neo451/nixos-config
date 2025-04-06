@@ -167,7 +167,7 @@
       imagemagick
       tectonic
       sqlite
-      # mermaid-cli
+      mermaid-cli
     ];
   };
 
