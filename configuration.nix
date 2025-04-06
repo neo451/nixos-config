@@ -140,7 +140,8 @@
       neovide
       libreoffice
       wechat-uos
-      inputs.zen-browser.packages."${system}".default
+      qcm
+      # inputs.zen-browser.packages."${system}".default
 
       # need another source
       # follow
