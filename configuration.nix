@@ -141,6 +141,7 @@
       libreoffice
       wechat-uos
       qcm
+      spotify
       # inputs.zen-browser.packages."${system}".default
 
       # need another source
