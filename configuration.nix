@@ -153,7 +153,8 @@
       # ladders
       # mihomo-party
       # clash-verge-rev
-      hiddify-app
+      # hiddify-app
+      nekoray
 
       # nix
       nixd
