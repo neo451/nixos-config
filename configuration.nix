@@ -147,6 +147,8 @@
       # fun
       supercollider
 
+      spotify-qt
+
       # need another source
       # follow
       # discord
