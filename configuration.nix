@@ -138,6 +138,7 @@
 
       # gui apps
       ghostty
+      zathura
       wechat-uos
       anki
       neovide
@@ -148,9 +149,6 @@
       # productivity
       hugo # static site generator
       glow # markdown previewer in terminal
-
-      zathura
-      # zathuraPkgs
 
       # need another source
       # follow
