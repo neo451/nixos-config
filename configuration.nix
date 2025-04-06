@@ -72,7 +72,7 @@
     enable = true;
     fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
-      # rime-data
+      rime-data
       fcitx5-gtk
       kdePackages.fcitx5-qt
       fcitx5-rime
@@ -168,6 +168,7 @@
       tectonic
       sqlite
       mermaid-cli
+      rime-ls
     ];
   };
 
