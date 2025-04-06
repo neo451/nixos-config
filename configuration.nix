@@ -139,6 +139,9 @@
       anki
       neovide
       # obsidian
+      libreoffice
+      wechat-uos
+      # inputs.zen-browser.packages."${system}".default
 
       # nix
       nixd
@@ -152,9 +155,6 @@
       mihomo-party
       # clash-verge-rev
       # hiddify-app
-
-      inputs.zen-browser.packages."${system}".default
-      libreoffice
 
       # need another source
       # follow
