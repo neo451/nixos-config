@@ -148,6 +148,7 @@
       # productivity
       hugo # static site generator
       glow # markdown previewer in terminal
+      zathura-with-plugins # pdf reader
 
       # need another source
       # follow
