@@ -179,10 +179,7 @@
     ];
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
+  programs.neovim = { defaultEditor = true; };
 
   programs.git = {
     enable = true;
