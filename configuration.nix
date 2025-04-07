@@ -136,6 +136,7 @@
     inputs.zen-browser.packages."${system}".default
     vim
     wget
+    fish
     neovim
   ];
   environment.variables.EDITOR = "nvim";

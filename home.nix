@@ -81,8 +81,6 @@
     fzf
     fd
 
-    fish
-
     # compilers
     clang
     zig
