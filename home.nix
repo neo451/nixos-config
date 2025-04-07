@@ -92,7 +92,7 @@
     # need another source
     follow
     # discord
-    neochat
+    kdePackages.neochat
     obsidian
     # spotify
 
