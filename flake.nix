@@ -15,9 +15,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -28,9 +29,9 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # 这里的 ryan 也得替换成你的用户名
-          # 这里的 import 函数在前面 Nix 语法中介绍过了，不再赘述
-          home-manager.users.n451 = import ./home.nix;
+          home-manager.users.n451 = {
+            imports = [ ./home.nix nix-doom-emacs.hmModule ];
+          };
 
           # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
           # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
