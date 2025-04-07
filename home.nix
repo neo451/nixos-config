@@ -92,8 +92,8 @@
     # need another source
     follow
     # discord
-    kdePackages.neochat
     obsidian
+    cinny
     # spotify
 
     # ladders
