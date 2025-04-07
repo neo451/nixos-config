@@ -53,6 +53,7 @@
     fzf
     newsboat
     newsraft
+    neomutt
 
     # music 
     qcm
