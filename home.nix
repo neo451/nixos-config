@@ -91,13 +91,13 @@
     # need another source
     # follow
     # discord
-    # obsidian
+    obsidian
     # spotify
 
     # ladders
     mihomo-party
     clash-verge-rev
-    hiddify-app
+    # hiddify-app
     nekoray
 
     # nix
