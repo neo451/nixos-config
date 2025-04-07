@@ -116,7 +116,7 @@
   # TODO: Don't forget to set a password with ‘passwd’.
   users.users.n451 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ];
   };
 
   programs.neovim = { defaultEditor = true; };
@@ -144,30 +144,7 @@
 
   programs.firefox.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    neovim
-    xclip
-    git
-    gh
-    ripgrep
-    pandoc
-    gnumake
-
-    dig
-    fzf
-    fd
-
-    fish
-
-    # compilers
-    clang
-    zig
-    luajit
-  ];
+  environment.systemPackages = with pkgs; [ vim wget neovim ];
   environment.variables.EDITOR = "nvim";
 
   nixpkgs.config = { allowUnfree = true; };

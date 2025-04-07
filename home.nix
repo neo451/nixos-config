@@ -70,6 +70,24 @@
     # fun
     supercollider
 
+    xclip
+    git
+    gh
+    ripgrep
+    pandoc
+    gnumake
+
+    dig
+    fzf
+    fd
+
+    fish
+
+    # compilers
+    clang
+    zig
+    luajit
+
     # need another source
     # follow
     # discord
