@@ -82,6 +82,8 @@
     pandoc
     gnumake
 
+    calibre
+
     # shell utils
     dig
     fd
