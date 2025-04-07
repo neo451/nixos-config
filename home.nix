@@ -38,6 +38,16 @@
     starship
     bat
 
+    # gui apps
+    ghostty
+    zathura
+    wechat-uos
+    neovide
+
+    anki
+    libreoffice
+    zotero
+
     # # archives
     # zip
     # xz

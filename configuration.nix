@@ -118,15 +118,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      # gui apps
-      ghostty
-      zathura
-      wechat-uos
-      anki
-      neovide
-      libreoffice
-      netease-cloud-music-gtk
-      zotero
 
       # tui
       yazi
