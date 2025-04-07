@@ -90,9 +90,9 @@
 
     # need another source
     follow
-    discord
+    # discord
     obsidian
-    spotify
+    # spotify
 
     # ladders
     mihomo-party
