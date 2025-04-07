@@ -100,6 +100,12 @@
     };
   };
 
+  # docker
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
@@ -117,7 +123,7 @@
   # TODO: Don't forget to set a password with ‘passwd’.
   users.users.n451 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
   };
 
   programs.neovim = { defaultEditor = true; };
