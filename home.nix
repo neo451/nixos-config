@@ -1,7 +1,7 @@
 { config, inputs, pkgs, ... }:
 
 {
-  imports = [ ./home/starship.nix ];
+  imports = [ ./home/starship.nix ./home/fish.nix ];
   # 注意修改这里的用户名与用户目录
   home.username = "n451";
   home.homeDirectory = "/home/n451";
@@ -163,18 +163,6 @@
     # pciutils # lspci
     # usbutils # lsusb
   ];
-
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      vi = "nvim";
-      cat = "bat";
-    };
-    shellAbbrs = {
-      nrs = "~/scripts/rebuild-os";
-      pushn = "~/scripts/push-notes";
-    };
-  };
 
   programs.ghostty = {
     enable = true;
