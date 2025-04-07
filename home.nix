@@ -46,6 +46,8 @@
     # tui
     yazi
     fzf
+    newsboat
+    newsraft
 
     # music 
     qcm
