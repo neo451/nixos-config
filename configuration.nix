@@ -117,39 +117,6 @@
   users.users.n451 = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      # productivity
-      hugo # static site generator
-      glow # markdown previewer in terminal
-
-      # fun
-      supercollider
-
-      # need another source
-      # follow
-      # discord
-      # obsidian
-      # spotify
-      # inputs.zen-browser.packages."${system}".default
-
-      # ladders
-      mihomo-party
-      clash-verge-rev
-      #      hiddify-app
-      nekoray
-
-      # nix
-      nixd
-      nixfmt-classic
-
-      # lua
-      lua-language-server
-      stylua
-      luajitPackages.luacheck
-
-      # markdown
-      markdownlint-cli2
-    ];
   };
 
   programs.neovim = { defaultEditor = true; };
