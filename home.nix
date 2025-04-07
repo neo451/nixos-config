@@ -92,6 +92,7 @@
     # need another source
     follow
     # discord
+    neochat
     obsidian
     # spotify
 
