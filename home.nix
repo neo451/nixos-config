@@ -56,6 +56,13 @@
     mpv
     vlc
 
+    # dependencies
+    imagemagick
+    tectonic
+    sqlite
+    mermaid-cli
+    rime-ls
+
     # # archives
     # zip
     # xz

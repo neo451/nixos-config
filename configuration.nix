@@ -149,13 +149,6 @@
 
       # markdown
       markdownlint-cli2
-
-      # dependencies
-      imagemagick
-      tectonic
-      sqlite
-      mermaid-cli
-      # rime-ls
     ];
   };
 
