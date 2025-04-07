@@ -168,7 +168,7 @@
       # lua
       lua-language-server
       stylua
-      luacheck
+      luajitPackages.luacheck
 
       # markdown
       markdownlint-cli2
