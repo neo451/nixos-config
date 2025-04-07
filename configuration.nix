@@ -217,7 +217,7 @@
     gh
     ripgrep
     pandoc
-    make
+    # make
 
     dig
     fzf
