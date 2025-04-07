@@ -19,19 +19,12 @@
   };
 
   outputs = { nixpkgs, home-manager, nix-doom-emacs, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
-        {
-          environment.systemPackages = let
-            doom-emacs = nix-doom-emacs.packages.${system}.default.override {
-              # doomPrivateDir = ./doom.d;
-            };
-          in [ doom-emacs ];
-        }
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
