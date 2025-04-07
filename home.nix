@@ -98,8 +98,8 @@
     # spotify
 
     # docker
-    # docker
-    # docker-compose
+    docker
+    docker-compose
 
     # ladders
     mihomo-party
