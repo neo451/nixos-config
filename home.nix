@@ -175,6 +175,16 @@
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      theme = "catppuccin-mocha";
+      font-size = 10;
+      keybind = [ "ctrl+h=goto_split:left" "ctrl+l=goto_split:right" ];
+    };
+  };
+
   # # alacritty - 一个跨平台终端，带 GPU 加速功能
   # programs.alacritty = {
   #   enable = true;
