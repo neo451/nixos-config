@@ -43,6 +43,7 @@
     zathura
     wechat-uos
     neovide
+    nsxiv
 
     anki
     libreoffice
@@ -81,6 +82,7 @@
     pandoc
     gnumake
 
+    # shell utils
     dig
     fd
 
