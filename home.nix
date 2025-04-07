@@ -104,7 +104,8 @@
     # ladders
     flclash
     nekoray
-    clash-nyanpasu
+    clash-verge-rev
+    # clash-nyanpasu
 
     # nix
     nixd
