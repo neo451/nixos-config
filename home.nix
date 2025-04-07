@@ -6,6 +6,7 @@
     ./home/fish.nix
     ./home/ghostty.nix
     ./home/newsboat.nix
+    ./home/emacs.nix
   ];
   # 注意修改这里的用户名与用户目录
   home.username = "n451";
