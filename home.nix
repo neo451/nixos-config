@@ -97,6 +97,10 @@
     obsidian
     # spotify
 
+    # docker
+    docker
+    docker-compose
+
     # ladders
     mihomo-party
     clash-verge-rev
