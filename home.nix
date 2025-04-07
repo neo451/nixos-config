@@ -91,7 +91,7 @@
 
     # need another source
     follow
-    # discord
+    discord
     obsidian
     # spotify
 
