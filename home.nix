@@ -103,10 +103,8 @@
 
     # ladders
     flclash
-    # mihomo-party
-    # clash-verge-rev
-    # # hiddify-app
     nekoray
+    clash-nyanpasu
 
     # nix
     nixd
