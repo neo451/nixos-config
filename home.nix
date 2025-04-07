@@ -89,10 +89,10 @@
     luajit
 
     # need another source
-    # follow
-    # discord
+    follow
+    discord
     obsidian
-    # spotify
+    spotify
 
     # ladders
     mihomo-party
