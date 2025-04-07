@@ -93,7 +93,6 @@
     # discord
     # obsidian
     # spotify
-    inputs.zen-browser.packages."${system}".default
 
     # ladders
     mihomo-party

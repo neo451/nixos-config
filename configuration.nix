@@ -144,7 +144,12 @@
 
   programs.firefox.enable = true;
 
-  environment.systemPackages = with pkgs; [ vim wget neovim ];
+  environment.systemPackages = with pkgs; [
+    inputs.zen-browser.packages."${system}".default
+    vim
+    wget
+    neovim
+  ];
   environment.variables.EDITOR = "nvim";
 
   nixpkgs.config = { allowUnfree = true; };
