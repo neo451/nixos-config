@@ -93,7 +93,6 @@
     follow
     # discord
     obsidian
-    cinny
     # spotify
 
     # ladders
