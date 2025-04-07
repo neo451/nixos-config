@@ -161,6 +161,5 @@
   # You can update Home Manager without changing this value.
   home.stateVersion = "24.11";
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
