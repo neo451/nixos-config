@@ -102,9 +102,10 @@
     docker-compose
 
     # ladders
-    mihomo-party
-    clash-verge-rev
-    # hiddify-app
+    flclash
+    # mihomo-party
+    # clash-verge-rev
+    # # hiddify-app
     nekoray
 
     # nix
