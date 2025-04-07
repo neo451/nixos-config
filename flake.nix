@@ -10,7 +10,7 @@
       # the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
-      backupFileExtension = true;
+      backupFileExtension = "backup";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
