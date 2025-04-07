@@ -112,19 +112,16 @@
     # markdown
     markdownlint-cli2
 
-    # # archives
-    # zip
+    # archives
+    zip
     # xz
     # unzip
     # p7zip
-    #
-    # # utils
-    # ripgrep # recursively searches directories for a regex pattern
+
+    # utils
+    ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
-    # yq-go # yaml processor https://github.com/mikefarah/yq
-    # eza # A modern replacement for ‘ls’
-    # fzf # A command-line fuzzy finder
-    #
+
     # # networking tools
     # mtr # A network diagnostic tool
     # iperf3
@@ -136,31 +133,26 @@
     # ipcalc # it is a calculator for the IPv4/v6 addresses
     #
     # # misc
-    # cowsay
-    # file
-    # which
-    # tree
+    cowsay
+    file
+    which
     # gnused
     # gnutar
     # gawk
     # zstd
     # gnupg
+
+    # nix related
     #
-    # # nix related
-    # #
-    # # it provides the command `nom` works just like `nix`
-    # # with more details log output
-    # nix-output-monitor
-    #
-    # # productivity
-    # hugo # static site generator
-    # glow # markdown previewer in terminal
-    #
+    # it provides the command `nom` works just like `nix`
+    # with more details log output
+    nix-output-monitor
+
     # btop # replacement of htop/nmon
     # iotop # io monitoring
     # iftop # network monitoring
-    #
-    # # system call monitoring
+
+    # system call monitoring
     # strace # system call monitoring
     # ltrace # library call monitoring
     # lsof # list open files
@@ -173,14 +165,6 @@
     # usbutils # lsusb
   ];
 
-  # git 相关配置
-  # programs.git = {
-  #   enable = true;
-  #   userName = "Ryan Yin";
-  #   userEmail = "xiaoyin_c@qq.com";
-  # };
-
-  # 启用 starship，这是一个漂亮的 shell 提示符
   programs.starship = {
     enable = true;
     # 自定义配置
