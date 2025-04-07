@@ -102,10 +102,10 @@
     docker-compose
 
     # ladders
-    flclash
-    nekoray
     clash-verge-rev
     # clash-nyanpasu
+    # flclash
+    # nekoray
 
     # nix
     nixd
