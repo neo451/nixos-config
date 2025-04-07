@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -125,9 +125,6 @@
     # unzip
     # p7zip
 
-    # an nice os :)
-    emacs
-
     # utils
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
@@ -152,9 +149,10 @@
 
     # shortcuts
     rofi
+    awesome
 
     # zstd
-    # gnupg
+    gnupg
 
     # nix related
     #
