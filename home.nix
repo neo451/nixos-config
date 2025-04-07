@@ -145,7 +145,11 @@
     which
     # gnused
     # gnutar
-    # gawk
+    gawk
+
+    # shortcuts
+    rofi
+
     # zstd
     # gnupg
 
