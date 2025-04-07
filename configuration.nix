@@ -118,15 +118,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-
-      # tui
-      yazi
-
-      # music 
-      qcm
-      mpv
-      vlc
-
       # productivity
       hugo # static site generator
       glow # markdown previewer in terminal

@@ -48,6 +48,14 @@
     libreoffice
     zotero
 
+    # tui
+    yazi
+
+    # music 
+    qcm
+    mpv
+    vlc
+
     # # archives
     # zip
     # xz
