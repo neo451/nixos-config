@@ -118,7 +118,7 @@
       };
     };
 
-    displayManager = { defaultSession = "none+awesome"; };
+    # displayManager = { defaultSession = "none+awesome"; };
   };
 
   # Enable the X11 windowing system.
