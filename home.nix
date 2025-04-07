@@ -1,6 +1,9 @@
 { config, inputs, pkgs, ... }:
 
 {
+  imports = [
+   ./home/
+  ];
   # 注意修改这里的用户名与用户目录
   home.username = "n451";
   home.homeDirectory = "/home/n451";
@@ -163,15 +166,6 @@
     # usbutils # lsusb
   ];
 
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-    };
-  };
-
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -190,7 +184,7 @@
     settings = {
       theme = "catppuccin-mocha";
       font-size = 10;
-      # keybind = [ "ctrl+h=goto_split:left" "ctrl+l=goto_split:right" ];
+      keybind = [ "ctrl+h=goto_split:left" "ctrl+l=goto_split:right" ];
       command = "fish";
     };
   };
