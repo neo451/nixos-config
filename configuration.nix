@@ -177,6 +177,7 @@
     wget
     fish
     neovim
+    kitty
   ];
   environment.variables.EDITOR = "nvim";
 
