@@ -150,21 +150,20 @@
     gnupg
 
     # nix related
-    #
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
 
-    # btop # replacement of htop/nmon
+    btop # replacement of htop/nmon
+    iftop # network monitoring
     # iotop # io monitoring
-    # iftop # network monitoring
 
     # system call monitoring
     # strace # system call monitoring
     # ltrace # library call monitoring
     # lsof # list open files
-    #
-    # # system tools
+
+    # system tools
     # sysstat
     # lm_sensors # for `sensors` command
     # ethtool
