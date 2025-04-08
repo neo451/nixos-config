@@ -196,6 +196,8 @@
 
     # app launcher
     rofi-wayland
+
+    networkmanagerapplet
   ];
   environment.variables.EDITOR = "nvim";
 
