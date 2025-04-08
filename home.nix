@@ -142,8 +142,6 @@
     # gnutar
     gawk
 
-    # shortcuts
-    rofi
     awesome
 
     # zstd
