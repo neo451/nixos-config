@@ -171,6 +171,20 @@
     # usbutils # lsusb
   ];
 
+  wayland.windowManager.hyprland = {
+    # Whether to enable Hyprland wayland compositor
+    enable = true;
+    # The hyprland package to use
+    package = pkgs.hyprland;
+    # Whether to enable XWayland
+    xwayland.enable = true;
+
+    # Optional
+    # Whether to enable hyprland-session.target on hyprland startup
+    systemd.enable = true;
+  };
+  # ...
+
   # You can update Home Manager without changing this value.
   home.stateVersion = "24.11";
 
