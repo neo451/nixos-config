@@ -101,10 +101,16 @@
   };
 
   programs.hyprland = {
-    # Install the packages from nixpkgs
     enable = true;
-    # Whether to enable XWayland
+    nvidiaPatches = true;
     xwayland.enable = true;
+  };
+
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+
+  hardware = {
+    opengl.enable = true;
+    nvidia.modesetting.enable = true;
   };
 
   programs.steam = {
@@ -178,6 +184,19 @@
     fish
     neovim
     kitty
+
+    # hyprland
+    waybar # bar
+    # eww # widget sustem
+    dunst # notification daemon
+    libnotify
+
+    # desktop portal?
+
+    swww # wallpaper daemon
+
+    # app launcher
+    rofi-wayland
   ];
   environment.variables.EDITOR = "nvim";
 
