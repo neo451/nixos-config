@@ -173,7 +173,6 @@
     iftop # network monitoring
     # iotop # io monitoring
 
-    gcc
     luarocks
 
     # system call monitoring
