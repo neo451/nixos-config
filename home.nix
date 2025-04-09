@@ -123,6 +123,8 @@
     # utils
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
+    yq
+    jsonfmt
 
     # networking tools
     # mtr # A network diagnostic tool
