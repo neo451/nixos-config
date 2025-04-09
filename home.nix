@@ -140,11 +140,9 @@
     cowsay
     file
     which
-    # gnused
-    # gnutar
+    gnused
+    gnutar
     gawk
-
-    awesome
 
     # zstd
     gnupg
