@@ -71,7 +71,6 @@
     # fun
     supercollider
 
-    xclip
     git
     gh
     ripgrep
@@ -153,6 +152,9 @@
     # eww # widget sustem
     dunst # notification daemon
     libnotify
+
+    # copy & paste
+    wl-clipboard
 
     # desktop portal?
 
