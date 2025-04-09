@@ -177,6 +177,7 @@
     # iotop # io monitoring
 
     luarocks
+    luajit_2_1
 
     tree-sitter
 
