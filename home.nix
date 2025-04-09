@@ -173,6 +173,8 @@
     iftop # network monitoring
     # iotop # io monitoring
 
+    luarocks
+
     # system call monitoring
     # strace # system call monitoring
     # ltrace # library call monitoring
