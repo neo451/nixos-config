@@ -160,7 +160,7 @@
   # TODO: Don't forget to set a password with ‘passwd’.
   users.users.n451 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "input" ];
   };
 
   programs.neovim = { defaultEditor = true; };
