@@ -183,23 +183,6 @@
     fish
     neovim
     kitty
-
-    # hyprland
-    waybar # bar
-    # eww # widget sustem
-    dunst # notification daemon
-    libnotify
-
-    # desktop portal?
-
-    swww # wallpaper daemon
-
-    # app launcher
-    rofi-wayland
-
-    # widgets
-    pw-volume
-    networkmanagerapplet
   ];
   environment.variables.EDITOR = "nvim";
 

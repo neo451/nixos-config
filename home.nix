@@ -124,7 +124,7 @@
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
 
-    # # networking tools
+    # networking tools
     # mtr # A network diagnostic tool
     # iperf3
     # dnsutils # `dig` + `nslookup`
@@ -147,6 +147,23 @@
     # zstd
     gnupg
 
+    # hyprland
+    waybar # bar
+    # eww # widget sustem
+    dunst # notification daemon
+    libnotify
+
+    # desktop portal?
+
+    swww # wallpaper daemon
+
+    # app launcher
+    rofi-wayland
+
+    # widgets
+    pw-volume
+    networkmanagerapplet
+
     # nix related
     # it provides the command `nom` works just like `nix`
     # with more details log output
@@ -168,20 +185,6 @@
     # pciutils # lspci
     # usbutils # lsusb
   ];
-
-  # wayland.windowManager.hyprland = {
-  #   # Whether to enable Hyprland wayland compositor
-  #   enable = true;
-  #   # The hyprland package to use
-  #   package = pkgs.hyprland;
-  #   # Whether to enable XWayland
-  #   xwayland.enable = true;
-  #
-  #   # Optional
-  #   # Whether to enable hyprland-session.target on hyprland startup
-  #   systemd.enable = true;
-  # };
-  # ...
 
   # You can update Home Manager without changing this value.
   home.stateVersion = "24.11";
