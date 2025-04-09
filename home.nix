@@ -159,6 +159,7 @@
     # desktop portal?
 
     swww # wallpaper daemon
+    hyprshot
 
     # app launcher
     rofi-wayland
