@@ -45,6 +45,7 @@
     zotero
 
     # tui
+    w3m
     yazi
     fzf
     newsboat
