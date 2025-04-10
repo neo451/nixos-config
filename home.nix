@@ -126,6 +126,9 @@
     yq
     fixjson
 
+    # file sync
+    syncthing
+
     # networking tools
     # mtr # A network diagnostic tool
     # iperf3
