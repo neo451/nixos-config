@@ -39,6 +39,7 @@
     wechat-uos
     neovide
     nsxiv
+    zed-zed-editor
 
     anki
     libreoffice
