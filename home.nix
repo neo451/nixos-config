@@ -64,6 +64,7 @@
     sqlite
     mermaid-cli
     rime-ls
+    nodePackages.prettier
 
     # productivity
     hugo # static site generator
