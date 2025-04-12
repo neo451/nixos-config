@@ -114,6 +114,7 @@
     luajitPackages.luacheck
 
     # go
+    go
     gopls
 
     # markdown
