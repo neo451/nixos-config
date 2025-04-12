@@ -87,7 +87,6 @@
     # compilers
     clang
     zig
-    luajit
 
     # need another source
     follow
@@ -110,6 +109,8 @@
     nixfmt-classic
 
     # lua
+    lua
+    luajit
     lua-language-server
     stylua
     luajitPackages.luacheck
