@@ -109,7 +109,6 @@
     nixfmt-classic
 
     # lua
-    lua
     luajit
     lua-language-server
     stylua
