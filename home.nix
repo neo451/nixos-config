@@ -127,6 +127,7 @@
 
     # archives
     zip
+    unzip
     # xz
     # unzip
     # p7zip
