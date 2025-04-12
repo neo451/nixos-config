@@ -110,6 +110,7 @@
 
     # lua
     luajit
+    luarocks
     lua-language-server
     stylua
     luajitPackages.luacheck
@@ -189,9 +190,6 @@
     btop # replacement of htop/nmon
     iftop # network monitoring
     # iotop # io monitoring
-
-    luarocks
-    luajit_2_1
 
     tree-sitter
 
