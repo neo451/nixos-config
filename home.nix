@@ -118,7 +118,7 @@
     gopls
 
     # python
-    python
+    python3
 
     # markdown
     markdownlint-cli2
