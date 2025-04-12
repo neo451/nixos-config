@@ -65,6 +65,7 @@
     mermaid-cli
     rime-ls
     nodePackages.prettier
+    translate-shell
 
     # productivity
     hugo # static site generator
