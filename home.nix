@@ -113,6 +113,9 @@
     stylua
     luajitPackages.luacheck
 
+    # go
+    gopls
+
     # markdown
     markdownlint-cli2
 
