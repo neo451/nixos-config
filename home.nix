@@ -66,6 +66,7 @@
     rime-ls
     nodePackages.prettier
     translate-shell
+    zk
 
     # productivity
     hugo # static site generator
