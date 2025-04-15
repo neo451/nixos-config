@@ -79,6 +79,7 @@
     ripgrep
     pandoc
     gnumake
+    cmake
 
     # shell utils
     dig
