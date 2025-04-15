@@ -19,27 +19,24 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nix-doom-emacs, ... }@inputs:
-    let overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
-    in {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = overlays;
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+  outputs = { nixpkgs, home-manager, ... }@inputs: {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
 
-            home-manager.users.n451 = { imports = [ ./home.nix ]; };
+          home-manager.users.n451 = { imports = [ ./home.nix ]; };
 
-            home-manager.extraSpecialArgs = inputs;
+          home-manager.extraSpecialArgs = inputs;
 
-            home-manager.backupFileExtension = "backup";
-          }
-        ];
-      };
+          home-manager.backupFileExtension = "backup";
+        }
+      ];
     };
+  };
 }
