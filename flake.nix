@@ -2,7 +2,6 @@
   description = "A simple NixOS flake";
 
   inputs = {
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     home-manager = {
