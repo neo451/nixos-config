@@ -5,6 +5,7 @@
       vi = "nvim";
       cat = "bat";
       em = "emacs -nw";
+      mvi = "VIMRUNTIME=./runtime ./build/bin/nvim --luamod-dev";
     };
     shellAbbrs = {
       nrs = "~/scripts/rebuild-os";
