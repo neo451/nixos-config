@@ -40,6 +40,7 @@
     neovide
     nsxiv
     zed-editor
+    vscode
 
     anki
     libreoffice
