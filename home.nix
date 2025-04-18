@@ -71,6 +71,8 @@
     zk
     yarn
 
+    nodePackages.markmap-cli
+
     # zig
     zig
     zls
