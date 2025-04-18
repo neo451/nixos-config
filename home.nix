@@ -70,6 +70,10 @@
     translate-shell
     zk
 
+    # zig
+    zig
+    zls
+
     # productivity
     hugo # static site generator
     glow # markdown previewer in terminal
