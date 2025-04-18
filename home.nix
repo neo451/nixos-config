@@ -65,6 +65,7 @@
     sqlite
     mermaid-cli
     rime-ls
+    harper
     nodePackages.prettier
     translate-shell
     zk
