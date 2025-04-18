@@ -69,6 +69,7 @@
     nodePackages.prettier
     translate-shell
     zk
+    yarn
 
     # zig
     zig
