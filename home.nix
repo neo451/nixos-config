@@ -71,6 +71,7 @@
     zk
     yarn
     marksman
+    nodejs
 
     # zig
     zig
