@@ -67,6 +67,7 @@
     rime-ls
     harper
     nodePackages.prettier
+    claude-code
     translate-shell
     zk
     yarn
