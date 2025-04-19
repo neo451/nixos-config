@@ -70,8 +70,7 @@
     translate-shell
     zk
     yarn
-
-    nodePackages.markmap-cli
+    marksman
 
     # zig
     zig
