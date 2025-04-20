@@ -41,6 +41,7 @@
     nsxiv
     zed-editor
     vscode
+    qbittorrent
 
     anki
     libreoffice
