@@ -53,6 +53,7 @@
     newsboat
     newsraft
     neomutt
+    tokei
 
     # music 
     qcm
