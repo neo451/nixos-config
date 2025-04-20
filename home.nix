@@ -99,7 +99,6 @@
     fd
 
     # compilers
-    gcc
     clang
     zig
 
