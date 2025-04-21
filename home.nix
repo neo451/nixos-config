@@ -56,6 +56,9 @@
     neomutt
     tokei
 
+    # cli
+    yt-dlp
+
     # music 
     qcm
     mpv
