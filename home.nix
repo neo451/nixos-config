@@ -95,6 +95,7 @@
     gh
     ripgrep
     pandoc
+    texlive.combined.scheme-full
     gnumake
     cmake
 
