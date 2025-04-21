@@ -34,6 +34,7 @@
     bat
 
     # gui apps
+    kitty
     ghostty
     zathura
     wechat-uos
