@@ -58,6 +58,7 @@
 
     # cli
     yt-dlp
+    ffmpeg
 
     # music 
     qcm
