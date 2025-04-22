@@ -44,6 +44,7 @@
     vscode
     qbittorrent
     ida-free
+    thunderbird
 
     anki
     libreoffice
