@@ -57,11 +57,9 @@
     neomutt
     tokei
 
-    # cli
+    # audio & video
     yt-dlp
     ffmpeg
-
-    # music 
     qcm
     mpv
     vlc
