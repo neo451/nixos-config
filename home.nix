@@ -80,6 +80,7 @@
     yarn
     marksman
     nodejs
+    ghostscript
 
     # zig
     zig
