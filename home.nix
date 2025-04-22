@@ -43,6 +43,7 @@
     zed-editor
     vscode
     qbittorrent
+    ida-free
 
     anki
     libreoffice
