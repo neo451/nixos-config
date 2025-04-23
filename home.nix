@@ -44,6 +44,7 @@
     vscode
     qbittorrent
     ida-free
+    ghidra
     thunderbird
 
     anki
