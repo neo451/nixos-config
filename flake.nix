@@ -1,4 +1,4 @@
-{
+{ system }: {
   description = "A simple NixOS flake";
 
   inputs = {
@@ -18,11 +18,13 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, nur, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        nur.modules.nixos.default
+        nur.legacyPackages."${system}".repos.iopq.modules.xraya
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {

@@ -73,7 +73,6 @@
     mermaid-cli
     rime-ls
 
-    inputs.nur.repos.mic92.hello-nur
     harper
     nodePackages.prettier
     claude-code
