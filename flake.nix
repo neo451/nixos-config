@@ -1,4 +1,4 @@
-{ system }: {
+{
   description = "A simple NixOS flake";
 
   inputs = {
@@ -24,7 +24,7 @@
       specialArgs = { inherit inputs; };
       modules = [
         nur.modules.nixos.default
-        nur.legacyPackages."${system}".repos.iopq.modules.xraya
+        # nur.legacyPackages."${system}".repos.iopq.modules.xraya
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
