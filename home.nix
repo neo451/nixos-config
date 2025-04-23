@@ -73,6 +73,7 @@
     mermaid-cli
     rime-ls
 
+    copilot-language-server
     harper
     nodePackages.prettier
     claude-code
