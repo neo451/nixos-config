@@ -66,6 +66,7 @@
     qcm
     mpv
     vlc
+    sox
 
     # dependencies
     imagemagick
