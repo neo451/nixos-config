@@ -215,7 +215,7 @@
     vim
     wget
     fish
-    neovim
+    # neovim
     kitty
     gcc
   ];
