@@ -126,8 +126,8 @@
     # ladders
     clash-verge-rev
     # clash-nyanpasu
-    # flclash
-    # nekoray
+    flclash
+    nekoray
 
     # nix
     nixd
