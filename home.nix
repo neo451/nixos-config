@@ -32,6 +32,7 @@
     stow
     starship
     bat
+    neovim
 
     # gui apps
     kitty
@@ -85,6 +86,7 @@
     marksman
     nodejs
     ghostscript
+    deno
 
     # zig
     zig
