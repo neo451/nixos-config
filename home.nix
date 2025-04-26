@@ -31,7 +31,6 @@
     tree
     stow
     starship
-    bat
     neovim
 
     # gui apps
@@ -40,17 +39,17 @@
     zathura
     wechat-uos
     neovide
-    nsxiv
     zed-editor
     vscode
     qbittorrent
     ida-free
     ghidra
     thunderbird
-
     anki
     libreoffice
     zotero
+
+    loupe
 
     # tui
     w3m
