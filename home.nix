@@ -32,6 +32,7 @@
     stow
     starship
     neovim
+    emacs
 
     # gui apps
     kitty
