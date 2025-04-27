@@ -49,6 +49,7 @@
     anki
     libreoffice
     zotero
+    obs-studio
 
     loupe
 
