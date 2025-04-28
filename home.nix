@@ -137,6 +137,7 @@
     nixfmt-classic
 
     # lua
+    lua
     luajit
     luarocks
     lua-language-server
