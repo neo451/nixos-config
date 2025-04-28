@@ -217,6 +217,7 @@
     fish
     # neovim
     kitty
+    gcc
   ];
   environment.variables.EDITOR = "nvim";
 
