@@ -132,6 +132,10 @@
     flclash
     nekoray
 
+    # c
+    gcc
+    clang
+
     # nix
     nixd
     nixfmt-classic
