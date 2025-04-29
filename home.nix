@@ -132,6 +132,8 @@
     flclash
     nekoray
 
+    diff-diff-so-fancy
+
     # nix
     nixd
     nixfmt-classic
