@@ -12,6 +12,7 @@
 
       gss = "git status --short";
       ga = "git add";
+      gd = "git diff --output-indicator-new=' ' --output-indicator-old=' '";
       gc = "git commit";
       gp = "git push";
       gu = "git pull";
