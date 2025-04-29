@@ -51,6 +51,10 @@
     zotero
     obs-studio
 
+    # processing software
+    davinci-resolve
+    gimp
+
     loupe
 
     # tui
@@ -76,6 +80,7 @@
     sqlite
     mermaid-cli
     rime-ls
+    diff-so-fancy
 
     copilot-language-server
     harper
@@ -131,8 +136,6 @@
     # clash-nyanpasu
     flclash
     nekoray
-
-    diff-diff-so-fancy
 
     # nix
     nixd
