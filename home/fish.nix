@@ -10,7 +10,15 @@
       markmap =
         "/home/n451/.local/share/nvim/lazy/markmap.nvim/node_modules/markmap-cli/bin/cli.js";
 
-      gs = "git status --short";
+      gss = "git status --short";
+      ga = "git add";
+      gc = "git commit";
+      gp = "git push";
+      gu = "git pull";
+      gl = "git log";
+      gb = "git branch";
+      gi = "git init";
+      gcl = "git clone";
     };
     shellAbbrs = {
       nrs = "~/scripts/rebuild-os";
