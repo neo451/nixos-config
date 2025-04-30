@@ -149,6 +149,9 @@
     luajitPackages.luacheck
     selene
 
+    # c
+    clang
+
     # go
     go
     gopls
