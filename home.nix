@@ -42,8 +42,6 @@
     zed-editor
     vscode
     qbittorrent
-    ida-free
-    ghidra
     thunderbird
     anki
     libreoffice
@@ -54,9 +52,14 @@
     zathura
     sioyek
 
+    # reverse engineering, learn it some day!
+    ghidra
+    ida-free
+
     # processing software
     davinci-resolve
     gimp
+    bitwig-studio5
 
     loupe
 
