@@ -147,6 +147,7 @@
     lua-language-server
     stylua
     luajitPackages.luacheck
+    selene
 
     # go
     go
