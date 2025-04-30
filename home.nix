@@ -151,6 +151,7 @@
 
     # c
     clang
+    astyle
 
     # go
     go
