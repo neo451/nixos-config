@@ -37,7 +37,6 @@
     # gui apps
     kitty
     ghostty
-    zathura
     wechat-uos
     neovide
     zed-editor
@@ -50,6 +49,10 @@
     libreoffice
     zotero
     obs-studio
+
+    # pdf reader
+    zathura
+    sioyek
 
     # processing software
     davinci-resolve
