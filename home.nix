@@ -61,6 +61,8 @@
     gimp
     bitwig-studio5
 
+    chromium
+
     loupe
 
     # tui
