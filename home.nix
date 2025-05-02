@@ -61,6 +61,9 @@
     gimp
     bitwig-studio5
 
+    # rust
+    cargo
+
     chromium
 
     loupe
