@@ -221,6 +221,8 @@
     dunst # notification daemon
     libnotify
 
+    fractal
+
     # copy & paste
     wl-clipboard
 
