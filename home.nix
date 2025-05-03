@@ -34,6 +34,9 @@
     neovim
     emacs
 
+    # gnu
+    ed
+
     # gui apps
     kitty
     ghostty
