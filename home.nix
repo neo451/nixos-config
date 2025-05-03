@@ -222,6 +222,7 @@
     libnotify
 
     fractal
+    webcord
 
     # copy & paste
     wl-clipboard
