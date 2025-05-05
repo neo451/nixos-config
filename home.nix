@@ -92,7 +92,7 @@
     playerctl
 
     python311
-    python311Packages.gst-python
+    python311Packages.pygobject3
 
     # dependencies
     imagemagick
