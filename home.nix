@@ -91,6 +91,7 @@
     sox
     playerctl
 
+    python311
     python311Packages.gst-python
 
     # dependencies
