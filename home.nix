@@ -50,6 +50,7 @@
     libreoffice
     zotero
     obs-studio
+    wineWayland
 
     # pdf reader
     zathura
