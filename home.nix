@@ -91,6 +91,8 @@
     sox
     playerctl
 
+    python311Packages.gst-python
+
     # dependencies
     imagemagick
     tectonic
