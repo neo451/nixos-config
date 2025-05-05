@@ -72,6 +72,7 @@
     loupe
 
     # tui
+    htop
     w3m
     yazi
     fzf
