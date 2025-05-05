@@ -68,6 +68,8 @@
     })
   ];
 
+  environment.variables."RIME_DATA_DIR" = "${pkgs.rime-data}/share/rime-data";
+
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
