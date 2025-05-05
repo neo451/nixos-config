@@ -89,6 +89,7 @@
     mpv
     vlc
     sox
+    playerctl
 
     # dependencies
     imagemagick
