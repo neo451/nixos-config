@@ -81,6 +81,8 @@
     newsraft
     neomutt
     tokei
+    lazygit
+    gh-dash
 
     # audio & video
     yt-dlp
