@@ -84,6 +84,9 @@
     lazygit
     gh-dash
 
+    # python
+    poetry
+
     # audio & video
     yt-dlp
     ffmpeg
