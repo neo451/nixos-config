@@ -182,9 +182,6 @@
     go
     gopls
 
-    # python
-    # python3
-
     # markdown
     markdownlint-cli2
 
