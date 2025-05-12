@@ -91,6 +91,7 @@
     yt-dlp
     ffmpeg
     qcm
+    netease-cloud-music-gtk
     mpv
     vlc
     sox
