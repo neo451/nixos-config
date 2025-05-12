@@ -110,6 +110,7 @@
     mermaid-cli
     rime-ls
     diff-so-fancy
+    wordnet
 
     copilot-language-server
     harper
