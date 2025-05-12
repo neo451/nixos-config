@@ -96,6 +96,10 @@
     sox
     playerctl
 
+    # sync
+    rclone
+    rclone-browser
+
     python311
     python311Packages.pygobject3
 
