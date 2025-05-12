@@ -3,6 +3,7 @@
     enable = true;
     shellAliases = {
       # vi = "nvim";
+      ovim = "nvim -c 'Obsidian today'";
       cat = "bat";
       em = "emacs -nw";
       vi =
