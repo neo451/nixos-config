@@ -67,6 +67,7 @@
 
     # rust
     cargo
+    cargo-binstall
 
     chromium
 
