@@ -192,6 +192,9 @@
     go
     gopls
 
+    # lib
+    libgpg-error
+
     # markdown
     markdownlint-cli2
 
