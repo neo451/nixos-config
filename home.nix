@@ -181,6 +181,9 @@
     luajitPackages.luacheck
     selene
 
+    # ssl
+    openssl
+
     # c
     clang
     astyle
