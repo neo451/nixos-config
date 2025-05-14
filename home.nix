@@ -26,6 +26,8 @@
   #     xxx
   # '';
 
+  home.sessionPath = [ "$HOME/.cargo/bin/" ];
+
   home.packages = with pkgs; [
     fastfetch
     tree
