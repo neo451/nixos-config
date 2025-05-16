@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +22,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nur, ... }@inputs: {
+  outputs = { nixpkgs, rust-overlay, home-manager, nur, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -27,6 +31,10 @@
         # nur.legacyPackages."${system}".repos.iopq.modules.xraya
         ./configuration.nix
         home-manager.nixosModules.home-manager
+        ({ pkgs, ... }: {
+          nixpkgs.overlays = [ rust-overlay.overlays.default ];
+          environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+        })
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
