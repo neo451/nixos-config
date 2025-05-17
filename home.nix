@@ -62,6 +62,8 @@
     ghidra
     ida-free
 
+    goose-cli
+
     # processing software
     davinci-resolve
     gimp
