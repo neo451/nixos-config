@@ -108,6 +108,9 @@
     rclone
     rclone-browser
 
+    # ssh
+    sshfs
+
     python311
     python311Packages.pygobject3
 
