@@ -62,7 +62,9 @@
     ghidra
     ida-free
 
+    # local AI
     goose-cli
+    ollama-cuda
 
     # processing software
     davinci-resolve
