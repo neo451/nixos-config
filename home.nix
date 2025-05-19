@@ -111,6 +111,8 @@
     # ssh
     sshfs
 
+    pomodoro
+
     python311
     python311Packages.pygobject3
 
