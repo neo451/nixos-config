@@ -113,6 +113,8 @@
 
     pomodoro
 
+    baidupcs-go
+
     python311
     python311Packages.pygobject3
 
