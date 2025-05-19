@@ -68,7 +68,10 @@
     })
   ];
 
-  environment.variables."RIME_DATA_DIR" = "${pkgs.rime-data}/share/rime-data";
+  environment.variables = {
+    "RIME_DATA_DIR" = "${pkgs.rime-data}/share/rime-data";
+    MANPAGER = "nvim +Man!";
+  };
 
   i18n.inputMethod = {
     type = "fcitx5";
