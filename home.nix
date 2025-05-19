@@ -252,8 +252,10 @@
     # hyprland
     waybar # bar
     # eww # widget sustem
-    dunst # notification daemon
-    libnotify
+    # dunst # notification daemon
+    # libnotify
+
+    swaynotificationcenter
 
     fractal
     webcord
