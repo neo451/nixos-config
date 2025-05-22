@@ -104,6 +104,7 @@
     sox
     playerctl
     rmpc
+    mpd
 
     # sync
     rclone
