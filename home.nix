@@ -103,6 +103,7 @@
     vlc
     sox
     playerctl
+    rmpc
 
     # sync
     rclone
