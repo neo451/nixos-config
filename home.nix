@@ -121,6 +121,9 @@
     python311Packages.pygobject3
     python311Packages.mutagen
 
+    # file manager
+    nautilus
+
     # dependencies
     imagemagick
     tectonic
