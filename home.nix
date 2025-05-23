@@ -74,6 +74,7 @@
     # rust
     cargo
     cargo-binstall
+    rustPackages.ronfmt
 
     chromium
 
