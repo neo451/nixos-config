@@ -74,7 +74,6 @@
     # rust
     cargo
     cargo-binstall
-    rustPackages.ronfmt
 
     chromium
 
@@ -120,6 +119,7 @@
 
     python311
     python311Packages.pygobject3
+    python311Packages.mutagen
 
     # dependencies
     imagemagick
