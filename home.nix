@@ -136,7 +136,6 @@
     copilot-language-server
     harper
     nodePackages.prettier
-    claude-code
     translate-shell
     zk
     yarn
