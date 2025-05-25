@@ -99,6 +99,8 @@
     ffmpeg
     qcm
     netease-cloud-music-gtk
+    yesplaymusic
+    go-musicfox
     mpv
     vlc
     sox
