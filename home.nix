@@ -99,7 +99,6 @@
     ffmpeg
     qcm
     netease-cloud-music-gtk
-    yesplaymusic
     go-musicfox
     mpv
     vlc
@@ -107,6 +106,8 @@
     playerctl
     rmpc
     mpd
+
+    pkg-config
 
     # sync
     rclone
