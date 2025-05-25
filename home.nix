@@ -67,7 +67,7 @@
     ollama-cuda
 
     # processing software
-    davinci-resolve
+    # davinci-resolve
     gimp
     bitwig-studio5
 
