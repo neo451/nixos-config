@@ -27,10 +27,9 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        nur.modules.nixos.default
-        # nur.legacyPackages."${system}".repos.iopq.modules.xraya
-        ./configuration.nix
         home-manager.nixosModules.home-manager
+        nur.modules.nixos.default
+        ./configuration.nix
         ({ pkgs, ... }: {
           nixpkgs.overlays = [ rust-overlay.overlays.default ];
           environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
@@ -38,11 +37,8 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-
           home-manager.users.n451 = { imports = [ ./home.nix ]; };
-
           home-manager.extraSpecialArgs = inputs;
-
           home-manager.backupFileExtension = "backup";
         }
       ];
