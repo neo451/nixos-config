@@ -104,8 +104,6 @@
     # audio & video
     yt-dlp
     ffmpeg
-    qcm
-    netease-cloud-music-gtk
     go-musicfox
     mpv
     vlc
