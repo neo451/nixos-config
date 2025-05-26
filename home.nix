@@ -60,6 +60,7 @@
     # wallpaper
     pywal16
     swww # wallpaper daemon
+    pywalfox-native
 
     # pdf reader
     zathura
