@@ -122,7 +122,6 @@
     sshfs
 
     # utils
-    pomodoro
     pom
     pomodoro-gtk
 
