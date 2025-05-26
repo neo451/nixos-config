@@ -57,6 +57,9 @@
     # suckless
     dmenu-wayland
 
+    # wallpaper
+    pywal16
+
     # pdf reader
     zathura
     sioyek
@@ -76,7 +79,7 @@
 
     # rust
     cargo
-    # cargo-binstall
+    cargo-binstall
 
     chromium
 
