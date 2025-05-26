@@ -2,6 +2,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
+      w = "wal -o ~/scripts/pywal -i";
       # vi = "nvim";
       ovim = "nvim -c 'Obsidian today'";
       cat = "bat";
