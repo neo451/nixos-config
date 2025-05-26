@@ -54,6 +54,9 @@
     obs-studio
     wineWayland
 
+    # suckless
+    dmenu-wayland
+
     # pdf reader
     zathura
     sioyek
