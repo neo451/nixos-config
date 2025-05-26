@@ -59,6 +59,7 @@
 
     # wallpaper
     pywal16
+    swww # wallpaper daemon
 
     # pdf reader
     zathura
@@ -279,7 +280,6 @@
 
     # desktop portal?
 
-    swww # wallpaper daemon
     hyprshot
 
     # app launcher
