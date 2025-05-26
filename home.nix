@@ -238,6 +238,7 @@
     gnutar
     gawk
     gnupg
+    bc
 
     # hyprland
     waybar # bar
