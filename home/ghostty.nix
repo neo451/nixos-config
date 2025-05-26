@@ -5,7 +5,7 @@
     settings = {
       # theme = "catppuccin-mocha";
       theme = "pywal";
-      background-opacity = 0.2;
+      background-opacity = 0.8;
       font-size = 10;
       keybind = [
         # "ctrl+h=goto_split:left" "ctrl+l=goto_split:right" 

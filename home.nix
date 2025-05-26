@@ -176,11 +176,9 @@
     clang
     zig
 
-    # need another source
     follow
-    # discord
     obsidian
-    # spotify
+    spotify
 
     # docker
     docker
