@@ -130,6 +130,7 @@
     python311Packages.pygobject3
 
     # dependencies
+    ghostscript
     imagemagick
     tectonic
     sqlite
@@ -137,16 +138,17 @@
     rime-ls
     diff-so-fancy
     wordnet
-
-    copilot-language-server
     harper
     nodePackages.prettier
-    translate-shell
+
+    # LSP
     zk
+
+    translate-shell
+
+    # js
     yarn
-    marksman
     nodejs
-    ghostscript
     deno
 
     # zig
@@ -186,7 +188,6 @@
 
     # ladders
     clash-verge-rev
-    # clash-nyanpasu
     flclash
     nekoray
 
@@ -213,19 +214,12 @@
     go
     gopls
 
-    # lib
-    libgpg-error
-
     # markdown
     markdownlint-cli2
 
     # archives
     zip
     unzip
-
-    # xz
-    # unzip
-    # p7zip
 
     # utils
     ripgrep # recursively searches directories for a regex pattern
@@ -236,16 +230,6 @@
     # file sync
     syncthing
 
-    # networking tools
-    # mtr # A network diagnostic tool
-    # iperf3
-    # dnsutils # `dig` + `nslookup`
-    # ldns # replacement of `dig`, it provide the command `drill`
-    # aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    # socat # replacement of openbsd-netcat
-    # nmap # A utility for network discovery and security auditing
-    # ipcalc # it is a calculator for the IPv4/v6 addresses
-    #
     # misc
     cowsay
     file
@@ -253,30 +237,23 @@
     gnused
     gnutar
     gawk
-
-    # zstd
     gnupg
 
     # hyprland
     waybar # bar
-    # eww # widget sustem
-    # dunst # notification daemon
-    # libnotify
+    eww # widget sustem
+    dunst # notification daemon
+    libnotify
+    hyprshot
 
-    swaynotificationcenter
+    # app launcher
+    rofi-wayland
 
     fractal
     webcord
 
     # copy & paste
     wl-clipboard
-
-    # desktop portal?
-
-    hyprshot
-
-    # app launcher
-    rofi-wayland
 
     # widgets
     pw-volume
