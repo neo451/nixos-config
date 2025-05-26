@@ -38,6 +38,26 @@
 
     # gnu
     ed
+    gnumake
+    gnused
+    gnutar
+    gawk
+    gnupg
+
+    git
+    gh
+    ripgrep
+    pandoc
+    texlive.combined.scheme-full
+    cmake
+    dig
+    fd
+
+    # misc
+    cowsay
+    file
+    which
+    bc
 
     # gui apps
     kitty
@@ -136,15 +156,15 @@
     tectonic
     sqlite
     mermaid-cli
-    rime-ls
     diff-so-fancy
     wordnet
     harper
     nodePackages.prettier
+    tree-sitter
 
     # LSP
     zk
-
+    rime-ls
     translate-shell
 
     # js
@@ -162,18 +182,6 @@
 
     # fun
     supercollider
-
-    git
-    gh
-    ripgrep
-    pandoc
-    texlive.combined.scheme-full
-    gnumake
-    cmake
-
-    # shell utils
-    dig
-    fd
 
     # compilers
     clang
@@ -204,9 +212,6 @@
     luajitPackages.luacheck
     selene
 
-    # ssl
-    openssl
-
     # c
     clang
     astyle
@@ -231,22 +236,13 @@
     # file sync
     syncthing
 
-    # misc
-    cowsay
-    file
-    which
-    gnused
-    gnutar
-    gawk
-    gnupg
-    bc
-
     # hyprland
     waybar # bar
     eww # widget sustem
     dunst # notification daemon
     libnotify
     hyprshot
+    wl-clipboard # copy & paste
 
     # app launcher
     rofi-wayland
@@ -254,35 +250,16 @@
     fractal
     webcord
 
-    # copy & paste
-    wl-clipboard
-
     # widgets
     pw-volume
     networkmanagerapplet
 
     # nix related
-    # it provides the command `nom` works just like `nix`
-    # with more details log output
     nix-output-monitor
 
     btop # replacement of htop/nmon
     iftop # network monitoring
-    # iotop # io monitoring
-
-    tree-sitter
-
-    # system call monitoring
-    # strace # system call monitoring
-    # ltrace # library call monitoring
-    # lsof # list open files
-
-    # system tools
-    # sysstat
-    # lm_sensors # for `sensors` command
-    # ethtool
-    # pciutils # lspci
-    # usbutils # lsusb
+    iotop # io monitoring
   ];
 
   # You can update Home Manager without changing this value.
