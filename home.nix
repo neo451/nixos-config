@@ -144,7 +144,7 @@
     mpc
 
     # video
-    kdenlive
+    kdePackages.kenlive
 
     pkg-config
 
