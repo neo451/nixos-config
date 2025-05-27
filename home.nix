@@ -143,6 +143,9 @@
     mpd
     mpc
 
+    # video
+    kdenlive
+
     pkg-config
 
     # sync
