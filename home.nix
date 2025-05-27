@@ -74,6 +74,15 @@
     obs-studio
     wineWayland
 
+    # hyprland
+    waybar # bar
+    eww # widget sustem
+    dunst # notification daemon
+    libnotify
+    hyprshot
+    wl-clipboard # copy & paste
+    rofi-wayland # app launcher
+
     # suckless
     dmenu-wayland
 
@@ -132,6 +141,7 @@
     playerctl
     rmpc
     mpd
+    mpc
 
     pkg-config
 
@@ -231,21 +241,9 @@
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
     yq
-    fixjson
 
     # file sync
     syncthing
-
-    # hyprland
-    waybar # bar
-    eww # widget sustem
-    dunst # notification daemon
-    libnotify
-    hyprshot
-    wl-clipboard # copy & paste
-
-    # app launcher
-    rofi-wayland
 
     fractal
     webcord
