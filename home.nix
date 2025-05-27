@@ -145,6 +145,7 @@
 
     # video
     kdePackages.kdenlive
+    inkscape-with-extensions # vector grahpics editor
 
     pkg-config
 
