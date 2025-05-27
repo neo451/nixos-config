@@ -2,6 +2,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
+      timer = "~/bin/timer";
       pp = "~/scripts/wp";
       ovim = "nvim -c 'Obsidian today'";
       cat = "bat";
