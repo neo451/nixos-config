@@ -156,6 +156,9 @@
     # ssh
     sshfs
 
+    # virtual machine
+    virtualbox
+
     # utils
     pom
     pomodoro-gtk
