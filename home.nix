@@ -183,6 +183,7 @@
     # LSP
     zk
     rime-ls
+    copilot-language-server
     translate-shell
 
     # js
