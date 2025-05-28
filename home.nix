@@ -158,6 +158,7 @@
 
     # virtual machine
     virtualbox
+    waydroid
 
     # utils
     pom
