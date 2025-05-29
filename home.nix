@@ -162,7 +162,7 @@
 
     # utils
     pom
-    pomodoro-gtk
+    pomodoro
 
     baidupcs-go
     python311
