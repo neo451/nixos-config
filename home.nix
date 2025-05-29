@@ -97,7 +97,6 @@
 
     # reverse engineering, learn it some day!
     ghidra
-    ida-free
 
     # local AI
     goose-cli
