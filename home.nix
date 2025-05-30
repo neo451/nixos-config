@@ -179,12 +179,13 @@
     nodePackages.prettier
     tree-sitter
 
-    # LSP
+    # LSP and formatters
     zk
     rime-ls
     copilot-language-server
     copilot-cli
     translate-shell
+    xmlstarlet
 
     # js
     yarn
