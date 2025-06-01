@@ -35,6 +35,7 @@
     starship
     neovim
     emacs
+    nushell
 
     # gnu
     ed
