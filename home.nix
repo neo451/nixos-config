@@ -99,10 +99,6 @@
     # reverse engineering, learn it some day!
     ghidra
 
-    # local AI
-    goose-cli
-    ollama-cuda
-
     # processing software
     # davinci-resolve
     gimp
