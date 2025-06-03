@@ -36,6 +36,7 @@
     neovim
     emacs
     nushell
+    bat
 
     # gnu
     ed
