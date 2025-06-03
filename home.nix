@@ -37,8 +37,6 @@
     emacs
     nushell
 
-    kana
-
     # gnu
     ed
     gnumake
