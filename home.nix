@@ -175,6 +175,7 @@
     wordnet
     harper
     nodePackages.prettier
+    nodePackages.kulala-ls
     tree-sitter
 
     # LSP and formatters
