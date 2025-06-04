@@ -124,6 +124,8 @@
     tokei
     lazygit
     gh-dash
+    vhs
+    glow
 
     # python
     poetry
@@ -175,7 +177,7 @@
     wordnet
     harper
     nodePackages.prettier
-    nodePackages.kulala-ls
+    kulala-fmt
     tree-sitter
 
     # LSP and formatters
