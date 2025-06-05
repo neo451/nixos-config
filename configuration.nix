@@ -83,6 +83,7 @@
       kdePackages.fcitx5-qt
       fcitx5-rime
       fcitx5-nord
+      fcitx5-mozc
     ];
   };
 
