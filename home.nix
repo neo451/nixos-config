@@ -77,7 +77,7 @@
 
     ## email
     thunderbird
-    kmail
+    kdePackages.kmail
     # geary
 
     # hyprland
