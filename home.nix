@@ -69,12 +69,16 @@
     zed-editor
     vscode
     qbittorrent
-    thunderbird
     anki
     libreoffice
     zotero
     obs-studio
     wineWayland
+
+    ## email
+    thunderbird
+    kmail
+    # geary
 
     # hyprland
     waybar # bar
