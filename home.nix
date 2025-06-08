@@ -134,6 +134,7 @@
     gh-dash
     vhs
     glow
+    glance
 
     # python
     poetry
