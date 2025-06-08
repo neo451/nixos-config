@@ -70,10 +70,14 @@
     vscode
     qbittorrent
     anki
-    libreoffice
     zotero
     obs-studio
     wineWayland
+
+    ## docs
+    libreoffice
+    papers
+    wpsoffice-cn
 
     ## email
     thunderbird
