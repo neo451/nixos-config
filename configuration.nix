@@ -118,6 +118,9 @@
   # Enable OpenGL
   hardware.graphics = { enable = true; };
 
+  hardware.nvidia.package =
+    config.boot.kernelPackages.nvidiaPackages.stable; # Same as production
+
   # Load nvidia driver for Xorg and Wayland
   # services.xserver.videoDrivers = [ "nvidia" ];
 
