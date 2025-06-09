@@ -271,6 +271,9 @@
     btop # replacement of htop/nmon
     iftop # network monitoring
     iotop # io monitoring
+
+    # low level
+    lshw
   ];
 
   # You can update Home Manager without changing this value.
