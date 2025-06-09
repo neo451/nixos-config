@@ -186,7 +186,6 @@
     zk
     rime-ls
     copilot-language-server
-    copilot-cli
     translate-shell
     xmlstarlet
 
