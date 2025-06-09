@@ -56,8 +56,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  i18n.defaultLocale = "en_US.UTF-8";
-
   nixpkgs.overlays = [
     (final: prev: {
       librime = (prev.librime.override {
@@ -73,6 +71,8 @@
     MANPAGER = "nvim +Man!";
   };
 
+  i18n.defaultLocale = "en_US.UTF-8";
+
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -82,7 +82,7 @@
       fcitx5-gtk
       kdePackages.fcitx5-qt
       fcitx5-rime
-      fcitx5-nord
+      fcitx5-rose-pine
       fcitx5-mozc
     ];
   };
