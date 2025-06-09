@@ -155,8 +155,6 @@
     kdePackages.kdenlive
     inkscape-with-extensions # vector grahpics editor
 
-    pkg-config
-
     # sync
     rclone
     rclone-browser
@@ -164,15 +162,10 @@
     # ssh
     sshfs
 
-    # virtual machine
-    virtualbox
-    waydroid
-
     # utils
     pom
     pomodoro
 
-    baidupcs-go
     python311
     python311Packages.pygobject3
 
