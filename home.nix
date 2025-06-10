@@ -123,6 +123,7 @@
     loupe
 
     # tui
+    tmux
     htop
     w3m
     yazi
