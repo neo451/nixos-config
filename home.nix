@@ -92,6 +92,7 @@
     hyprshot
     wl-clipboard # copy & paste
     rofi-wayland # app launcher
+    hyprlock
 
     # suckless
     dmenu-wayland
