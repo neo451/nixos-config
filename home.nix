@@ -151,6 +151,7 @@
     rmpc
     mpd
     mpc
+    osdlyrics
 
     # video
     kdePackages.kdenlive
