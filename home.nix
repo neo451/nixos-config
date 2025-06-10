@@ -139,7 +139,6 @@
 
     # python
     poetry
-    python311Packages.genanki
 
     # audio & video
     yt-dlp
