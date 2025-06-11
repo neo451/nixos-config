@@ -112,7 +112,6 @@
     # processing software
     # davinci-resolve
     gimp
-    bitwig-studio5-unwrapped
     jre
 
     # rust
