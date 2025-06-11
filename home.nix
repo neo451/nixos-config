@@ -112,7 +112,7 @@
     # processing software
     # davinci-resolve
     gimp
-    bitwig-studio5
+    bitwig-studio
 
     # rust
     cargo
@@ -153,8 +153,6 @@
     mpd
     mpc
     osdlyrics
-
-    ardour
 
     # video
     kdePackages.kdenlive
