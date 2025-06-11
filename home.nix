@@ -114,6 +114,7 @@
     gimp
     jre
     bitwig-studio
+    vcv-rack
 
     # rust
     cargo
