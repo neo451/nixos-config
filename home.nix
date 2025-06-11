@@ -113,6 +113,7 @@
     # davinci-resolve
     gimp
     jre
+    bitwig-studio
 
     # rust
     cargo
