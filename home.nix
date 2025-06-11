@@ -112,7 +112,7 @@
     # processing software
     # davinci-resolve
     gimp
-    bitwig-studio
+    bitwig-studio5-unwrapped
 
     # rust
     cargo
