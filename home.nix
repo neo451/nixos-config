@@ -84,6 +84,11 @@
     kdePackages.kmail
     # geary
 
+    # game
+    love
+
+    ## ai
+    llm
     # hyprland
     waybar # bar
     eww # widget sustem
@@ -139,9 +144,12 @@
     vhs
     glow
     glance
+    atuin
 
     # python
     poetry
+    jupyter-all
+    python312Packages.jupytext
 
     # audio & video
     yt-dlp
@@ -171,8 +179,8 @@
     pom
     pomodoro
 
-    python311
-    python311Packages.pygobject3
+    # python311
+    # python311Packages.pygobject3
 
     # dependencies
     ghostscript
@@ -238,6 +246,8 @@
     stylua
     luajitPackages.luacheck
     selene
+    luajitPackages.busted
+    luajitPackages.luacov
 
     # c
     clang
