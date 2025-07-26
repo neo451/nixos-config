@@ -33,7 +33,7 @@
     # tree
     # stow
     # starship
-    # neovim
+    neovim
     # emacs
     # nushell
     # bat
