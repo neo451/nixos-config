@@ -29,32 +29,33 @@
   home.sessionPath = [ "$HOME/.cargo/bin" ];
 
   home.packages = with pkgs; [
-    # fastfetch
-    # tree
-    # stow
-    # starship
+    fastfetch
     neovim
-    # emacs
+    starship
+    emacs
+    cmake
+    git
+    gh
+    ripgrep
+    pandoc
+
     # nushell
     # bat
+    # tree
+    # stow
 
     # gnu
     ed
-    # gnumake
-    # gnused
-    # gnutar
-    # gawk
-    # gnupg
+    gnumake
+    gnused
+    gnutar
+    gawk
+    gnupg
 
-    git
-    gh
-    # ripgrep
-    # pandoc
+    dig
+    fd
+
     # texlive.combined.scheme-full
-    # cmake
-    # dig
-    # fd
-    #
     # # misc
     # cowsay
     # file
@@ -66,6 +67,7 @@
     wechat-uos
     anki
     zotero
+    obsidian
     # obs-studio
     # wineWayland
     # kitty
@@ -78,11 +80,6 @@
     libreoffice
     papers
     # wpsoffice-cn
-
-    ## email
-    # thunderbird
-    # kdePackages.kmail
-    # geary
 
     # game
     love
@@ -138,14 +135,14 @@
     # newsboat
     # newsraft
     # neomutt
-    # tokei
+    tokei
     # lazygit
     # gh-dash
-    # vhs
+    vhs
     # glow
     # glance
     # atuin
-    #
+
     # python
     poetry
     jupyter-all
@@ -178,9 +175,6 @@
     # utils
     pom
     pomodoro
-
-    # python311
-    # python311Packages.pygobject3
 
     # dependencies
     ghostscript
@@ -223,7 +217,6 @@
     zig
 
     # follow
-    # obsidian
     # spotify
 
     # docker
