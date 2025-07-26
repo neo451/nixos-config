@@ -29,59 +29,59 @@
   home.sessionPath = [ "$HOME/.cargo/bin" ];
 
   home.packages = with pkgs; [
-    fastfetch
-    tree
-    stow
-    starship
-    neovim
-    emacs
-    nushell
-    bat
+    # fastfetch
+    # tree
+    # stow
+    # starship
+    # neovim
+    # emacs
+    # nushell
+    # bat
 
     # gnu
     ed
-    gnumake
-    gnused
-    gnutar
-    gawk
-    gnupg
+    # gnumake
+    # gnused
+    # gnutar
+    # gawk
+    # gnupg
 
     git
     gh
-    ripgrep
-    pandoc
-    texlive.combined.scheme-full
-    cmake
-    dig
-    fd
-
-    # misc
-    cowsay
-    file
-    which
-    bc
+    # ripgrep
+    # pandoc
+    # texlive.combined.scheme-full
+    # cmake
+    # dig
+    # fd
+    #
+    # # misc
+    # cowsay
+    # file
+    # which
+    # bc
 
     # gui apps
-    kitty
     ghostty
     wechat-uos
-    neovide
-    zed-editor
-    vscode
-    qbittorrent
     anki
     zotero
-    obs-studio
-    wineWayland
+    # obs-studio
+    # wineWayland
+    # kitty
+    # neovide
+    # zed-editor
+    # vscode
+    # qbittorrent
 
     ## docs
     libreoffice
     papers
-    wpsoffice-cn
+    # wpsoffice-cn
 
     ## email
-    thunderbird
-    kdePackages.kmail
+    # thunderbird
+    # kdePackages.kmail
     # geary
 
     # game
@@ -135,17 +135,17 @@
     w3m
     yazi
     fzf
-    newsboat
-    newsraft
-    neomutt
-    tokei
-    lazygit
-    gh-dash
-    vhs
-    glow
-    glance
-    atuin
-
+    # newsboat
+    # newsraft
+    # neomutt
+    # tokei
+    # lazygit
+    # gh-dash
+    # vhs
+    # glow
+    # glance
+    # atuin
+    #
     # python
     poetry
     jupyter-all
@@ -198,7 +198,7 @@
     # LSP and formatters
     zk
     rime-ls
-    copilot-language-server
+    # copilot-language-server
     translate-shell
     xmlstarlet
 
@@ -222,18 +222,18 @@
     clang
     zig
 
-    follow
-    obsidian
-    spotify
+    # follow
+    # obsidian
+    # spotify
 
     # docker
-    docker
-    docker-compose
+    # docker
+    # docker-compose
 
     # ladders
     clash-verge-rev
-    flclash
-    nekoray
+    # flclash
+    # nekoray
 
     # nix
     nixd
