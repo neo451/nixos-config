@@ -68,7 +68,7 @@
 
   environment.variables = {
     "RIME_DATA_DIR" = "${pkgs.rime-data}/share/rime-data";
-    MANPAGER = "nvim +Man!";
+    MANPAGER = "vi +Man!";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -104,11 +104,6 @@
         serif = [ "Noto Serif CJK SC" ];
       };
     };
-  };
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
   };
 
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
@@ -169,37 +164,29 @@
     storageDriver = "btrfs";
   };
 
-  services = {
-    xserver = {
-      videoDrivers = [ "nvidia" ];
-      windowManager.awesome = {
-        # enable = true;
-        luaModules = with pkgs.luaPackages; [
-          luarocks # is the package manager for Lua modules
-          luadbi-mysql # Database abstraction layer
-        ];
-
-      };
-    };
-
-    # displayManager = { defaultSession = "none+awesome"; };
-  };
+  services = { xserver = { videoDrivers = [ "nvidia" ]; }; };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
 
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+    defaultSession = "hyprland";
+  };
 
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
 
-  # TODO: Don't forget to set a password with ‘passwd’.
   users.users.n451 = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "input" "audio" ];

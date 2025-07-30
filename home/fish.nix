@@ -2,13 +2,13 @@
   programs.fish = {
     enable = true;
     shellAliases = {
+    vi =
+      "VIMRUNTIME=~/Clone/neovim/runtime ~/Clone/neovim/build/bin/nvim --luamod-dev";
       timer = "~/bin/timer";
       pp = "~/scripts/wp";
       ovim = "nvim -c 'Obsidian today'";
       cat = "bat";
       em = "emacs -nw";
-      vi =
-        "VIMRUNTIME=~/Clone/neovim/runtime ~/Clone/neovim/build/bin/nvim --luamod-dev";
       markmap =
         "/home/n451/.local/share/nvim/lazy/markmap.nvim/node_modules/markmap-cli/bin/cli.js";
 

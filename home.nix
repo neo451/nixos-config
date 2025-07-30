@@ -7,7 +7,7 @@
     ./home/ghostty.nix
     ./home/newsboat.nix
   ];
-  # 注意修改这里的用户名与用户目录
+
   home.username = "n451";
   home.homeDirectory = "/home/n451";
 
@@ -29,7 +29,6 @@
   home.sessionPath = [ "$HOME/.cargo/bin" ];
 
   home.packages = with pkgs; [
-    fastfetch
     neovim
     starship
     emacs
@@ -42,7 +41,6 @@
     # nushell
     # bat
     # tree
-    # stow
 
     # gnu
     ed
@@ -54,38 +52,35 @@
 
     dig
     fd
-
-    # texlive.combined.scheme-full
-    # # misc
-    # cowsay
-    # file
-    # which
-    # bc
+    file
+    which
+    bc
+    zip
+    unzip
 
     # gui apps
+    kitty
     ghostty
     wechat-uos
     anki
     zotero
     obsidian
-    # obs-studio
-    # wineWayland
-    # kitty
-    # neovide
-    # zed-editor
-    # vscode
-    # qbittorrent
-
-    ## docs
-    libreoffice
-    papers
-    # wpsoffice-cn
+    wineWayland
+    neovide
+    zed-editor
+    vscode # vs **
+    qbittorrent # download
+    obs-studio # screen recording
+    webcord # discord
+    chromium
+    loupe
 
     # game
     love
 
     ## ai
     llm
+
     # hyprland
     waybar # bar
     eww # widget sustem
@@ -102,7 +97,6 @@
     # wallpaper
     pywal16
     swww # wallpaper daemon
-    pywalfox-native
 
     # pdf reader
     zathura
@@ -111,20 +105,10 @@
     # reverse engineering, learn it some day!
     ghidra
 
-    # processing software
-    # davinci-resolve
-    gimp
-    jre
-    bitwig-studio
-    vcv-rack
-
-    # rust
-    cargo
-    cargo-binstall
-
-    chromium
-
-    loupe
+    ## docs
+    libreoffice
+    papers
+    wpsoffice-cn
 
     # tui
     tmux
@@ -132,16 +116,16 @@
     w3m
     yazi
     fzf
-    # newsboat
-    # newsraft
-    # neomutt
     tokei
-    # lazygit
-    # gh-dash
     vhs
-    # glow
-    # glance
-    # atuin
+    gh-dash
+    newsboat
+    newsraft
+    neomutt
+    lazygit
+    glow
+    glance
+    atuin
 
     # python
     poetry
@@ -152,6 +136,9 @@
     yt-dlp
     ffmpeg
     go-musicfox
+    netease-cloud-music-gtk
+    splayer
+    qcm
     mpv
     vlc
     sox
@@ -159,15 +146,22 @@
     rmpc
     mpd
     mpc
-    osdlyrics
 
-    # video
-    kdePackages.kdenlive
+    # processing software
+    davinci-resolve
+    gimp
+    jre
+    bitwig-studio
+    vcv-rack
+    kdePackages.kdenlive # video
     inkscape-with-extensions # vector grahpics editor
+    supercollider
 
     # sync
+    rsync
     rclone
     rclone-browser
+    syncthing
 
     # ssh
     sshfs
@@ -176,25 +170,10 @@
     pom
     pomodoro
 
-    # dependencies
-    ghostscript
-    imagemagick
-    tectonic
-    sqlite
-    mermaid-cli
-    diff-so-fancy
-    wordnet
-    harper
-    nodePackages.prettier
-    kulala-fmt
-    tree-sitter
-
     # LSP and formatters
     zk
     rime-ls
-    # copilot-language-server
     translate-shell
-    xmlstarlet
 
     # js
     yarn
@@ -209,28 +188,42 @@
     hugo # static site generator
     glow # markdown previewer in terminal
 
-    # fun
-    supercollider
-
-    # compilers
-    clang
-    zig
-
-    # follow
-    # spotify
-
     # docker
-    # docker
-    # docker-compose
+    docker
+    docker-compose
 
     # ladders
     clash-verge-rev
-    # flclash
+    flclash
     # nekoray
 
-    # nix
-    nixd
-    nixfmt-classic
+    # utils
+    ripgrep # recursively searches directories for a regex pattern
+    jq # A lightweight and flexible command-line JSON processor
+    yq
+
+    # widgets
+    networkmanagerapplet
+
+    # nix related
+    nix-output-monitor
+
+    btop # replacement of htop/nmon
+    iftop # network monitoring
+    iotop # io monitoring
+
+    # dependencies
+    ghostscript
+    imagemagick
+    tectonic
+    sqlite
+    mermaid-cli
+    diff-so-fancy
+    wordnet
+    harper
+    nodePackages.prettier
+    kulala-fmt
+    tree-sitter
 
     # lua
     luajit
@@ -253,34 +246,17 @@
     # markdown
     markdownlint-cli2
 
-    # archives
-    zip
-    unzip
+    # nix
+    nixd
+    nixfmt-classic
 
-    # utils
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq
+    # rust
+    cargo
+    cargo-binstall
 
-    # file sync
-    syncthing
-
-    fractal
-    webcord
-
-    # widgets
-    pw-volume
-    networkmanagerapplet
-
-    # nix related
-    nix-output-monitor
-
-    btop # replacement of htop/nmon
-    iftop # network monitoring
-    iotop # io monitoring
-
-    # low level
-    lshw
+    # compilers
+    clang
+    zig
   ];
 
   # You can update Home Manager without changing this value.
