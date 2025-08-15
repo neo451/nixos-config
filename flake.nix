@@ -20,6 +20,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = { nixpkgs, rust-overlay, home-manager, nur, ... }@inputs: {
@@ -31,7 +32,10 @@
         nur.modules.nixos.default
         ./configuration.nix
         ({ pkgs, ... }: {
-          nixpkgs.overlays = [ rust-overlay.overlays.default ];
+          nixpkgs.overlays = [
+            rust-overlay.overlays.default
+            inputs.neovim-nightly-overlay.overlays.default
+          ];
           environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
         })
         {

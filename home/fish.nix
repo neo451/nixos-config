@@ -2,30 +2,27 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-    vi =
-      "VIMRUNTIME=~/Clone/neovim/runtime ~/Clone/neovim/build/bin/nvim --luamod-dev";
+      # vi =
+      #   "VIMRUNTIME=~/Clone/neovim/runtime ~/Clone/neovim/build/bin/nvim --luamod-dev";
+      vi = "nvim";
       timer = "~/bin/timer";
       pp = "~/scripts/wp";
-      ovim = "nvim -c 'Obsidian today'";
       cat = "bat";
-      em = "emacs -nw";
-      markmap =
-        "/home/n451/.local/share/nvim/lazy/markmap.nvim/node_modules/markmap-cli/bin/cli.js";
-
+    };
+    shellAbbrs = {
+      nrs = "~/scripts/rebuild-os";
+      pushn = "~/scripts/push-notes";
       gss = "git status --short";
       ga = "git add";
       gd = "git diff --output-indicator-new=' ' --output-indicator-old=' '";
       gc = "git commit";
       gp = "git push";
-      gu = "git pull";
+      gP = "git pull";
       gl = "git log";
       gb = "git branch";
       gi = "git init";
       gcl = "git clone";
-    };
-    shellAbbrs = {
-      nrs = "~/scripts/rebuild-os";
-      pushn = "~/scripts/push-notes";
+      em = "emacs -nw";
     };
   };
 }

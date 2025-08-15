@@ -38,7 +38,7 @@
     ripgrep
     pandoc
 
-    # nushell
+    nushell
     # bat
     # tree
 
@@ -133,12 +133,11 @@
     python312Packages.jupytext
 
     # audio & video
+    jack2
     yt-dlp
     ffmpeg
     go-musicfox
-    netease-cloud-music-gtk
     splayer
-    qcm
     mpv
     vlc
     sox
@@ -148,7 +147,7 @@
     mpc
 
     # processing software
-    davinci-resolve
+    # davinci-resolve
     gimp
     jre
     bitwig-studio
