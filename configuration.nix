@@ -8,6 +8,10 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  musnix = {
+    enable = true;
+    kernel.realtime = true;
+  };
   nix.settings = {
     substituters = [
       "https://mirrors.ustc.edu.cn/nix-channels/store"
@@ -51,6 +55,48 @@
   time.timeZone = "Asia/Shanghai";
 
   networking.networkmanager.enable = true;
+
+  security.pam.services.login.limits = [
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "rtprio";
+      value = "99";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "nice";
+      value = "-20";
+    }
+  ];
+
+  security.pam.loginLimits = [
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "rtprio";
+      value = "99";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "nice";
+      value = "-20";
+    }
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -189,8 +235,10 @@
 
   users.users.n451 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "input" "audio" ];
+    extraGroups = [ "wheel" "docker" "input" "audio" "realtime" ];
   };
+
+  users.groups.realtime = { };
 
   programs.neovim = { defaultEditor = true; };
 

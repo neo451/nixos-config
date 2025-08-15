@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    musnix.url = "github:musnix/musnix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +28,7 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
         ./configuration.nix
