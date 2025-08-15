@@ -56,48 +56,6 @@
 
   networking.networkmanager.enable = true;
 
-  security.pam.services.login.limits = [
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "rtprio";
-      value = "99";
-    }
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "memlock";
-      value = "unlimited";
-    }
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "nice";
-      value = "-20";
-    }
-  ];
-
-  security.pam.loginLimits = [
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "rtprio";
-      value = "99";
-    }
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "memlock";
-      value = "unlimited";
-    }
-    {
-      domain = "@realtime";
-      type = "-";
-      item = "nice";
-      value = "-20";
-    }
-  ];
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";

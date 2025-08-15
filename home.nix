@@ -133,8 +133,6 @@
     python312Packages.jupytext
 
     # audio & video
-    jack2
-    qjackctl
     yt-dlp
     ffmpeg
     go-musicfox
