@@ -144,6 +144,7 @@
     rmpc
     mpd
     mpc
+    pipewire
 
     # processing software
     # davinci-resolve
