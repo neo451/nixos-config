@@ -1,6 +1,8 @@
-{ pkgs, ... }:
-
 {
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   imports = [
     ./home/starship.nix
     ./home/fish.nix
@@ -26,7 +28,7 @@
   #     xxx
   # '';
 
-  home.sessionPath = [ "$HOME/.cargo/bin" ];
+  home.sessionPath = ["$HOME/.cargo/bin"];
 
   home.packages = with pkgs; [
     neovim
@@ -62,7 +64,6 @@
     kitty
     ghostty
     wechat-uos
-    anki
     zotero
     obsidian
     wineWayland
@@ -102,8 +103,8 @@
     swww # wallpaper daemon
 
     # pdf reader
-    # zathura
-    # sioyek
+    zathura
+    sioyek
 
     # reverse engineering, learn it some day!
     ghidra
@@ -225,7 +226,6 @@
     harper
     nodePackages.prettier
     kulala-fmt
-    copilot-language-server
 
     # lua
     luajit
@@ -239,22 +239,17 @@
 
     # c
     clang
-    astyle
 
     # go
     go
     gopls
 
-    # markdown
-    markdownlint-cli2
-
     # nix
     nixd
-    nixfmt-classic
+    alejandra
 
     # rust
     cargo
-    cargo-binstall
 
     # compilers
     clang

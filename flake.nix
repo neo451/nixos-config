@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     musnix.url = "github:musnix/musnix";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -23,26 +24,33 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { nixpkgs, rust-overlay, home-manager, nur, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    # nixos-stable,
+    rust-overlay,
+    home-manager,
+    nur,
+    ...
+  } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       modules = [
         inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
         ./configuration.nix
-        ({ pkgs, ... }: {
+        ({pkgs, ...}: {
           nixpkgs.overlays = [
             rust-overlay.overlays.default
             inputs.neovim-nightly-overlay.overlays.default
           ];
-          environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+          environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
         })
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.n451 = { imports = [ ./home.nix ]; };
+          home-manager.users.n451 = {imports = [./home.nix];};
           home-manager.extraSpecialArgs = inputs;
           home-manager.backupFileExtension = "backup";
         }

@@ -1,16 +1,13 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, pkgs, inputs, ... }:
-
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [./hardware-configuration.nix];
   musnix = {
-    enable = true;
-    kernel.realtime = true;
+    enable = false;
+    kernel.realtime = false;
   };
   nix.settings = {
     substituters = [
@@ -18,10 +15,9 @@
       # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       # "https://mirror.sjtu.edu.cn/nix-channels/store"
     ];
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
   };
 
-  # Use the systemd-boot EFI boot loader.
   boot.loader = {
     grub = {
       enable = true;
@@ -29,10 +25,10 @@
       efiSupport = true;
       configurationLimit = 10;
       extraEntries = ''
-        			menuentry "Windows" {
-        				search --file --no-floppy --set=root /EFI/Microsoft/Boot/bootmgfw/efi
-        				chainloader (''${root})/EFI/Microsoft/Boot/bootmgfw.efi
-                                }
+        menuentry "Windows" {
+        	search --file --no-floppy --set=root /EFI/Microsoft/Boot/bootmgfw/efi
+        	chainloader (''${root})/EFI/Microsoft/Boot/bootmgfw.efi
+                             }
       '';
     };
     efi = {
@@ -56,23 +52,19 @@
 
   networking.networkmanager.enable = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   nixpkgs.overlays = [
     (final: prev: {
-      librime = (prev.librime.override {
-        plugins = [ pkgs.librime-lua pkgs.librime-octagram ];
-      }).overrideAttrs (old: {
-        buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.luajit ]; # 用luajit
-      });
+      librime =
+        (prev.librime.override {
+          plugins = [pkgs.librime-lua pkgs.librime-octagram];
+        }).overrideAttrs (old: {
+          buildInputs = (old.buildInputs or []) ++ [pkgs.luajit]; # 用luajit
+        });
     })
   ];
 
   environment.variables = {
     "RIME_DATA_DIR" = "${pkgs.rime-data}/share/rime-data";
-    MANPAGER = "vi +Man!";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -102,20 +94,20 @@
       antialias = true;
       hinting.enable = true;
       defaultFonts = {
-        emoji = [ "Noto Color Emoji" ];
-        monospace = [ "FiraCode Nerd Font" ];
-        sansSerif = [ "Noto Sans CJK SC" ];
-        serif = [ "Noto Serif CJK SC" ];
+        emoji = ["Noto Color Emoji"];
+        monospace = ["FiraCode Nerd Font"];
+        sansSerif = ["Noto Sans CJK SC"];
+        serif = ["Noto Serif CJK SC"];
       };
     };
   };
 
-  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+  environment.sessionVariables = {NIXOS_OZONE_WL = "1";};
 
   hardware.bluetooth.enable = true;
 
   # Enable OpenGL
-  hardware.graphics = { enable = true; };
+  hardware.graphics = {enable = true;};
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -123,7 +115,7 @@
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
     powerManagement.enable = false;
 
@@ -133,9 +125,9 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     open = true;
 
@@ -152,23 +144,13 @@
     };
   };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall =
-      true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall =
-      true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall =
-      true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
-
   # docker
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
   };
 
-  services = { xserver = { videoDrivers = [ "nvidia" ]; }; };
+  services = {xserver = {videoDrivers = ["nvidia"];};};
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -198,17 +180,17 @@
 
   users.users.n451 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "input" "audio" "realtime" ];
+    extraGroups = ["wheel" "docker" "input" "audio" "realtime"];
   };
 
-  users.groups.realtime = { };
+  users.groups.realtime = {};
 
-  programs.neovim = { defaultEditor = true; };
+  programs.neovim = {defaultEditor = true;};
 
   programs.git = {
     enable = true;
     config = {
-      init = { defaultBranch = "main"; };
+      init = {defaultBranch = "main";};
       user.name = "zizhou teng (n451)";
       user.email = "2020200706@ruc.edu.cn";
     };
@@ -225,28 +207,13 @@
     kitty
     gcc
   ];
+
   environment.variables.EDITOR = "nvim";
 
-  nixpkgs.config = { allowUnfree = true; };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
+  nixpkgs.config = {allowUnfree = true;};
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true; # TODO: enable this on the other laptop??
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }
