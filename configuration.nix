@@ -179,9 +179,9 @@
   };
 
   services.displayManager = {
-    sddm = {
+    ly = {
       enable = true;
-      wayland.enable = true;
+      # wayland.enable = true;
     };
     defaultSession = "hyprland";
   };

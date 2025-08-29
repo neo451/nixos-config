@@ -81,6 +81,9 @@
     ## ai
     llm
 
+    ## display manager
+    ly
+
     # hyprland
     waybar # bar
     eww # widget sustem
@@ -99,8 +102,8 @@
     swww # wallpaper daemon
 
     # pdf reader
-    zathura
-    sioyek
+    # zathura
+    # sioyek
 
     # reverse engineering, learn it some day!
     ghidra
@@ -145,6 +148,7 @@
     mpd
     mpc
     pipewire
+    spotify
 
     # processing software
     # davinci-resolve
@@ -223,6 +227,7 @@
     nodePackages.prettier
     kulala-fmt
     tree-sitter
+    copilot-language-server
 
     # lua
     luajit
