@@ -218,7 +218,6 @@
     # dependencies
     ghostscript
     imagemagick
-    tectonic
     sqlite
     mermaid-cli
     diff-so-fancy
@@ -226,7 +225,6 @@
     harper
     nodePackages.prettier
     kulala-fmt
-    tree-sitter
     copilot-language-server
 
     # lua
