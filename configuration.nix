@@ -200,12 +200,6 @@
 
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
-    vim
-    wget
-    fish
-    # neovim
-    kitty
-    gcc
   ];
 
   environment.variables.EDITOR = "nvim";

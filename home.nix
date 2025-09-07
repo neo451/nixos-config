@@ -32,17 +32,26 @@
 
   home.packages = with pkgs; [
     neovim
-    starship
     emacs
     cmake
     git
     gh
-    ripgrep
-    pandoc
+    vim
+    wget
 
+    # cmdline
+    starship
+    fish
     nushell
-    # bat
-    # tree
+    bat
+    tree
+    atuin
+
+    # file
+    ripgrep
+    fd
+    fzf
+    file
 
     # gnu
     ed
@@ -52,9 +61,13 @@
     gawk
     gnupg
 
+    # network
     dig
-    fd
-    file
+    iftop # network monitoring
+
+    btop # replacement of htop/nmon
+    iotop # io monitoring
+
     which
     bc
     zip
@@ -64,6 +77,8 @@
     kitty
     ghostty
     wechat-uos
+    qq
+    qqmusic
     zotero
     obsidian
     wineWayland
@@ -75,12 +90,10 @@
     webcord # discord
     chromium
     loupe
+    # anki
 
     # game
     love
-
-    ## ai
-    llm
 
     ## display manager
     ly
@@ -110,6 +123,7 @@
     ghidra
 
     ## docs
+    pandoc
     libreoffice
     papers
     wpsoffice-cn
@@ -119,7 +133,6 @@
     htop
     w3m
     yazi
-    fzf
     tokei
     vhs
     gh-dash
@@ -129,12 +142,8 @@
     lazygit
     glow
     glance
-    atuin
 
-    # python
-    poetry
     jupyter-all
-    python312Packages.jupytext
 
     # audio & video
     yt-dlp
@@ -211,10 +220,6 @@
 
     # nix related
     nix-output-monitor
-
-    btop # replacement of htop/nmon
-    iftop # network monitoring
-    iotop # io monitoring
 
     # dependencies
     ghostscript
