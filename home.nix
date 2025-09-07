@@ -192,6 +192,7 @@
     yarn
     nodejs
     deno
+    nodePackages.neovim
 
     # zig
     zig
