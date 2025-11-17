@@ -75,6 +75,7 @@
     bat
     tree
     atuin
+    dust
 
     # file
     ripgrep
@@ -98,7 +99,7 @@
 
     btop # replacement of htop/nmon
     iotop # io monitoring
-    powertop # battery monitor
+    powertop # battery monitor TODO
 
     which
     bc
