@@ -199,8 +199,8 @@
     spotify
 
     # processing software
-    # davinci-resolve
-    # gimp
+    davinci-resolve
+    gimp
     # jre
     # bitwig-studio
     # vcv-rack
