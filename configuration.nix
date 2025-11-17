@@ -52,6 +52,13 @@
 
   networking.networkmanager.enable = true;
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
   nixpkgs.overlays = [
     (final: prev: {
       librime =
@@ -88,7 +95,7 @@
       nerd-fonts.fira-code
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      noto-fonts-emoji
+      noto-fonts-color-emoji
     ];
     fontconfig = {
       antialias = true;
@@ -204,7 +211,12 @@
 
   environment.variables.EDITOR = "nvim";
 
-  nixpkgs.config = {allowUnfree = true;};
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-36.9.5"
+    ];
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true; # TODO: enable this on the other laptop??

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgs-stable,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./home/starship.nix
     ./home/fish.nix
@@ -30,6 +26,16 @@
 
   home.sessionPath = ["$HOME/.cargo/bin"];
 
+  programs.atuin = {
+    enable = true;
+    settings = {
+      auto_sync = true;
+      sync_frequency = "5m";
+      sync_address = "https://api.atuin.sh";
+      search_mode = "fuzzy";
+    };
+  };
+
   home.packages = with pkgs; [
     neovim
     emacs
@@ -42,7 +48,6 @@
     # cmdline
     starship
     fish
-    nushell
     bat
     tree
     atuin
@@ -81,16 +86,18 @@
     qqmusic
     zotero
     obsidian
-    wineWayland
     neovide
     zed-editor
     vscode # vs **
     qbittorrent # download
-    obs-studio # screen recording
     webcord # discord
     chromium
     loupe
-    # anki
+    anki
+    # wine-wayland
+
+    # video
+    obs-studio # screen recording
 
     # game
     love
@@ -105,7 +112,7 @@
     libnotify
     hyprshot
     wl-clipboard # copy & paste
-    rofi-wayland # app launcher
+    rofi # app launcher
     hyprlock
 
     # suckless
@@ -136,20 +143,22 @@
     tokei
     vhs
     gh-dash
-    newsboat
-    newsraft
+    glance
     neomutt
     lazygit
     glow
-    glance
 
+    ## rss
+    # newsboat
+    # newsraft
+
+    # jupyter-notebook
     jupyter-all
 
     # audio & video
     yt-dlp
     ffmpeg
     go-musicfox
-    splayer
     mpv
     vlc
     sox
@@ -162,13 +171,13 @@
 
     # processing software
     # davinci-resolve
-    gimp
-    jre
-    bitwig-studio
-    vcv-rack
-    kdePackages.kdenlive # video
-    inkscape-with-extensions # vector grahpics editor
-    supercollider
+    # gimp
+    # jre
+    # bitwig-studio
+    # vcv-rack
+    # kdePackages.kdenlive # video
+    # inkscape-with-extensions # vector grahpics editor
+    # supercollider
 
     # sync
     rsync
@@ -192,7 +201,7 @@
     yarn
     nodejs
     deno
-    nodePackages.neovim
+    nodePackages_latest.neovim
 
     # zig
     zig
@@ -207,8 +216,7 @@
     docker-compose
 
     # ladders
-    clash-verge-rev
-    flclash
+    # clash-verge-rev
     # nekoray
 
     # utils
