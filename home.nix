@@ -26,6 +26,10 @@
 
   home.sessionPath = ["$HOME/.cargo/bin"];
 
+  home.sessionVariables = {
+    REF = "~/Documents/refs.bib";
+  };
+
   programs.atuin = {
     enable = true;
     settings = {
@@ -64,6 +68,8 @@
     gh
     vim
     wget
+
+    thunderbird
 
     # life utils
     pom
