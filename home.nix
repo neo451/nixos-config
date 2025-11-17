@@ -36,6 +36,26 @@
     };
   };
 
+  accounts.email.accounts = {
+    "k24098496@kcl.ac.uk" = {
+      primary = true;
+      address = "k24098496@kcl.ac.uk";
+      userName = "Zizhou Teng";
+      realName = "Zizhou Teng";
+
+      imap.host = "outlook.office365.com";
+      smtp.host = "smtp.office365.com";
+
+      neomutt = {
+        enable = true;
+      };
+    };
+  };
+
+  programs.neomutt = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     neovim
     emacs
@@ -44,6 +64,10 @@
     gh
     vim
     wget
+
+    # life utils
+    pom
+    pomodoro
 
     # cmdline
     starship
@@ -57,6 +81,8 @@
     fd
     fzf
     file
+    jq
+    yq
 
     # gnu
     ed
@@ -72,6 +98,7 @@
 
     btop # replacement of htop/nmon
     iotop # io monitoring
+    powertop # battery monitor
 
     which
     bc
@@ -188,10 +215,6 @@
     # ssh
     sshfs
 
-    # utils
-    pom
-    pomodoro
-
     # LSP and formatters
     zk
     rime-ls
@@ -202,10 +225,6 @@
     nodejs
     deno
     nodePackages_latest.neovim
-
-    # zig
-    zig
-    zls
 
     # productivity
     hugo # static site generator
@@ -218,11 +237,6 @@
     # ladders
     # clash-verge-rev
     # nekoray
-
-    # utils
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq
 
     # widgets
     networkmanagerapplet
@@ -267,7 +281,10 @@
 
     # compilers
     clang
+
+    # zig
     zig
+    zls
   ];
 
   # You can update Home Manager without changing this value.
