@@ -76,6 +76,7 @@
     tree
     atuin
     dust
+    tldr
 
     # file
     ripgrep
