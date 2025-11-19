@@ -71,7 +71,10 @@
 
     brightnessctl
 
-    llm
+    llm.withPlugins
+    {
+      llm-deepseek = true;
+    }
     #
     thunderbird
 
