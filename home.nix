@@ -69,6 +69,8 @@
     vim
     wget
 
+    brightnessctl
+
     thunderbird
 
     # life utils
