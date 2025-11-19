@@ -71,8 +71,8 @@
 
     brightnessctl
 
-    llm
-
+    # llm
+    #
     thunderbird
 
     # life utils
