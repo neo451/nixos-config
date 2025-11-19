@@ -71,7 +71,7 @@
 
     brightnessctl
 
-    # llm
+    llm
     #
     thunderbird
 
