@@ -76,7 +76,9 @@
         llm-deepseek = true;
         llm-ollama = true;
       })
-    #
+
+    ollama-cuda
+
     thunderbird
 
     # life utils
