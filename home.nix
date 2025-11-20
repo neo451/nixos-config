@@ -273,7 +273,7 @@
 
     # lua
     luajit
-    luarocks
+    luarocks-nix
     lua-language-server
     stylua
     luajitPackages.luacheck
