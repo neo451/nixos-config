@@ -74,6 +74,7 @@
     (llm.withPlugins
       {
         llm-deepseek = true;
+        llm-ollama = true;
       })
     #
     thunderbird
