@@ -71,10 +71,10 @@
 
     brightnessctl
 
-    llm.withPlugins
-    {
-      llm-deepseek = true;
-    }
+    (llm.withPlugins
+      {
+        llm-deepseek = true;
+      })
     #
     thunderbird
 
@@ -269,6 +269,7 @@
     harper
     nodePackages.prettier
     kulala-fmt
+    typos
 
     # lua
     luajit
