@@ -275,13 +275,11 @@
     typos
 
     # lua
-    luajit
+    # luajit
     luarocks
-
-    (luarocks.override {
-      lua = pkgs.lua5_1;
-    })
     lua5_1
+
+    lua51Packages.luv
 
     lua-language-server
     stylua
