@@ -276,7 +276,13 @@
 
     # lua
     luajit
-    luarocks-nix
+    luarocks
+
+    (luarocks.override {
+      lua = pkgs.lua5_1;
+    })
+    lua5_1
+
     lua-language-server
     stylua
     luajitPackages.luacheck
