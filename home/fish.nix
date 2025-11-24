@@ -8,7 +8,7 @@
       cat = "bat";
     };
     shellAbbrs = {
-      nfu = "sudo nix flake update";
+      nfu = "cd nixos-config; sudo nix flake update";
       nrs = "~/scripts/rebuild-os";
       pushn = "~/scripts/push-notes";
       gss = "git status --short";
