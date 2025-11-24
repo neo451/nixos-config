@@ -10,6 +10,7 @@
     kernel.realtime = false;
   };
   nix.settings = {
+    download-buffer-size = 262144;
     substituters = [
       # "https://mirrors.ustc.edu.cn/nix-channels/store"
       # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
