@@ -69,7 +69,8 @@
     vim
     wget
 
-    brightnessctl
+    brightnessctl # brightness control
+    udisks # usb disks
 
     # writing
     write-good
