@@ -71,6 +71,9 @@
 
     brightnessctl
 
+    # writing
+    write-good
+
     (llm.withPlugins
       {
         llm-deepseek = true;
