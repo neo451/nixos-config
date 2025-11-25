@@ -72,6 +72,9 @@
     brightnessctl # brightness control
     udisks # usb disks
 
+    ## bluetooth
+    blueman
+
     # writing
     write-good
 
