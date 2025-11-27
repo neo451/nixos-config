@@ -27,7 +27,7 @@
   home.sessionPath = ["$HOME/.cargo/bin"];
 
   home.sessionVariables = {
-    REF = "~/Documents/refs.bib";
+    REF = "/home/n451/Documents/refs.bib";
   };
 
   programs.atuin = {
@@ -183,10 +183,11 @@
     ghidra
 
     ## docs
-    pandoc
     libreoffice
     papers
     wpsoffice-cn
+    pandoc
+    texliveFull
 
     # tui
     tmux
