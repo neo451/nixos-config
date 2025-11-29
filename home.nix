@@ -325,6 +325,8 @@
     livebook
 
     readline
+
+    lsof
   ];
 
   # You can update Home Manager without changing this value.
