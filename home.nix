@@ -315,6 +315,14 @@
     # zig
     zig
     zls
+
+    # lisp
+    clojure-lsp
+    clojure
+
+    elixir
+    elixir-ls
+    livebook
   ];
 
   # You can update Home Manager without changing this value.
