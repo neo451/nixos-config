@@ -36,10 +36,6 @@
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot";
     };
-    kernelModules = [
-      "acpi_call"
-      "hid-led"
-    ];
   };
 
   # do garbage collection weekly to keep disk usage low
