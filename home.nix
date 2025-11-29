@@ -321,6 +321,8 @@
     clojure-lsp
     clojure
 
+    fennel
+
     elixir
     elixir-ls
     livebook
