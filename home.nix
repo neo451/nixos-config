@@ -282,6 +282,7 @@
     nodePackages.prettier
     kulala-fmt
     typos
+    tree-sitter
 
     # lua
     # luajit
