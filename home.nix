@@ -323,6 +323,8 @@
     elixir
     elixir-ls
     livebook
+
+    readline
   ];
 
   # You can update Home Manager without changing this value.
