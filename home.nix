@@ -109,7 +109,6 @@
     file
     jq
     yq
-
     yazi
 
     # gnu
@@ -254,10 +253,6 @@
     nodejs
     deno
     nodePackages_latest.neovim
-
-    # productivity
-    hugo # static site generator
-    glow # markdown previewer in terminal
 
     # docker
     docker
