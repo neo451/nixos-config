@@ -110,6 +110,8 @@
     jq
     yq
 
+    yazi
+
     # gnu
     ed
     gnumake

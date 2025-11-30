@@ -38,6 +38,30 @@
     };
   };
 
+  security.rtkit.enable = true; # allows real-time audio scheduling
+  security.pam.loginLimits = [
+    {
+      domain = "@audio";
+      item = "rtprio";
+      type = "-";
+      value = 1;
+    }
+    {
+      domain = "@audio";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
+  ];
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    alsa.support32Bit = true;
+    jack.enable = true;
+  };
+
   # do garbage collection weekly to keep disk usage low
   nix.gc = {
     automatic = true;
@@ -176,16 +200,6 @@
       # wayland.enable = true;
     };
     defaultSession = "hyprland";
-  };
-
-  security.rtkit.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    alsa.support32Bit = true;
-    jack.enable = true;
   };
 
   users.users.n451 = {
