@@ -231,7 +231,7 @@
     # vcv-rack
     # kdePackages.kdenlive # video
     # inkscape-with-extensions # vector grahpics editor
-    # supercollider
+    supercollider
 
     # sync
     rsync
@@ -320,8 +320,6 @@
     # lisp
     clojure-lsp
     clojure
-
-    fennel
 
     elixir
     elixir-ls
