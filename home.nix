@@ -82,10 +82,10 @@
     (llm.withPlugins
       {
         llm-deepseek = true;
-        llm-ollama = true;
+        # llm-ollama = true;
       })
 
-    ollama-cuda
+    # ollama-cuda
 
     thunderbird
 
@@ -140,7 +140,6 @@
     qqmusic
     zotero
     obsidian
-    neovide
     zed-editor
     vscode # vs **
     qbittorrent # download
@@ -149,6 +148,7 @@
     loupe
     anki
     # wine-wayland
+    # neovide
 
     # video
     obs-studio # screen recording
