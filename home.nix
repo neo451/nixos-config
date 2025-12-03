@@ -210,6 +210,8 @@
     # jupyter-notebook
     jupyter-all
 
+    python311Packages.dbus-python
+
     # audio & video
     yt-dlp
     ffmpeg
