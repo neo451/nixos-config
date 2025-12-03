@@ -210,7 +210,7 @@
     # jupyter-notebook
     jupyter-all
 
-    python311Packages.dbus-python
+    python313Packages.dbus-python
 
     # audio & video
     yt-dlp
