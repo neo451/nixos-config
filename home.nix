@@ -85,6 +85,8 @@
         # llm-ollama = true;
       })
 
+    ladybird
+
     # ollama-cuda
 
     thunderbird
@@ -210,7 +212,7 @@
     # jupyter-notebook
     jupyter-all
 
-    python313Packages.dbus-python
+    # python313Packages.dbus-python
 
     # audio & video
     yt-dlp
