@@ -284,6 +284,7 @@
     kulala-fmt
     typos
     tree-sitter
+    copilot-language-server
 
     # lua
     # luajit
