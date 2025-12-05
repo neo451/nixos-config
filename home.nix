@@ -78,6 +78,7 @@
     # writing
     write-good
     quarto
+    mpls
 
     (llm.withPlugins
       {
