@@ -66,7 +66,6 @@
     cmake
     git
     gh
-    nodePackages.gh-actions-language-server
     vim
     wget
 

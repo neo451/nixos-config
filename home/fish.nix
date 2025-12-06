@@ -7,6 +7,9 @@
       pp = "~/scripts/wp";
       cat = "bat";
     };
+    shellInit = ''
+      fish_add_path ~/.npm-global/bin
+    '';
     shellAbbrs = {
       nfu = "cd ~/nixos-config; sudo nix flake update";
       nrs = "~/scripts/rebuild-os";
