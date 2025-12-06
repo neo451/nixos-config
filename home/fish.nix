@@ -9,6 +9,9 @@
     };
     shellInit = ''
       fish_add_path ~/.npm-global/bin
+      if test -f ~/.config/private-env
+        source ~/.config/private-env
+      end
     '';
     shellAbbrs = {
       nfu = "cd ~/nixos-config; sudo nix flake update";
