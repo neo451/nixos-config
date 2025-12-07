@@ -224,6 +224,7 @@
 
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
+    inputs.quickshell.packages."${system}".default
   ];
 
   environment.variables.EDITOR = "nvim";
