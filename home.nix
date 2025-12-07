@@ -163,7 +163,7 @@
     ly
 
     quickshell
-    qtcreator
+    qmllint
 
     # hyprland
     waybar # bar
