@@ -162,7 +162,6 @@
     ## display manager
     ly
 
-    quickshell
     kdePackages.qtdeclarative # qmlls qmllint qmlformat
 
     # hyprland
