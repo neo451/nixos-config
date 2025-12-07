@@ -163,7 +163,7 @@
     ly
 
     quickshell
-    kdePackages.qtdeclarative
+    kdePackages.qtdeclarative # qmlls qmllint qmlformat
 
     # hyprland
     waybar # bar
