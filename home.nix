@@ -163,6 +163,7 @@
     ly
 
     quickshell
+    qmlls
 
     # hyprland
     waybar # bar
