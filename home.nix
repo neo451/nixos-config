@@ -216,6 +216,7 @@
     jupyter-all
 
     # python313Packages.dbus-python
+    pip
 
     # audio & video
     yt-dlp
