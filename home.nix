@@ -162,6 +162,8 @@
     ## display manager
     ly
 
+    quickshell
+
     # hyprland
     waybar # bar
     eww # widget sustem
