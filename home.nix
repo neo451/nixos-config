@@ -215,9 +215,6 @@
     # jupyter-notebook
     jupyter-all
 
-    # python313Packages.dbus-python
-    python313Packages.pip
-
     # audio & video
     yt-dlp
     ffmpeg
