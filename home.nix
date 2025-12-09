@@ -80,6 +80,8 @@
     quarto
     mpls
 
+    follow
+
     (llm.withPlugins
       {
         llm-deepseek = true;
