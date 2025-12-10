@@ -75,6 +75,9 @@
     ## bluetooth
     blueman
 
+    ## power
+    upower
+
     # writing
     write-good
     quarto
