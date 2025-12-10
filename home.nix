@@ -153,7 +153,7 @@
     loupe
     anki
     wasistlos
-    whatsapp-for-mac
+    # whatsapp-for-mac
     # wine-wayland
     # neovide
 
