@@ -152,6 +152,8 @@
     chromium
     loupe
     anki
+    whatsapp-for-linux
+    whatsapp-for-mac
     # wine-wayland
     # neovide
 
