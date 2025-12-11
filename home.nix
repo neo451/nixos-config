@@ -307,7 +307,7 @@
     pyright
 
     ## js
-    nodePackages.tsserver
+    javascript-typescript-langserver
 
     # c
     clang
