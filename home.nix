@@ -307,7 +307,7 @@
     pyright
 
     ## js
-    javascript-typescript-langserver
+    typescript-language-server
 
     # c
     clang
