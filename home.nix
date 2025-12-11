@@ -306,6 +306,9 @@
     ## python
     pyright
 
+    ## js
+    nodePackages.tsserver
+
     # c
     clang
 
