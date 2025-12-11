@@ -12,6 +12,7 @@
       if test -f ~/.config/private-env
         source ~/.config/private-env
       end
+      fish_add_path ~/Clone/emmylua-analyzer-rust/target/release/
     '';
     shellAbbrs = {
       nfu = "cd ~/nixos-config; sudo nix flake update";
