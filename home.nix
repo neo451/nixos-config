@@ -303,6 +303,9 @@
     luajitPackages.busted
     luajitPackages.luacov
 
+    ## python
+    pyright
+
     # c
     clang
 
