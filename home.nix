@@ -80,7 +80,6 @@
     quarto
     mpls
     typst
-    typst-preview
 
     follow
 
