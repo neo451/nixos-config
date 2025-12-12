@@ -119,6 +119,8 @@
 
   fonts = {
     packages = with pkgs; [
+      barlow
+      syne-fonts
       nerd-fonts.fira-code
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
