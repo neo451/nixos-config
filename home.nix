@@ -146,6 +146,8 @@
     zotero
     obsidian
     zed-editor
+    windsurf
+    code-cursor
     vscode # vs **
     qbittorrent # download
     webcord # discord
