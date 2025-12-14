@@ -82,11 +82,13 @@
     mpls
     typst
 
+    # llm
     (llm.withPlugins
       {
         llm-deepseek = true;
         # llm-ollama = true;
       })
+    crush
 
     ladybird
 
