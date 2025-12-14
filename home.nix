@@ -74,6 +74,7 @@
 
     ## bluetooth
     blueman
+    adw-bluetooth
 
     # writing
     write-good
