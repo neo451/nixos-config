@@ -82,8 +82,6 @@
     mpls
     typst
 
-    follow
-
     (llm.withPlugins
       {
         llm-deepseek = true;
