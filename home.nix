@@ -85,7 +85,6 @@
     ## notebook
     marimo
     ruff
-
     uv
 
     # llm
