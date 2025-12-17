@@ -86,6 +86,8 @@
     marimo
     ruff
 
+    uv
+
     # llm
     (llm.withPlugins
       {
