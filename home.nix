@@ -84,6 +84,7 @@
 
     ## notebook
     marimo
+    ruff
 
     # llm
     (llm.withPlugins
