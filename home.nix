@@ -81,7 +81,9 @@
     quarto
     mpls
     typst
-    python313Packages.marker-pdf
+
+    ## notebook
+    marimo
 
     # llm
     (llm.withPlugins
