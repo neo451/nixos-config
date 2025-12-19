@@ -145,7 +145,6 @@
     unzip
 
     # gui apps
-    dolphin
     kitty
     ghostty
     wechat-uos
