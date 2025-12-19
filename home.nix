@@ -153,7 +153,6 @@
     zotero
     obsidian
     typora
-    notion-app-enhanced
     zed-editor
     windsurf
     code-cursor
