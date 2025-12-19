@@ -152,6 +152,8 @@
     qqmusic
     zotero
     obsidian
+    typora
+    notion
     zed-editor
     windsurf
     code-cursor
