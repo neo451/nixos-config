@@ -227,7 +227,7 @@
 
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
-    # inputs.caelestia-shell.packages."${system}".default.with_shell
+    inputs.caelestia-shell.packages."${system}".default
     inputs.quickshell.packages."${system}".default
   ];
 
