@@ -100,7 +100,6 @@
     # writing
     write-good
     quarto
-    mpls
     typst
 
     ## notebook
