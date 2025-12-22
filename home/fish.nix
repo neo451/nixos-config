@@ -17,6 +17,9 @@
       if test -f ~/secret/AI.fish
           source ~/secret/AI.fish
       end
+      if test -f ~/secret/SPOTIFY.fish
+          source ~/secret/SPOTIFY.fish
+      end
     '';
     shellAbbrs = {
       nfu = "cd ~/nixos-config; sudo nix flake update";
