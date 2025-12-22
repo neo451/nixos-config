@@ -14,6 +14,9 @@
       end
       fish_add_path ~/Clone/emmylua-analyzer-rust/target/release/
       fish_add_path ~/bin/
+      if test -f ~/secret/AI.fish
+          source ~/secret/AI.fish
+      end
     '';
     shellAbbrs = {
       nfu = "cd ~/nixos-config; sudo nix flake update";
