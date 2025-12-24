@@ -167,6 +167,7 @@
     # gui apps
     kitty
     ghostty
+    warp-terminal
     wechat-uos
     qq
     qqmusic
