@@ -265,7 +265,7 @@
     spotify
 
     # processing software
-    davinci-resolve
+    # davinci-resolve
     gimp
     # jre
     # bitwig-studio
