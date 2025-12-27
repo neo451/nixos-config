@@ -113,7 +113,7 @@
         llm-deepseek = true;
         # llm-ollama = true;
       })
-    # crush
+    crush
 
     ladybird
 
