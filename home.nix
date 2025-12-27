@@ -115,6 +115,8 @@
       })
     crush
 
+    xvfb-run
+
     ladybird
 
     # ollama-cuda
