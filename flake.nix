@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nocodb.url = "github:nocodb/nocodb";
 
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
@@ -44,6 +45,7 @@
     rust-overlay,
     home-manager,
     nur,
+    nocodb,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -54,6 +56,13 @@
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
         ./configuration.nix
+
+        nocodb.nixosModules.nocodb
+        {
+          # Enable NocoDB
+          services.nocodb.enable = true;
+        }
+
         ({pkgs, ...}: {
           nixpkgs.overlays = [
             rust-overlay.overlays.default
