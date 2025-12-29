@@ -60,11 +60,11 @@
         nur.modules.nixos.default
         ./configuration.nix
 
-        nocodb.nixosModules.nocodb
-        {
-          # Enable NocoDB
-          services.nocodb.enable = true;
-        }
+        # nocodb.nixosModules.nocodb
+        # {
+        #   # Enable NocoDB
+        #   services.nocodb.enable = true;
+        # }
 
         ({pkgs, ...}: {
           nixpkgs.overlays = [
