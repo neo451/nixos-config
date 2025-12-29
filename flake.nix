@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nocodb.url = "github:nocodb/nocodb";
+    nocodb = {
+      url = "github:nocodb/nocodb";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
