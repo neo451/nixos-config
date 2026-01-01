@@ -114,6 +114,7 @@
         # llm-ollama = true;
       })
     crush
+    codex
 
     xvfb-run
 
