@@ -161,7 +161,7 @@
     code-cursor
     vscode # vs **
     qbittorrent # download
-    webcord # discord
+    # webcord # discord
     chromium
     loupe
     anki
