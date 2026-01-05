@@ -80,6 +80,15 @@
     write-good
     quarto
     typst
+    libreoffice
+    papers
+    wpsoffice-cn
+    pandoc
+    texliveFull
+    zk
+    rime-ls
+    translate-shell
+    marksman
 
     ## notebook
     marimo
@@ -92,15 +101,11 @@
         llm-deepseek = true;
         # llm-ollama = true;
       })
-    crush
     codex
 
-    xvfb-run
-
-    ladybird
-
+    # xvfb-run
+    # ladybird
     # ollama-cuda
-
     thunderbird
 
     # life utils
@@ -149,20 +154,11 @@
     # gui apps
     kitty
     ghostty
-    warp-terminal
     wechat-uos
-    qq
-    qqmusic
     zotero
     obsidian
-    typora
     zed-editor
-    windsurf
-    code-cursor
-    vscode # vs **
     qbittorrent # download
-    # webcord # discord
-    chromium
     loupe
     anki
     wasistlos
@@ -172,9 +168,6 @@
 
     # video
     obs-studio # screen recording
-
-    # game
-    love
 
     ## display manager
     ly
@@ -203,14 +196,7 @@
     sioyek
 
     # reverse engineering, learn it some day!
-    ghidra
-
-    ## docs
-    libreoffice
-    papers
-    wpsoffice-cn
-    pandoc
-    texliveFull
+    # ghidra
 
     # tui
     tmux
@@ -258,17 +244,12 @@
 
     # sync
     rsync
-    rclone
-    rclone-browser
-    syncthing
+    # rclone
+    # rclone-browser
+    # syncthing
 
     # ssh
     sshfs
-
-    # LSP and formatters
-    zk
-    rime-ls
-    translate-shell
 
     # js
     yarn
@@ -346,16 +327,7 @@
     zig
     zls
 
-    # lisp
-    clojure-lsp
-    clojure
-
-    elixir
-    elixir-ls
-    livebook
-
     readline
-
     lsof
   ];
 
