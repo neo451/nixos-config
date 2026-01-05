@@ -96,12 +96,12 @@
     uv
 
     # llm
-    (llm.withPlugins
-      {
-        llm-deepseek = true;
-        # llm-ollama = true;
-      })
-    codex
+    # (llm.withPlugins
+    #   {
+    #     llm-deepseek = true;
+    #     # llm-ollama = true;
+    #   })
+    # codex
 
     # xvfb-run
     # ladybird
