@@ -91,9 +91,9 @@
     marksman
 
     ## notebook
-    marimo
-    ruff
-    uv
+    # marimo
+    # ruff
+    # uv
 
     # llm
     # (llm.withPlugins
@@ -120,6 +120,7 @@
     atuin
     dust
     tldr
+    zoxide
 
     # file
     ripgrep
