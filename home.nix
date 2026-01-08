@@ -89,6 +89,7 @@
     rime-ls
     translate-shell
     marksman
+    pdfunite
 
     ## notebook
     # marimo
