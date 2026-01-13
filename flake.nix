@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    inputs.opencode-flake.url = "github:aodhanhayter/opencode-flake";
+    opencode-flake.url = "github:aodhanhayter/opencode-flake";
 
     quickshell = {
       # add ?ref=<tag> to track a tag
