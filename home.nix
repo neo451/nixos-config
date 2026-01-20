@@ -159,6 +159,7 @@
     wechat-uos
     zotero
     obsidian
+    calibre
     zed-editor
     qbittorrent # download
     loupe
