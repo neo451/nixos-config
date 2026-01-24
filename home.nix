@@ -80,6 +80,7 @@
 
     slides
     sent
+    marp-cli
     # presentterm
 
     # writing
