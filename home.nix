@@ -79,7 +79,8 @@
     ## presentation
 
     slides
-    presentterm
+    sent
+    # presentterm
 
     # writing
     write-good
