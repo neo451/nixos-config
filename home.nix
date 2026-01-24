@@ -76,6 +76,11 @@
     blueman
     adw-bluetooth
 
+    ## presentation
+
+    slides
+    presentterm
+
     # writing
     write-good
     quarto
