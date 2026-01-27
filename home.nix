@@ -98,6 +98,8 @@
     marksman
     qpdf
 
+    webcord
+
     ## notebook
     # marimo
     # ruff
