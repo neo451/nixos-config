@@ -69,6 +69,10 @@
     vim
     wget
 
+    # ai
+    opencode
+    codex
+
     brightnessctl # brightness control
     udisks # usb disks
 
