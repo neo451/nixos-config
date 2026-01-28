@@ -298,7 +298,6 @@
     nodePackages.prettier
     kulala-fmt
     typos
-    tree-sitter
 
     copilot-language-server
 
