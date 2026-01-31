@@ -318,6 +318,7 @@
 
     ## python
     pyright
+    python313Packages.playwright
 
     ## js
     typescript-language-server
