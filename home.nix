@@ -69,8 +69,6 @@
     vim
     wget
 
-    sqlit
-
     # ai
     opencode
     codex

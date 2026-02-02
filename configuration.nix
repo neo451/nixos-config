@@ -100,6 +100,7 @@
 
   environment.variables = {
     "RIME_DATA_DIR" = "${pkgs.rime-data}/share/rime-data";
+    "VIMRUNTIME" = "${pkgs.neovim}/runtime";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
