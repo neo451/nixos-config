@@ -122,7 +122,7 @@
 
     # xvfb-run
     # ladybird
-    ollama-cuda
+    ollama
     thunderbird
 
     # life utils
