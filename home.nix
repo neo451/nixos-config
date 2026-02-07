@@ -69,6 +69,8 @@
     vim
     wget
 
+    vscode
+
     # ocr
     tesseract
 
