@@ -125,23 +125,33 @@
             obsidianOverlay
             (final: prev: {
               ly = prev.ly.overrideAttrs (old: {
+                # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
                 prePatch =
-                  ''
-                    export ZIG_GLOBAL_CACHE_DIR="$TMPDIR/zig-cache"
-                    export ZIG_LOCAL_CACHE_DIR="$ZIG_GLOBAL_CACHE_DIR"
+                  (old.prePatch or "")
+                  + ''
+                    export ZIG_GLOBAL_CACHE_DIR="$TMPDIR/zig-global-cache-initial"
                     mkdir -p "$ZIG_GLOBAL_CACHE_DIR"
-                  ''
-                  + (old.prePatch or "");
-              });
+                  '';
 
-              # if you ever re-enable zls, apply the same workaround:
-              # zls = prev.zls.overrideAttrs (old: {
-              #   prePatch = ''
-              #     export ZIG_GLOBAL_CACHE_DIR="$TMPDIR/zig-cache"
-              #     export ZIG_LOCAL_CACHE_DIR="$ZIG_GLOBAL_CACHE_DIR"
-              #     mkdir -p "$ZIG_GLOBAL_CACHE_DIR"
-              #   '' + (old.prePatch or "");
-              # });
+                # After old.postPatch ran, remember where that /p link points.
+                postPatch =
+                  (old.postPatch or "")
+                  + ''
+                    if [ -e "$ZIG_GLOBAL_CACHE_DIR/p" ]; then
+                      export _ly_zig_pkgs_target="$(readlink -f "$ZIG_GLOBAL_CACHE_DIR/p")"
+                    fi
+                  '';
+
+                # zig.hook may reset ZIG_GLOBAL_CACHE_DIR later; ensure /p exists in the *final* cache dir
+                preBuild =
+                  (old.preBuild or "")
+                  + ''
+                    if [ -n "''${_ly_zig_pkgs_target:-}" ]; then
+                      mkdir -p "$ZIG_GLOBAL_CACHE_DIR"
+                      ln -sf "$_ly_zig_pkgs_target" "$ZIG_GLOBAL_CACHE_DIR/p"
+                    fi
+                  '';
+              });
             })
           ];
           environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
