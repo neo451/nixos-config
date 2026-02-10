@@ -123,6 +123,26 @@
             rust-overlay.overlays.default
             inputs.neovim-nightly-overlay.overlays.default
             obsidianOverlay
+            (final: prev: {
+              ly = prev.ly.overrideAttrs (old: {
+                prePatch =
+                  ''
+                    export ZIG_GLOBAL_CACHE_DIR="$TMPDIR/zig-cache"
+                    export ZIG_LOCAL_CACHE_DIR="$ZIG_GLOBAL_CACHE_DIR"
+                    mkdir -p "$ZIG_GLOBAL_CACHE_DIR"
+                  ''
+                  + (old.prePatch or "");
+              });
+
+              # if you ever re-enable zls, apply the same workaround:
+              # zls = prev.zls.overrideAttrs (old: {
+              #   prePatch = ''
+              #     export ZIG_GLOBAL_CACHE_DIR="$TMPDIR/zig-cache"
+              #     export ZIG_LOCAL_CACHE_DIR="$ZIG_GLOBAL_CACHE_DIR"
+              #     mkdir -p "$ZIG_GLOBAL_CACHE_DIR"
+              #   '' + (old.prePatch or "");
+              # });
+            })
           ];
           environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
         })
