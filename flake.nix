@@ -46,10 +46,74 @@
     home-manager,
     nur,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    obsidianOverlay = final: prev: {
+      obsidian = let
+        version = "1.11.7";
+        src = prev.fetchurl {
+          url =
+            if prev.stdenv.hostPlatform.isDarwin
+            then "https://github.com/obsidianmd/obsidian-releases/releases/download/v${version}/Obsidian-${version}.dmg"
+            else "https://github.com/obsidianmd/obsidian-releases/releases/download/v${version}/obsidian-${version}.tar.gz";
+          hash =
+            if prev.stdenv.hostPlatform.isDarwin
+            then "sha256-TRE9ymNtpcp7gEbuuSfJxvYDXLDVNz+o4+RSNyHZgmE="
+            else "sha256-HrqeFJ2C5uZw0IBtD9y607V6007fOwnA0KnA83cwWjg=";
+        };
+      in
+        if prev.stdenv.hostPlatform.isDarwin
+        then prev.obsidian.overrideAttrs (_: {inherit version src;})
+        else
+          prev.stdenv.mkDerivation {
+            pname = "obsidian";
+            inherit version src;
+            inherit (prev.obsidian) icon desktopItem meta;
+            nativeBuildInputs = [prev.makeWrapper prev.imagemagick];
+            installPhase = ''
+              runHook preInstall
+              mkdir -p $out/bin
+
+              install -m 444 -D resources/app.asar $out/share/obsidian/app.asar
+              install -m 444 -D resources/obsidian.asar $out/share/obsidian/obsidian.asar
+
+              cat > $out/bin/obsidian << 'WRAPPER'
+              #!${prev.bash}/bin/bash
+              ELECTRON="${prev.electron}/bin/electron"
+              APP_ASAR="$out/share/obsidian/app.asar"
+
+              if pgrep -f "electron.*obsidian" > /dev/null 2>&1; then
+                exec "$ELECTRON" "$APP_ASAR" "$@"
+              else
+                WAYLAND_FLAGS=""
+                if [[ -n "$NIXOS_OZONE_WL" && -n "$WAYLAND_DISPLAY" ]]; then
+                  WAYLAND_FLAGS="--ozone-platform=wayland"
+                fi
+                exec "$ELECTRON" $WAYLAND_FLAGS "$APP_ASAR" "$@"
+              fi
+              WRAPPER
+              chmod +x $out/bin/obsidian
+
+              substituteInPlace $out/bin/obsidian \
+                --replace-fail '$out' "$out"
+
+              install -m 444 -D "${prev.obsidian.desktopItem}/share/applications/"* \
+                -t $out/share/applications/
+
+              for size in 16 24 32 48 64 128 256 512; do
+                mkdir -p $out/share/icons/hicolor/"$size"x"$size"/apps
+                magick -background none ${prev.obsidian.icon} -resize "$size"x"$size" \
+                  $out/share/icons/hicolor/"$size"x"$size"/apps/obsidian.png
+              done
+              runHook postInstall
+            '';
+          };
+    };
+  in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
+      nixpkgs.overlays = [obsidianOverlay];
+
       modules = [
         inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
