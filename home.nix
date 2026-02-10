@@ -347,6 +347,7 @@
 
     # zig
     zig
+    zls
 
     readline
     lsof
