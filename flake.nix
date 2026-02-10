@@ -112,7 +112,6 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
-      nixpkgs.overlays = [obsidianOverlay];
 
       modules = [
         inputs.musnix.nixosModules.musnix
@@ -123,6 +122,7 @@
           nixpkgs.overlays = [
             rust-overlay.overlays.default
             inputs.neovim-nightly-overlay.overlays.default
+            obsidianOverlay
           ];
           environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
         })
