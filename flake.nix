@@ -119,9 +119,9 @@
         nur.modules.nixos.default
         ./configuration.nix
         ({pkgs, ...}: {
-          system.activationScripts.obsidianCliSymlink = ''
+          system.activationScripts.obsidianCli = ''
             mkdir -p /usr/local/bin
-            ln -sf ${pkgs.obsidian}/bin/obsidian /usr/local/bin/obsidian
+            ln -sf /run/current-system/sw/bin/obsidian /usr/local/bin/obsidian
           '';
           nixpkgs.overlays = [
             rust-overlay.overlays.default
