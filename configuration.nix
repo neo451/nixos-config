@@ -230,6 +230,7 @@
     inputs.zen-browser.packages."${system}".default
     inputs.quickshell.packages."${system}".default
     inputs.opencode-flake.packages.${pkgs.system}.default
+    obsidian
   ];
 
   environment.variables.EDITOR = "nvim";
