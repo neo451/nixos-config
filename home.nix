@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./home/starship.nix
     ./home/fish.nix
@@ -8,6 +12,12 @@
 
   home.username = "n451";
   home.homeDirectory = "/home/n451";
+
+  home.file.".local/bin/obsidian".text = ''
+    #!${pkgs.bash}/bin/bash
+    exec ${pkgs.obsidian}/bin/obsidian "$@"
+  '';
+  home.file.".local/bin/obsidian".executable = true;
 
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -24,7 +34,10 @@
   #     xxx
   # '';
 
-  home.sessionPath = ["$HOME/.cargo/bin"];
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+    "${config.home.homeDirectory}/.local/bin"
+  ];
 
   home.sessionVariables = {
     REF = "/home/n451/Documents/refs.bib";
