@@ -119,10 +119,6 @@
         nur.modules.nixos.default
         ./configuration.nix
         ({pkgs, ...}: {
-          system.activationScripts.obsidianCli = ''
-            mkdir -p /usr/local/bin
-            ln -sf /run/current-system/sw/bin/obsidian /usr/local/bin/obsidian
-          '';
           nixpkgs.overlays = [
             rust-overlay.overlays.default
             inputs.neovim-nightly-overlay.overlays.default
