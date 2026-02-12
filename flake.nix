@@ -47,28 +47,36 @@
     nur,
     ...
   } @ inputs: let
-    obsidianOverlay = final: prev: {
+    obsidianOverlay = self: super: {
       obsidian = let
         version = "1.11.7";
-        src = prev.fetchurl {
+        src = super.fetchurl {
           url =
-            if prev.stdenv.hostPlatform.isDarwin
+            if super.stdenv.hostPlatform.isDarwin
             then "https://github.com/obsidianmd/obsidian-releases/releases/download/v${version}/Obsidian-${version}.dmg"
             else "https://github.com/obsidianmd/obsidian-releases/releases/download/v${version}/obsidian-${version}.tar.gz";
           hash =
-            if prev.stdenv.hostPlatform.isDarwin
+            if super.stdenv.hostPlatform.isDarwin
             then "sha256-TRE9ymNtpcp7gEbuuSfJxvYDXLDVNz+o4+RSNyHZgmE="
             else "sha256-HrqeFJ2C5uZw0IBtD9y607V6007fOwnA0KnA83cwWjg=";
         };
       in
-        if prev.stdenv.hostPlatform.isDarwin
-        then prev.obsidian.overrideAttrs (_: {inherit version src;})
+        if super.stdenv.hostPlatform.isDarwin
+        then
+          super.obsidian.overrideAttrs (oldAttrs: {
+            inherit version src;
+          })
         else
-          prev.stdenv.mkDerivation {
+          # Linux: rebuild with wrapper that properly handles CLI
+          # The app.asar contains Electron's single-instance logic which routes CLI to running instance
+          super.stdenv.mkDerivation {
             pname = "obsidian";
             inherit version src;
-            inherit (prev.obsidian) icon desktopItem meta;
-            nativeBuildInputs = [prev.makeWrapper prev.imagemagick];
+            inherit (super.obsidian) icon desktopItem meta;
+            nativeBuildInputs = [
+              super.makeWrapper
+              super.imagemagick
+            ];
             installPhase = ''
               runHook preInstall
               mkdir -p $out/bin
@@ -76,14 +84,24 @@
               install -m 444 -D resources/app.asar $out/share/obsidian/app.asar
               install -m 444 -D resources/obsidian.asar $out/share/obsidian/obsidian.asar
 
+              # Smart wrapper that handles:
+              # 1. Fresh launch (Obsidian not running): start with app.asar + Wayland flags
+              # 2. CLI/TUI mode (Obsidian running): connect without Wayland flags
+              #
+              # When Obsidian is running, Electron's single-instance mechanism forwards args
+              # to the existing process. Wayland flags get interpreted as CLI commands.
               cat > $out/bin/obsidian << 'WRAPPER'
-              #!${prev.bash}/bin/bash
-              ELECTRON="${prev.electron}/bin/electron"
+              #!${super.bash}/bin/bash
+              ELECTRON="${super.electron}/bin/electron"
               APP_ASAR="$out/share/obsidian/app.asar"
 
+              # Check if Obsidian is already running (look for electron process with obsidian asar)
               if pgrep -f "electron.*obsidian" > /dev/null 2>&1; then
+                # Obsidian is running: connect to existing instance (CLI/TUI mode)
+                # No Wayland flags - they'd be forwarded to Obsidian CLI as commands
                 exec "$ELECTRON" "$APP_ASAR" "$@"
               else
+                # Obsidian not running: launch fresh instance with Wayland support
                 WAYLAND_FLAGS=""
                 if [[ -n "$NIXOS_OZONE_WL" && -n "$WAYLAND_DISPLAY" ]]; then
                   WAYLAND_FLAGS="--ozone-platform=wayland"
@@ -93,16 +111,16 @@
               WRAPPER
               chmod +x $out/bin/obsidian
 
+              # Substitute the actual path
               substituteInPlace $out/bin/obsidian \
                 --replace-fail '$out' "$out"
 
-              install -m 444 -D "${prev.obsidian.desktopItem}/share/applications/"* \
+              install -m 444 -D "${super.obsidian.desktopItem}/share/applications/"* \
                 -t $out/share/applications/
 
               for size in 16 24 32 48 64 128 256 512; do
                 mkdir -p $out/share/icons/hicolor/"$size"x"$size"/apps
-                magick -background none ${prev.obsidian.icon} -resize "$size"x"$size" \
-                  $out/share/icons/hicolor/"$size"x"$size"/apps/obsidian.png
+                magick -background none ${super.obsidian.icon} -resize "$size"x"$size" $out/share/icons/hicolor/"$size"x"$size"/apps/obsidian.png
               done
               runHook postInstall
             '';
@@ -122,7 +140,7 @@
           nixpkgs.overlays = [
             rust-overlay.overlays.default
             inputs.neovim-nightly-overlay.overlays.default
-            # obsidianOverlay
+            obsidianOverlay
             (final: prev: {
               ly = prev.ly.overrideAttrs (old: {
                 # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
