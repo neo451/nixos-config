@@ -122,7 +122,7 @@
           nixpkgs.overlays = [
             rust-overlay.overlays.default
             inputs.neovim-nightly-overlay.overlays.default
-            obsidianOverlay
+            # obsidianOverlay
             (final: prev: {
               ly = prev.ly.overrideAttrs (old: {
                 # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
