@@ -330,7 +330,7 @@
     ## python
     pyright
     python313Packages.playwright
-    python313Packages.sdbus
+    python313Packages.pydbus
 
     ## js
     typescript-language-server
