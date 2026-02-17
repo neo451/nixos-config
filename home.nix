@@ -328,11 +328,10 @@
     emmylua-doc-cli
 
     ## python
-    # pyright
-    # python313Packages.playwright
-    # python313Packages.pydbus
+    pyright
+    python313Packages.playwright
+    python313Packages.pydbus
 
-    (python3.withPackages (ps: with ps; [pydbus]))
     ## js
     typescript-language-server
 
