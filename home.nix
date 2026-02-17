@@ -332,8 +332,7 @@
     # python313Packages.playwright
     # python313Packages.pydbus
 
-    (python313.withPackages (ps: with ps; [pydbus]))
-
+    (python3.withPackages (ps: with ps; [pydbus]))
     ## js
     typescript-language-server
 
