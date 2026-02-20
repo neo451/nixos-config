@@ -182,16 +182,15 @@
     ghostty
     wechat-uos
     zotero
-    # obsidian
     calibre
     zed-editor
     qbittorrent # download
     loupe
     anki
     wasistlos
-    # whatsapp-for-mac
-    # wine-wayland
-    # neovide
+    wine-wayland
+    neovide
+    # obsidian
 
     # video
     obs-studio # screen recording
