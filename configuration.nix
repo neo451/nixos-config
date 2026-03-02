@@ -123,7 +123,9 @@
     packages = with pkgs; [
       barlow
       nerd-fonts.fira-code
-      noto-fonts
+      # dejavu_fonts
+      # liberation_ttf
+      # noto-fonts
       # noto-fonts-cjk-sans
       # noto-fonts-cjk-serif
       # noto-fonts-color-emoji
@@ -133,12 +135,12 @@
     fontconfig = {
       antialias = true;
       hinting.enable = true;
-      defaultFonts = {
-        emoji = ["Noto Color Emoji"];
-        monospace = ["FiraCode Nerd Font"];
-        sansSerif = ["Noto Sans CJK SC"];
-        serif = ["Noto Serif CJK SC"];
-      };
+      # defaultFonts = {
+      #   emoji = ["Noto Color Emoji"];
+      #   monospace = ["FiraCode Nerd Font"];
+      #   sansSerif = ["Noto Sans CJK SC"];
+      #   serif = ["Noto Serif CJK SC"];
+      # };
     };
   };
 
