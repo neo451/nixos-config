@@ -120,15 +120,15 @@
 
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [
-      barlow
-      nerd-fonts.fira-code
-      # noto-fonts-cjk-sans
-      # noto-fonts-cjk-serif
-      # noto-fonts-color-emoji
-      corefonts
-      vista-fonts
-    ];
+    # packages = with pkgs; [
+    #   barlow
+    # nerd-fonts.fira-code
+    # noto-fonts-cjk-sans
+    # noto-fonts-cjk-serif
+    # noto-fonts-color-emoji
+    #   corefonts
+    #   vista-fonts
+    # ];
     fontconfig = {
       antialias = true;
       hinting.enable = true;
