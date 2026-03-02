@@ -114,7 +114,7 @@
     write-good
     quarto
     typst
-    libreoffice
+    libreoffice-fresh
     papers
     wpsoffice-cn
     pandoc
