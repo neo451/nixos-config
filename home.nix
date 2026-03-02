@@ -194,7 +194,6 @@
     ghostty
     wechat-uos
     zotero
-    calibre
     zed-editor
     qbittorrent # download
     loupe
@@ -203,6 +202,7 @@
     wine-wayland
     neovide
     # obsidian
+    # calibre
 
     # video
     obs-studio # screen recording
