@@ -19,6 +19,17 @@
     };
   };
 
+  xdg.desktopEntries.obsidian-nvim = {
+    name = "obsidian.nvim";
+    comment = "Handle obsidian:// URIs in Neovim with obsidian.nvim";
+    exec = "obsidian-uri-handler %u";
+    terminal = true;
+    type = "Application";
+    noDisplay = true;
+    mimeType = ["x-scheme-handler/obsidian"];
+    categories = ["Utility" "TextEditor"];
+  };
+
   home.username = "n451";
   home.homeDirectory = "/home/n451";
 
