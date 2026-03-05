@@ -96,6 +96,7 @@
     wget
 
     vscode
+    chromium
 
     # ocr
     tesseract
