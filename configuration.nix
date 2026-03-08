@@ -149,6 +149,10 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    General = {
+      Experimental = true;
+      KernelExperimental = true; # enables newer GATT handling
+    };
   };
 
   # Enable OpenGL
