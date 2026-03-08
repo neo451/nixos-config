@@ -146,13 +146,30 @@
 
   environment.sessionVariables = {NIXOS_OZONE_WL = "1";};
 
+  # Force the correct HID kernel module
+  boot.kernelModules = ["uhid"];
+  boot.blacklistedKernelModules = ["hidp"];
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {
       General = {
         Experimental = true;
-        KernelExperimental = true; # enables newer GATT handling
+        KernelExperimental = true;
+      };
+      # This maps to /etc/bluetooth/input.conf
+      Policy = {
+        AutoEnable = true;
+      };
+    };
+    # input.conf options
+    input = {
+      General = {
+        UserspaceHID = true;
+        IdleTimeout = 0;
+        ClassicBondedOnly = false;
+        LEAutoSecurity = true;
       };
     };
   };
