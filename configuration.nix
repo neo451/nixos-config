@@ -146,32 +146,23 @@
 
   environment.sessionVariables = {NIXOS_OZONE_WL = "1";};
 
-  # Force the correct HID kernel module
-  boot.kernelModules = ["uhid"];
-  boot.blacklistedKernelModules = ["hidp"];
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {
       General = {
         Experimental = true;
-        KernelExperimental = true;
-      };
-      # This maps to /etc/bluetooth/input.conf
-      Policy = {
-        AutoEnable = true;
+        KernelExperimental = true; # enables newer GATT handling
       };
     };
-    # input.conf options
-    input = {
-      General = {
-        UserspaceHID = true;
-        IdleTimeout = 0;
-        ClassicBondedOnly = false;
-        LEAutoSecurity = true;
+    package = pkgs.bluez.overrideAttrs (old: rec {
+      version = "5.72";
+
+      src = pkgs.fetchurl {
+        url = "mirror://kernel/linux/bluetooth/bluez-${version}.tar.xz";
+        hash = "0vjk4ihywzv8k07bxq7clqgi2afrw54nfp0gcnxw35m98nipz7a9";
       };
-    };
+    });
   };
 
   # Enable OpenGL
