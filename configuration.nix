@@ -155,14 +155,6 @@
         KernelExperimental = true; # enables newer GATT handling
       };
     };
-    package = pkgs.bluez.overrideAttrs (old: rec {
-      version = "5.72";
-
-      src = pkgs.fetchurl {
-        url = "mirror://kernel/linux/bluetooth/bluez-${version}.tar.xz";
-        sha256 = "0vjk4ihywzv8k07bxq7clqgi2afrw54nfp0gcnxw35m98nipz7a9";
-      };
-    });
   };
 
   # Enable OpenGL
