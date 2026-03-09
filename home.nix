@@ -91,6 +91,7 @@
     emacs
     cmake
     git
+    jujutsu
     gh
     vim
     wget
