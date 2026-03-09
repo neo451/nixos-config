@@ -89,12 +89,6 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      bluez_5_72 =
-        (import (fetchTarball {
-            url = "https://github.com/NixOS/nixpkgs/archive/9c9eb1ce75c2c9c9b4b0c9f6f6e7c4f5f7b6b0e0.tar.gz";
-          }) {
-            system = final.system;
-          }).bluez;
       librime =
         (prev.librime.override {
           plugins = [pkgs.librime-lua pkgs.librime-octagram];
