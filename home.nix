@@ -93,6 +93,7 @@
     git
     jujutsu
     gh
+    copilot-cli
     vim
     wget
 
