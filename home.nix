@@ -138,7 +138,7 @@
     webcord
 
     ## notebook
-    # marimo
+    marimo
     # ruff
     # uv
 

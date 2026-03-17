@@ -25,7 +25,7 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
-      configurationLimit = 10;
+      configurationLimit = 4;
       extraEntries = ''
         menuentry "Windows" {
         	search --file --no-floppy --set=root /EFI/Microsoft/Boot/bootmgfw/efi
