@@ -139,8 +139,8 @@
 
     ## notebook
     marimo
-    # ruff
-    # uv
+    uv
+    ruff
 
     # llm
     # (llm.withPlugins
