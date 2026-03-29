@@ -126,7 +126,7 @@
     typst
     libreoffice-fresh
     papers
-    wpsoffice-cn
+    # wpsoffice-cn
     pandoc
     texliveFull
     zk
