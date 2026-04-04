@@ -303,7 +303,7 @@
     yarn
     nodejs
     deno
-    nodePackages_latest.neovim
+    # nodePackages_latest.neovim
 
     # docker
     docker
@@ -327,7 +327,7 @@
     diff-so-fancy
     wordnet
     harper
-    nodePackages.prettier
+    # nodePackages.prettier
     kulala-fmt
     typos
 
