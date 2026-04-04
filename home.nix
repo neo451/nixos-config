@@ -210,7 +210,7 @@
     anki
     wasistlos
     wine-wayland
-    neovide
+    # neovide
     # obsidian
     # calibre
 
