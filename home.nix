@@ -211,8 +211,8 @@
     wasistlos
     wine-wayland
     # neovide
-    # obsidian
-    # calibre
+    obsidian
+    calibre
 
     # video
     obs-studio # screen recording
