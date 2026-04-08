@@ -96,7 +96,6 @@
     vim
     wget
 
-    vscode
     chromium
 
     # ocr
