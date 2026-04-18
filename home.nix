@@ -104,6 +104,8 @@
     # ai
     opencode
     codex
+    pi-coding-agent
+    claude-code
 
     brightnessctl # brightness control
     udisks # usb disks
@@ -302,6 +304,7 @@
     yarn
     nodejs
     deno
+    prettierd
     # nodePackages_latest.neovim
 
     # docker
