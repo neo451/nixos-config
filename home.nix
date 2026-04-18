@@ -304,8 +304,7 @@
     yarn
     nodejs
     deno
-
-    nodePackages.prettier
+    prettier
     # nodePackages_latest.neovim
 
     # docker
