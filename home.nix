@@ -106,6 +106,7 @@
     codex
     pi-coding-agent
     claude-code
+    claude-code-acp
 
     brightnessctl # brightness control
     udisks # usb disks
