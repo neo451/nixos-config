@@ -98,8 +98,6 @@
 
     chromium
 
-    nushell
-
     # ocr
     tesseract
 
@@ -138,6 +136,7 @@
     translate-shell
     marksman
     qpdf
+    iwe
 
     webcord
 
@@ -146,16 +145,6 @@
     uv
     ruff
 
-    # llm
-    # (llm.withPlugins
-    #   {
-    #     llm-deepseek = true;
-    #     # llm-ollama = true;
-    #   })
-    # codex
-
-    # xvfb-run
-    # ladybird
     ollama
     thunderbird
 
@@ -172,6 +161,7 @@
     dust
     tldr
     zoxide
+    nushell
 
     # file
     ripgrep
