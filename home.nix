@@ -98,6 +98,8 @@
 
     chromium
 
+    nushell
+
     # ocr
     tesseract
 
@@ -106,7 +108,7 @@
     codex
     pi-coding-agent
     claude-code
-    claude-code-acp
+    claude-agent-acp
 
     brightnessctl # brightness control
     udisks # usb disks
