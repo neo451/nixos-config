@@ -12,10 +12,13 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      # "image/jpeg" = "org.gnome.Loupe.desktop";
-      # "image/png" = "org.gnome.Loupe.desktop";
-      # "image/gif" = "org.gnome.Loupe.desktop";
+      "image/jpeg" = "org.gnome.Loupe.desktop";
+      "image/png" = "org.gnome.Loupe.desktop";
+      "image/gif" = "org.gnome.Loupe.desktop";
       "x-scheme-handler/obsidian" = "obsidian-nvim.desktop";
+      "x-scheme-handler/http" = "zen-browser.desktop";
+      "x-scheme-handler/https" = "x-scheme-handler.desktop";
+      "text/html" = "zen-browser.desktop";
     };
   };
 
