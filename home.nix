@@ -186,7 +186,7 @@
     # network
     dig
     iftop # network monitoring
-    telnet
+    # telnet
     netcat
 
     btop # replacement of htop/nmon
