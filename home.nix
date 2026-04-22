@@ -188,6 +188,7 @@
     iftop # network monitoring
     # telnet
     netcat
+    openssl
 
     btop # replacement of htop/nmon
     iotop # io monitoring
