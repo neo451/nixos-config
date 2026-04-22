@@ -348,7 +348,7 @@
 
     ## python
     pyright
-    ruff-lsp
+    ruff
     black
     python313Packages.playwright
     python313Packages.pydbus
