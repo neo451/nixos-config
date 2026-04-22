@@ -186,6 +186,8 @@
     # network
     dig
     iftop # network monitoring
+    telnet
+    netcat
 
     btop # replacement of htop/nmon
     iotop # io monitoring
