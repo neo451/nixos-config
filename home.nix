@@ -185,6 +185,7 @@
     # telnet
     netcat
     openssl
+    chrony
 
     btop # replacement of htop/nmon
     iotop # io monitoring
