@@ -304,7 +304,6 @@
     nodejs
     deno
     prettier
-    # nodePackages_latest.neovim
 
     # docker
     docker
