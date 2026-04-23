@@ -18,8 +18,6 @@
       # Mismatched system dependencies will lead to crashes and other issues.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    musnix.url = "github:musnix/musnix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +34,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # musnix.url = "github:musnix/musnix";
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
@@ -53,7 +52,7 @@
       specialArgs = {inherit inputs;};
 
       modules = [
-        inputs.musnix.nixosModules.musnix
+        # inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
         ./configuration.nix

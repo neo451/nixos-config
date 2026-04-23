@@ -5,10 +5,10 @@
   ...
 }: {
   imports = [./hardware-configuration.nix];
-  musnix = {
-    enable = false;
-    kernel.realtime = false;
-  };
+  # musnix = {
+  #   enable = false;
+  #   kernel.realtime = false;
+  # };
   nix.settings = {
     # download-buffer-size = 262144;
     download-buffer-size = 536870912; # 512 MiB

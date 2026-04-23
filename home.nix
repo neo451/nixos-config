@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./home/starship.nix
     ./home/fish.nix
@@ -237,7 +233,7 @@
 
     # wallpaper
     pywal16
-    swww # wallpaper daemon
+    awww # wallpaper daemon
 
     # pdf reader
     zathura
