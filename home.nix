@@ -289,7 +289,7 @@
 
     # sync
     rsync
-    # rclone
+    rclone
     # rclone-browser
     # syncthing
 
