@@ -210,7 +210,8 @@
     # neovide
     obsidian
     calibre
-    qutebrowser
+
+    # qutebrowser
     luakit
 
     # video
