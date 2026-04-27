@@ -211,6 +211,7 @@
     obsidian
     calibre
     qutebrowser
+    luakit
 
     # video
     obs-studio # screen recording
