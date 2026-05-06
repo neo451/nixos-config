@@ -205,7 +205,7 @@
     qbittorrent # download
     loupe
     anki
-    wasistlos
+    karere
     wine-wayland
     # neovide
     obsidian
