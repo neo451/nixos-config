@@ -237,13 +237,9 @@
     tokei
     vhs
     gh-dash
-    glance
     neomutt
     lazygit
     glow
-
-    # jupyter-notebook
-    jupyter-all
 
     # audio & video
     yt-dlp
@@ -305,7 +301,6 @@
     diff-so-fancy
     wordnet
     harper
-    # nodePackages.prettier
     kulala-fmt
     typos
 
@@ -335,9 +330,6 @@
 
     ## js
     typescript-language-server
-
-    # c
-    clang
 
     # go
     go
