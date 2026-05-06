@@ -259,7 +259,7 @@
     spotify
 
     # processing software
-    davinci-resolve
+    # davinci-resolve
     gimp
     vcv-rack
     supercollider
