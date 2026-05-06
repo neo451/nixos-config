@@ -261,7 +261,6 @@
     # processing software
     # davinci-resolve
     gimp
-    vcv-rack
     supercollider
     # jre
     # bitwig-studio
