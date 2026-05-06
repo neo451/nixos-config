@@ -4,6 +4,7 @@
     ./home/fish.nix
     ./home/ghostty.nix
     ./home/newsboat.nix
+    ./home/atuin.nix
   ];
   xdg.mimeApps = {
     enable = true;
