@@ -55,16 +55,6 @@
     REF = "/home/n451/Documents/refs.bib";
   };
 
-  programs.atuin = {
-    enable = true;
-    settings = {
-      auto_sync = true;
-      sync_frequency = "5m";
-      sync_address = "https://api.atuin.sh";
-      search_mode = "fuzzy";
-    };
-  };
-
   accounts.email.accounts = {
     "k24098496@kcl.ac.uk" = {
       primary = true;
@@ -182,7 +172,6 @@
     # network
     dig
     iftop # network monitoring
-    # telnet
     netcat
     openssl
     chrony
@@ -207,11 +196,9 @@
     anki
     karere
     wine-wayland
-    # neovide
     obsidian
     calibre
 
-    # qutebrowser
     luakit
 
     # video
@@ -219,8 +206,6 @@
 
     ## display manager
     ly
-
-    kdePackages.qtdeclarative # qmlls qmllint qmlformat
 
     # hyprland
     waybar # bar
@@ -243,9 +228,6 @@
     zathura
     sioyek
 
-    # reverse engineering, learn it some day!
-    # ghidra
-
     # tui
     tmux
     htop
@@ -258,10 +240,6 @@
     neomutt
     lazygit
     glow
-
-    ## rss
-    # newsboat
-    # newsraft
 
     # jupyter-notebook
     jupyter-all
@@ -281,20 +259,20 @@
     spotify
 
     # processing software
-    # davinci-resolve
+    davinci-resolve
     gimp
+    vcv-rack
+    supercollider
     # jre
     # bitwig-studio
-    # vcv-rack
     # kdePackages.kdenlive # video
     # inkscape-with-extensions # vector grahpics editor
-    supercollider
 
     # sync
     rsync
     rclone
     # rclone-browser
-    # syncthing
+    syncthing
 
     # ssh
     sshfs
