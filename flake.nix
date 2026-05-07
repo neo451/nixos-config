@@ -8,14 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    opencode-flake.url = "github:aodhanhayter/opencode-flake";
+    # opencode-flake.url = "github:aodhanhayter/opencode-flake";
 
     quickshell = {
-      # add ?ref=<tag> to track a tag
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-
-      # THIS IS IMPORTANT
-      # Mismatched system dependencies will lead to crashes and other issues.
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell"; # add ?ref=<tag> to track a tag
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
