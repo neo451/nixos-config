@@ -353,6 +353,17 @@
     lsof
   ];
 
+  # https://github.com/caelestia-dots/shell
+  programs.caelestia = {
+    enable = true;
+    systemd.enable = true;
+    cli.enable = true;
+    # settings = {
+    #   bar.status.showBattery = false;
+    #   paths.wallpaperDir = "~/Pictures/Wallpapers";
+    # };
+  };
+
   # You can update Home Manager without changing this value.
   home.stateVersion = "24.11";
 

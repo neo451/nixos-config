@@ -8,8 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # opencode-flake.url = "github:aodhanhayter/opencode-flake";
-
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell"; # add ?ref=<tag> to track a tag
       inputs.nixpkgs.follows = "nixpkgs";
@@ -91,7 +89,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.n451 = {imports = [./home.nix];};
+          home-manager.users.n451 = {imports = [inputs.caelestia-shell.homeManagerModules.default ./home.nix];};
           home-manager.extraSpecialArgs = inputs;
           home-manager.backupFileExtension = "backup";
         }

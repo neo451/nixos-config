@@ -151,8 +151,8 @@
     powerOnBoot = true;
     settings = {
       General = {
-        Experimental = true;
-        KernelExperimental = true; # enables newer GATT handling
+        Experimental = false;
+        KernelExperimental = false; # enables newer GATT handling
       };
     };
   };
@@ -245,8 +245,6 @@
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
     inputs.quickshell.packages."${system}".default
-    # inputs.opencode-flake.packages.${pkgs.system}.default
-    obsidian
   ];
 
   environment.variables.EDITOR = "nvim";
