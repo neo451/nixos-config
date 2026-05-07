@@ -39,8 +39,8 @@
 
   outputs = {
     nixpkgs,
-    # nixos-stable,
     rust-overlay,
+    neovim-nightly-overlay,
     home-manager,
     nur,
     ...
@@ -58,8 +58,7 @@
         ({pkgs, ...}: {
           nixpkgs.overlays = [
             rust-overlay.overlays.default
-            # inputs.neovim-nightly-overlay.overlays.default
-            # obsidianOverlay
+            neovim-nightly-overlay.overlays.default
             (final: prev: {
               ly = prev.ly.overrideAttrs (old: {
                 # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
