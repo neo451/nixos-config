@@ -322,7 +322,7 @@
     emmylua-doc-cli
 
     ## python
-    python
+    python3
     pyright
     ruff
     black
