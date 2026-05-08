@@ -72,6 +72,11 @@
     options = "--delete-older-than 1w";
   };
 
+  nix.optimise = {
+    automatic = true;
+    dates = ["weekly"];
+  };
+
   nix.settings.auto-optimise-store = true;
 
   networking.hostName = "nixos"; # Define your hostname.
