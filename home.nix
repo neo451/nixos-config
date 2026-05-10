@@ -14,7 +14,7 @@
       "image/gif" = "org.gnome.Loupe.desktop";
       "x-scheme-handler/obsidian" = "obsidian-nvim.desktop";
       "x-scheme-handler/http" = "zen-browser.desktop";
-      "x-scheme-handler/https" = "x-scheme-handler.desktop";
+      "x-scheme-handler/https" = "zen-browser.desktop";
       "text/html" = "zen-browser.desktop";
     };
   };
