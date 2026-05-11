@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cd ~/Plugins/obsidian.nvim/
+echo "obsidian.nvim"
+git pull
+
+cd ~/Plugins/lit.nvim/
+echo "lit.nvim"
+git pull
+
+cd ~/.config/nvim
+echo "nvim config"
+git pull

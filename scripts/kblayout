@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Keyboard layout switcher for Hyprland via rofi.
+# Switches input:kb_layout (and variant) at runtime.
+
+options="qwerty (us)
+dvorak
+colemak
+colemak_dh
+workman
+qwerty (gb)"
+
+chosen=$(echo "$options" | rofi -dmenu -i -p "Keyboard Layout")
+
+case "$chosen" in
+  "qwerty (us)") layout=us;       variant= ;;
+  dvorak)        layout=us;       variant=dvorak ;;
+  colemak)       layout=us;       variant=colemak ;;
+  colemak_dh)    layout=us;       variant=colemak_dh ;;
+  workman)       layout=us;       variant=workman ;;
+  "qwerty (gb)") layout=gb;       variant= ;;
+  *) exit 0 ;;
+esac
+
+hyprctl keyword input:kb_layout "$layout"
+hyprctl keyword input:kb_variant "$variant"
+
+notify-send "Keyboard layout" "${chosen}" 2>/dev/null || true

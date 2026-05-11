@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Power menu options
+options="Lock\nLogout\nSuspend\nReboot\nPower Off"
+
+Show menu
+chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power Menu")
+
+case "$chosen" in
+  Lock)
+    hyprlock
+    ;;
+  Logout)
+    hyprctl dispatch exit
+    ;;
+  Suspend)
+    systemctl suspend
+    ;;
+  Reboot)
+    systemctl reboot
+    ;;
+  "Power Off")
+    systemctl poweroff
+    ;;
+  *)
+    ;;
+esac

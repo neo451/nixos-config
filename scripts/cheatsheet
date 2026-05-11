@@ -1,0 +1,5 @@
+#!/bin/sh
+
+## Cheatsheets
+cat $HOME/scripts/cheatsheet.conf \
+| rofi -dmenu -l 30 | sed 's/.*    \+//' | sh

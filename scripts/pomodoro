@@ -1,0 +1,32 @@
+#!/bin/sh
+
+PRESETS="Pomodoro (25/5)
+Deep Work (50/10)
+Short Sprint (15/3)
+Custom..."
+
+choice=$(printf "%s\n" "$PRESETS" | rofi -dmenu -i -p "Select Pomodoro Preset")
+
+case "$choice" in
+  "Pomodoro (25/5)")
+    work=25
+    break=5
+    ;;
+  "Deep Work (50/10)")
+    work=50
+    break=10
+    ;;
+  "Short Sprint (15/3)")
+    work=15
+    break=3
+    ;;
+  "Custom...")
+    work=$(echo "" | rofi -dmenu -i -p "Work minutes?")
+    break=$(echo "" | rofi -dmenu -i -p "Break minutes?")
+    ;;
+  *)
+    exit 1
+    ;;
+esac
+
+pomodoro $work $break
