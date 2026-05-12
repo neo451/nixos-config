@@ -66,12 +66,12 @@
       optional = [
         "creative/blender-mcp"
       ];
-      custom = {
-        repo-watch = {
-          category = "research";
-          source = ./skills/repo-watch;
-        };
-      };
+      # custom = {
+      #   repo-watch = {
+      #     category = "research";
+      #     source = ./skills/repo-watch;
+      #   };
+      # };
     };
 
     # ── MCP servers ──
