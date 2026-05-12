@@ -62,7 +62,7 @@
 
     # ── Declarative skills (phase 1) ──
     skills = {
-      bundled.enable = true;
+      bundled.enable = false;
       optional = [
         "creative/blender-mcp"
       ];
