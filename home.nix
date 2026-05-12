@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./home/starship.nix
     ./home/fish.nix
@@ -211,8 +215,9 @@
     # hyprland
     waybar # bar
     eww # widget sustem
-    dunst # notification daemon
-    libnotify
+    app2unit # launch notification links/actions from Caelestia
+    libnotify # notify-send client; Caelestia owns the daemon
+    xdg-utils # xdg-mime for app2unit URL handling
     hyprshot
     wl-clipboard # copy & paste
     rofi # app launcher
@@ -358,11 +363,25 @@
   programs.caelestia = {
     enable = true;
     systemd.enable = true;
+    systemd.environment = [
+      "PATH=${lib.makeBinPath [pkgs.app2unit pkgs.libnotify pkgs.systemd pkgs.xdg-utils]}:/etc/profiles/per-user/n451/bin:/run/current-system/sw/bin"
+    ];
     cli.enable = true;
-    # settings = {
-    #   bar.status.showBattery = false;
-    #   paths.wallpaperDir = "~/Pictures/Wallpapers";
-    # };
+    settings = {
+      notifs = {
+        actionOnClick = true;
+        openExpanded = true;
+        expire = false;
+        fullscreen = "on";
+        defaultExpireTimeout = 7000;
+        fullscreenExpireTimeout = 3000;
+        groupPreviewNum = 3;
+      };
+      services = {
+        lyricsBackend = "Auto";
+        showLyrics = false;
+      };
+    };
   };
 
   # You can update Home Manager without changing this value.
