@@ -29,8 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
-    nix-hermes.url = "github:0xrsydn/nix-hermes-agent";
   };
 
   outputs = {
@@ -38,7 +36,6 @@
     rust-overlay,
     neovim-nightly-overlay,
     home-manager,
-    nix-hermes,
     nur,
     ...
   } @ inputs: let
@@ -48,9 +45,6 @@
       specialArgs = {inherit inputs;};
 
       modules = [
-        nix-hermes.nixosModules.hermes-agent
-        ./hermes.nix
-
         # inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
