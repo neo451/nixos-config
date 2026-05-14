@@ -180,6 +180,7 @@
     netcat
     openssl
     chrony
+    websocat
 
     btop # replacement of htop/nmon
     iotop # io monitoring
