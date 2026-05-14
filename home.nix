@@ -139,7 +139,6 @@
     uv
     ruff
 
-    ollama
     thunderbird
 
     # life utils
