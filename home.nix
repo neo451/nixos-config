@@ -101,6 +101,7 @@
     pi-coding-agent
     claude-code
     claude-agent-acp
+    llama-cpp
 
     brightnessctl # brightness control
     udisks # usb disks
