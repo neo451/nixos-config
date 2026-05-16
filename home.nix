@@ -102,6 +102,7 @@
     claude-code
     claude-agent-acp
     llama-cpp
+    cursor-cli
 
     brightnessctl # brightness control
     udisks # usb disks
