@@ -37,6 +37,7 @@
       gcl = "git clone";
       em = "emacs -nw";
       cd = "z";
+      lg = "lazygit";
     };
   };
 }
