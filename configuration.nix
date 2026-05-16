@@ -65,6 +65,24 @@
     jack.enable = true;
   };
 
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      global = {
+        workgroup = "WORKGROUP";
+        "server string" = "n451";
+        security = "user";
+      };
+      share = {
+        path = "/home/n451/share";
+        browseable = "yes";
+        "read only" = "no";
+        "valid users" = "n451";
+      };
+    };
+  };
+
   # do garbage collection weekly to keep disk usage low
   nix.gc = {
     automatic = true;
