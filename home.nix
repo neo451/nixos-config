@@ -157,6 +157,7 @@
     tldr
     zoxide
     nushell
+    xonsh
 
     # file
     ripgrep
