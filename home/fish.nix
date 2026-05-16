@@ -19,6 +19,7 @@
       if test -f ~/secret/SPOTIFY.fish
           source ~/secret/SPOTIFY.fish
       end
+      zoxide init fish | source
     '';
     shellAbbrs = {
       nfu = "cd ~/nixos-config; sudo nix flake update";
