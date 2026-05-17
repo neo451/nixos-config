@@ -184,6 +184,7 @@
     chrony
     websocat
     wireshark
+    owl #  Apple Wireless Direct Link (AWDL) for opendrop
 
     btop # replacement of htop/nmon
     iotop # io monitoring
