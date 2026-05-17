@@ -267,6 +267,7 @@
     # davinci-resolve
     gimp
     supercollider
+    mgba # gameboy!
     # jre
     # bitwig-studio
     # kdePackages.kdenlive # video
