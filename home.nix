@@ -186,6 +186,7 @@
     wireshark
     owl #  Apple Wireless Direct Link (AWDL) for opendrop
     iw
+    wormhole-rs
 
     btop # replacement of htop/nmon
     iotop # io monitoring
