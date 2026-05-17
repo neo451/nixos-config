@@ -124,6 +124,14 @@
         }).overrideAttrs (old: {
           buildInputs = (old.buildInputs or []) ++ [pkgs.luajit]; # 用luajit
         });
+      owl = prev.owl.overrideAttrs (old: {
+        postPatch =
+          (old.postPatch or "")
+          + ''
+            sed -i '1i #include <cstdint>' googletest/googletest/src/gtest-death-test.cc
+            sed -i '1i #include <cstdint>' googletest/googletest/include/gtest/internal/gtest-port.h
+          '';
+      });
     })
   ];
 
