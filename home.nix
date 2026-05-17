@@ -200,7 +200,6 @@
     wechat-uos
     zotero
     zed-editor
-    qbittorrent # download
     loupe
     anki
     karere
@@ -279,6 +278,8 @@
     rclone
     # rclone-browser
     syncthing
+    qbittorrent # download
+    opendrop # airdrop
 
     # ssh
     sshfs
@@ -338,7 +339,6 @@
     black
     python313Packages.playwright
     python313Packages.pydbus
-    python313Packages.opendrop
 
     ## js
     typescript-language-server
