@@ -183,6 +183,7 @@
     openssl
     chrony
     websocat
+    wireshark
 
     btop # replacement of htop/nmon
     iotop # io monitoring
