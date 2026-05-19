@@ -38,7 +38,7 @@
     enable = true;
     automount = true;
     notify = true;
-    tray = "auto"
+    tray = "auto";
   };
 
   home.username = "n451";
