@@ -282,9 +282,9 @@
 
   programs.firefox.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".default
-    inputs.quickshell.packages."${system}".default
+  environment.systemPackages = [
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   environment.variables.EDITOR = "nvim";

@@ -97,6 +97,9 @@
     vim
     wget
 
+    # pi
+    rpi-imager
+
     chromium
 
     # ocr
