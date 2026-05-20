@@ -6,9 +6,6 @@
       timer = "~/bin/timer";
       pp = "~/scripts/wp";
       cat = "bat";
-      rpi-imager-root = "sudo env QT_QPA_PLATFORM=wayland WAYLAND_DISPLAY=$WAYLAND_DISPLAY
- XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS
- rpi-imager";
     };
     shellInit = ''
       fish_add_path ~/.npm-global/bin
