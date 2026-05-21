@@ -198,6 +198,7 @@
     iw
     wormhole-rs
     inetutils
+    nmap
 
     btop # replacement of htop/nmon
     iotop # io monitoring
