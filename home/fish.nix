@@ -6,6 +6,7 @@
       timer = "~/bin/timer";
       pp = "~/scripts/wp";
       cat = "bat";
+      pi = "ssh -t fe3o4@172.20.10.14 'tmux attach 2>/dev/null || tmux new -s main'";
     };
     shellInit = ''
       fish_add_path ~/.npm-global/bin
