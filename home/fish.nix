@@ -20,6 +20,7 @@
       if test -f ~/secret/SPOTIFY.fish
           source ~/secret/SPOTIFY.fish
       end
+      set LEDGER_FILE ~/Documents/Notes/ledger.md
       zoxide init fish | source
     '';
     shellAbbrs = {
