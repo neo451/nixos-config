@@ -116,6 +116,7 @@
     claude-agent-acp
     llama-cpp
     cursor-cli
+    copilot-language-server
 
     brightnessctl # brightness control
     udisks # usb disks
@@ -332,8 +333,6 @@
     harper
     kulala-fmt
     typos
-
-    copilot-language-server
 
     # lua
     # luajit
