@@ -97,6 +97,9 @@
     vim
     wget
 
+    # life
+    hledger
+
     # pi
     rpi-imager
 
