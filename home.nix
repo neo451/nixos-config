@@ -172,6 +172,7 @@
     zoxide
     nushell
     xonsh
+    eza
 
     # file
     ripgrep
