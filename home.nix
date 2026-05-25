@@ -163,16 +163,20 @@
 
     # cmdline
     starship
-    fish
     bat
     tree
-    atuin
     dust
+    ncdu
     tldr
     zoxide
     nushell
-    xonsh
     eza
+
+    ## shell
+    fish
+    xonsh
+    atuin
+    shellcheck
 
     # file
     ripgrep
@@ -204,6 +208,7 @@
     wormhole-rs
     inetutils
     nmap
+    mtr
 
     btop # replacement of htop/nmon
     iotop # io monitoring
