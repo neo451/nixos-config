@@ -237,8 +237,6 @@
     obsidian
     calibre
 
-    qutebrowser
-
     # video
     obs-studio # screen recording
 
