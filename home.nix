@@ -294,7 +294,7 @@
     supercollider
     mgba # gameboy!
     # jre
-    # bitwig-studio
+    bitwig-studio
     # kdePackages.kdenlive # video
     # inkscape-with-extensions # vector grahpics editor
 
