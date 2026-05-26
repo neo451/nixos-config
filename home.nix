@@ -91,11 +91,16 @@
     neovim
     emacs
     cmake
-    git
-    jujutsu
-    gh
+
     vim
     wget
+
+    git
+    jujutsu
+    lazygit
+    lazyjj
+    gh
+    gh-dash
 
     # life
     hledger
@@ -269,9 +274,7 @@
     yazi
     tokei
     vhs
-    gh-dash
     neomutt
-    lazygit
     glow
 
     # audio & video
