@@ -236,7 +236,7 @@
     wine-wayland
     obsidian
     calibre
-    tor-browser
+    # tor-browser
 
     # video
     obs-studio # screen recording
@@ -295,6 +295,7 @@
     gimp
     supercollider
     mgba # gameboy!
+    vcv-rack
     # jre
     bitwig-studio
     # kdePackages.kdenlive # video
