@@ -236,6 +236,7 @@
     wine-wayland
     obsidian
     calibre
+    tor-browser
 
     # video
     obs-studio # screen recording
