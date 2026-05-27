@@ -234,6 +234,7 @@
     anki
     karere
     wine-wayland
+    steam-run
     obsidian
     calibre
     # tor-browser
