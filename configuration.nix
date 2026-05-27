@@ -105,7 +105,6 @@
   time.timeZone = "Europe/London";
 
   networking.networkmanager.enable = true;
-  networking.wireless.enable = false;
 
   programs.steam = {
     enable = true;
