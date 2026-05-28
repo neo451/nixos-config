@@ -16,6 +16,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +38,7 @@
     neovim-nightly-overlay,
     home-manager,
     nur,
+    nixos-wsl,
     ...
   } @ inputs: let
   in {
@@ -84,15 +86,25 @@
               });
             })
           ];
-          environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
         })
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.n451 = {imports = [inputs.caelestia-shell.homeManagerModules.default ./home.nix];};
-          home-manager.extraSpecialArgs = inputs;
-          home-manager.backupFileExtension = "backup";
-        }
+      ];
+    };
+
+    nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
+
+      modules = [
+        nixos-wsl.nixosModules.default
+        home-manager.nixosModules.home-manager
+        ./modules/shared.nix
+        ./hosts/wsl
+        ({...}: {
+          nixpkgs.overlays = [
+            rust-overlay.overlays.default
+            neovim-nightly-overlay.overlays.default
+          ];
+        })
       ];
     };
   };

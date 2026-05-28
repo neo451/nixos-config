@@ -4,22 +4,14 @@
   inputs,
   ...
 }: {
-  imports = [./hardware-configuration.nix];
+  imports = [
+    ./hardware-configuration.nix
+    ./modules/shared.nix
+  ];
   # musnix = {
   #   enable = false;
   #   kernel.realtime = false;
   # };
-  nix.settings = {
-    # download-buffer-size = 262144;
-    download-buffer-size = 536870912; # 512 MiB
-    substituters = [
-      # "https://mirrors.ustc.edu.cn/nix-channels/store"
-      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
-    ];
-    experimental-features = ["nix-command" "flakes"];
-  };
-
   boot.loader = {
     grub = {
       enable = true;
@@ -86,23 +78,7 @@
     };
   };
 
-  # do garbage collection weekly to keep disk usage low
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
-
-  nix.optimise = {
-    automatic = true;
-    dates = ["weekly"];
-  };
-
-  nix.settings.auto-optimise-store = true;
-
   networking.hostName = "nixos"; # Define your hostname.
-
-  time.timeZone = "Europe/London";
 
   networking.networkmanager.enable = true;
 
@@ -112,37 +88,6 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib
-    zlib
-  ];
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      librime =
-        (prev.librime.override {
-          plugins = [pkgs.librime-lua pkgs.librime-octagram];
-        }).overrideAttrs (old: {
-          buildInputs = (old.buildInputs or []) ++ [pkgs.luajit]; # 用luajit
-        });
-      owl = prev.owl.overrideAttrs (old: {
-        postPatch =
-          (old.postPatch or "")
-          + ''
-            sed -i '1i #include <cstdint>' googletest/googletest/src/gtest-death-test.cc
-            sed -i '1i #include <cstdint>' googletest/googletest/include/gtest/internal/gtest-port.h
-          '';
-      });
-    })
-  ];
-
-  environment.variables = {
-    "RIME_DATA_DIR" = "${pkgs.rime-data}/share/rime-data";
-  };
-
-  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.inputMethod = {
     type = "fcitx5";
@@ -262,39 +207,12 @@
     defaultSession = "hyprland";
   };
 
-  users.users.n451 = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "docker" "input" "audio" "realtime"];
-  };
-
-  users.groups.realtime = {};
-
-  programs.neovim = {defaultEditor = true;};
-
-  programs.git = {
-    enable = true;
-    config = {
-      init = {defaultBranch = "main";};
-      user.name = "zizhou teng (n451)";
-      user.email = "2020200706@ruc.edu.cn";
-    };
-  };
-
   programs.firefox.enable = true;
 
   environment.systemPackages = [
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-
-  environment.variables.EDITOR = "nvim";
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-36.9.5"
-    ];
-  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true; # TODO: enable this on the other laptop??
