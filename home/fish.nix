@@ -24,6 +24,7 @@
       zoxide init fish | source
     '';
     shellAbbrs = {
+      rack = "cd Binaries/Rack2Pro/ ; steam-run ./Rack";
       nfu = "cd ~/nixos-config; sudo nix flake update";
       nrs = "~/scripts/rebuild-os";
       gd = "git diff --output-indicator-new=' ' --output-indicator-old=' '";
