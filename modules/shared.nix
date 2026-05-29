@@ -54,12 +54,18 @@ in {
 
   users.users.n451 = {
     isNormalUser = true;
+    shell = pkgs.fish;
     extraGroups = ["wheel" "docker" "input" "audio" "realtime"];
   };
 
   users.groups.realtime = {};
 
-  programs.neovim = {defaultEditor = true;};
+  programs.fish.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   programs.git = {
     enable = true;
@@ -89,20 +95,20 @@ in {
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = inputs;
   home-manager.backupFileExtension = "backup";
-  home-manager.users.n451 =
-    if isWsl
-    then {
-      home.username = "n451";
-      home.homeDirectory = "/home/n451";
-      home.stateVersion = "24.11";
-      programs.home-manager.enable = true;
-    }
-    else {
-      imports = [
+  home-manager.users.n451 = {
+    imports =
+      [
+        ../cmdline.nix
+      ]
+      ++ lib.optionals (!isWsl) [
         inputs.caelestia-shell.homeManagerModules.default
         ../home.nix
       ];
-    };
+    home.username = "n451";
+    home.homeDirectory = "/home/n451";
+    home.stateVersion = "24.11";
+    programs.home-manager.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     rust-bin.stable.latest.default
