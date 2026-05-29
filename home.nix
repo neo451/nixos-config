@@ -118,7 +118,7 @@
     codex
     pi-coding-agent
     claude-code
-    claude-agent-acp
+    # claude-agent-acp
     llama-cpp
     cursor-cli
     copilot-language-server
@@ -298,7 +298,7 @@
     mgba # gameboy!
     vcv-rack
     # jre
-    bitwig-studio
+    # bitwig-studio
     # kdePackages.kdenlive # video
     # inkscape-with-extensions # vector grahpics editor
 
