@@ -1,13 +1,47 @@
 #!/bin/sh
 
 # Config
-CONFIG_DIR="$HOME/nixos-config"  # <-- Change this to your actual config path
+CONFIG_DIR="${NIXOS_CONFIG_DIR:-$HOME/nixos-config}"
 
 # Enter config directory
 cd "$CONFIG_DIR" || {
     echo "Error: Can't access $CONFIG_DIR" >&2
     exit 1
 }
+
+is_wsl() {
+    [ -e /proc/sys/fs/binfmt_misc/WSLInterop ] || grep -qi microsoft /proc/version 2>/dev/null
+}
+
+CONFIG_NAMES=$(nix eval --json .#nixosConfigurations --apply builtins.attrNames 2>/dev/null | tr -d '[]"' | tr ',' ' ')
+
+has_config() {
+    for config in $CONFIG_NAMES; do
+        [ "$config" = "$1" ] && return 0
+    done
+    return 1
+}
+
+# Pick the right flake output automatically. Override with REBUILD_OS_CONFIG=...
+if [ -n "${REBUILD_OS_CONFIG:-}" ]; then
+    SYSTEM_CONFIG="$REBUILD_OS_CONFIG"
+elif is_wsl && has_config wsl; then
+    SYSTEM_CONFIG="wsl"
+elif has_config "$(hostname)"; then
+    SYSTEM_CONFIG="$(hostname)"
+elif has_config nixos; then
+    SYSTEM_CONFIG="nixos"
+else
+    echo "Error: Could not determine a NixOS flake configuration to rebuild." >&2
+    echo "Set REBUILD_OS_CONFIG to one of: $CONFIG_NAMES" >&2
+    exit 1
+fi
+
+if [ "$(id -u)" -eq 0 ]; then
+    SUDO=""
+else
+    SUDO="sudo"
+fi
 
 # Verify we're in a git repo
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -18,7 +52,7 @@ fi
 # Edit configuration files
 # nvim -c 'lua Snacks.picker.files({cwd = [[~/nixos-config]] })'
 
-nvim ~/nixos-config
+"${EDITOR:-nvim}" "$CONFIG_DIR"
 
 # Commit changes if any
 if [ -n "$(git status --porcelain)" ]; then
@@ -27,9 +61,9 @@ if [ -n "$(git status --porcelain)" ]; then
     git commit -m "nixos: $timestamp"
     
     # Rebuild system with confirmation
-    echo "Rebuilding system..."
-    if sudo nixos-rebuild switch; then
-        echo "Successfully rebuilt system!"
+    echo "Rebuilding system using flake configuration: $SYSTEM_CONFIG"
+    if $SUDO nixos-rebuild switch --flake "$CONFIG_DIR#$SYSTEM_CONFIG"; then
+        echo "Successfully rebuilt $SYSTEM_CONFIG!"
         echo ""
         echo "Changes applied:"
         git diff HEAD~1 HEAD
