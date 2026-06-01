@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./home/starship.nix
     ./home/fish.nix
@@ -65,12 +62,12 @@
     # ai
     opencode
     codex
-    pi-coding-agent
     claude-code
     # claude-agent-acp
     llama-cpp
     cursor-cli
     copilot-language-server
+    pi-coding-agent
 
     brightnessctl
     udisks

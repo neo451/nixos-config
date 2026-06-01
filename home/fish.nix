@@ -19,6 +19,8 @@
       end
       if test -f ~/secret/SPOTIFY.fish
           source ~/secret/SPOTIFY.fish
+          set -q SPOTIFY_CLIENT_ID; and set -gx SPOTIFY_CLIENT_ID $SPOTIFY_CLIENT_ID
+          set -q SPOTIFY_CLIENT_SECRET; and set -gx SPOTIFY_CLIENT_SECRET $SPOTIFY_CLIENT_SECRET
       end
       set LEDGER_FILE ~/Documents/Notes/ledger.md
       zoxide init fish | source
