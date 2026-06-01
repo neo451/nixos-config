@@ -1,4 +1,8 @@
-{lib, pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   wsl = {
     enable = true;
 
@@ -18,6 +22,10 @@
       # Leave resolv.conf / hosts generation at defaults unless using a custom DNS/VPN.
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    wsl-open
+  ];
 
   # stateVersion is PER-HOST. Do NOT copy the bare-metal value.
   # Replace this with the value the NixOS-WSL installer wrote into
