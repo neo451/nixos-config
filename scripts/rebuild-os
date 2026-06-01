@@ -10,10 +10,25 @@ cd "$CONFIG_DIR" || {
 }
 
 is_wsl() {
-    [ -e /proc/sys/fs/binfmt_misc/WSLInterop ] || grep -qi microsoft /proc/version 2>/dev/null
+    # Prefer explicit WSL markers. Some systems do not mount binfmt_misc,
+    # and systemd-detect-virt has no --wsl flag on this version.
+    [ -n "${WSL_DISTRO_NAME:-}${WSL_INTEROP:-}" ] && return 0
+    [ -e /proc/sys/fs/binfmt_misc/WSLInterop ] && return 0
+    [ -d /run/WSL ] && return 0
+    [ -d /mnt/wsl ] && return 0
+
+    for file in /proc/sys/kernel/osrelease /proc/version; do
+        [ -r "$file" ] && grep -Eiq '(microsoft|wsl)' "$file" && return 0
+    done
+
+    if command -v systemd-detect-virt >/dev/null 2>&1; then
+        [ "$(systemd-detect-virt 2>/dev/null)" = "wsl" ] && return 0
+    fi
+
+    return 1
 }
 
-CONFIG_NAMES=$(nix eval --json .#nixosConfigurations --apply builtins.attrNames 2>/dev/null | tr -d '[]"' | tr ',' ' ')
+CONFIG_NAMES=$(nix eval --raw .#nixosConfigurations --apply 'x: builtins.concatStringsSep " " (builtins.attrNames x)' 2>/dev/null)
 
 has_config() {
     for config in $CONFIG_NAMES; do
