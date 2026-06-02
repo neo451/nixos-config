@@ -9,6 +9,7 @@
       rpi = "ssh -t fe3o4@172.20.10.14 'tmux attach 2>/dev/null || tmux new -s main'";
     };
     shellInit = ''
+      set -gx BROWSER wsl-open
       fish_add_path ~/.npm-global/bin
       if test -f ~/.config/private-env
         source ~/.config/private-env
