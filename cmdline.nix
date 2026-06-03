@@ -4,6 +4,7 @@
     ./home/fish.nix
     ./home/newsboat.nix
     ./home/atuin.nix
+    ./home/emacs.nix
   ];
 
   home.file."scripts" = {
@@ -41,7 +42,6 @@
   };
 
   home.packages = with pkgs; [
-    emacs
     cmake
     vim
     wget
@@ -68,7 +68,6 @@
     cursor-cli
     copilot-language-server
     pi-coding-agent
-    pi-acp
 
     brightnessctl
     udisks
