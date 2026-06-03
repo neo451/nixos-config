@@ -10,6 +10,7 @@
         evil-org
         evil-surround
         which-key
+        tokyo-night
       ];
   };
 
