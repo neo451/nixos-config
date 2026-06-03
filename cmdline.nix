@@ -68,6 +68,7 @@
     cursor-cli
     copilot-language-server
     pi-coding-agent
+    pi-acp
 
     brightnessctl
     udisks
