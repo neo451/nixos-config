@@ -13,10 +13,7 @@
       ];
   };
 
-  # Keep the Emacs configuration as plain text in this repo and link it into
-  # ~/.config/emacs so it is easy to inspect while learning Org mode.
-  xdg.configFile."emacs" = {
-    source = ./emacs;
-    recursive = true;
-  };
+  # Emacs prefers ~/.emacs.d whenever that directory exists.  Link only the
+  # init file there so existing mutable state such as eln-cache can stay put.
+  home.file.".emacs.d/init.el".source = ./emacs/init.el;
 }
