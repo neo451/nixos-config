@@ -1,0 +1,144 @@
+#+title: Org Agenda Guide
+#+startup: overview
+
+* What this setup gives you
+Your Org directory is:
+
+#+begin_src text
+~/orgfiles
+#+end_src
+
+Every =.org= file in that folder is included in the agenda.  The example file
+is:
+
+#+begin_src text
+~/orgfiles/agenda.org
+#+end_src
+
+Open it with:
+
+- Vim-style leader key: =SPC f=, then type =~/orgfiles/agenda.org=
+- Emacs key: =C-x C-f ~/orgfiles/agenda.org=
+
+* The 5 minute agenda walkthrough
+1. Open the agenda dispatcher:
+
+   #+begin_src text
+   C-c a
+   #+end_src
+
+2. Press =a= for the daily/weekly agenda.
+
+3. Move around:
+
+   - =j= / =k= :: down/up, from Evil integration
+   - =RET= :: jump to the task in its Org file
+   - =q= :: quit the agenda window
+
+4. Put point on a TODO item and try:
+
+   - =t= :: change TODO state
+   - =s= :: schedule it
+   - =d= :: set a deadline
+   - =+= / =-= :: change priority
+   - =g= :: refresh agenda
+
+5. Press =q= to leave the agenda.
+
+* Useful dispatcher commands
+After pressing =C-c a=, press one of these:
+
+| Key | View |
+|-----+------|
+| =a= | Agenda for the current week/day |
+| =t= | All unfinished TODO items |
+| =m= | Match tags/properties/TODO states |
+| =s= | Search agenda files |
+
+Start with =C-c a a= and =C-c a t=.
+
+* Basic Org task editing
+In any Org file, on a heading:
+
+| Key | Action |
+|-----+--------|
+| =C-c C-t= | Cycle TODO state |
+| =C-c C-s= | Schedule task |
+| =C-c C-d= | Set deadline |
+| =C-c C-x p= | Set priority |
+| =TAB= | Fold/unfold subtree |
+| =S-TAB= | Fold/unfold whole file |
+
+With Evil enabled, normal Vim movement/editing also works: =j k h l=, =gg=,
+=G=, =/= search, =dd=, =yy=, =p=, visual mode, text objects, etc.
+
+* Task states in this setup
+This config uses:
+
+#+begin_src text
+TODO NEXT WAITING | DONE CANCELLED
+#+end_src
+
+Example workflow:
+
+- =TODO= means possible work.
+- =NEXT= means the next concrete action.
+- =WAITING= means blocked by something/someone.
+- =DONE= means completed.
+- =CANCELLED= means intentionally dropped.
+
+Use =C-c C-t= on a heading to cycle through them.
+
+* Scheduling vs deadlines
+Use both, but for different meanings:
+
+- =SCHEDULED= means "do not show this until this date" or "I plan to do it then".
+- =DEADLINE= means "this is due by this date".
+
+Examples:
+
+#+begin_src org
+** TODO Read one Org manual page
+SCHEDULED: <2026-06-04 Thu>
+
+** TODO Submit essay
+DEADLINE: <2026-06-12 Fri>
+#+end_src
+
+* Capturing quick tasks
+Press:
+
+#+begin_src text
+C-c c
+#+end_src
+
+Then choose:
+
+| Key | Capture |
+|-----+---------|
+| =t= | Quick task into =agenda.org= |
+| =n= | Quick note into =agenda.org= |
+
+Finish capture with =C-c C-c=.  Cancel with =C-c C-k=.
+
+* Suggested first practice
+1. Open =~/orgfiles/agenda.org=.
+2. Add a new heading under =* Inbox=:
+
+   #+begin_src org
+   ** TODO Learn one agenda command
+   #+end_src
+
+3. Put point on the heading and press =C-c C-s= to schedule it for today.
+4. Open =C-c a a= and confirm it appears.
+5. Jump to it with =RET=.
+6. Mark it done with =C-c C-t= or agenda key =t=.
+
+* Where to go next
+Once this feels comfortable, learn these built-in Org features:
+
+- capture templates
+- tags: =C-c C-q=
+- agenda custom commands
+- refiling: =C-c C-w=
+- clocking time: =C-c C-x C-i= and =C-c C-x C-o=

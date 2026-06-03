@@ -81,13 +81,15 @@
 (require 'evil-org-agenda)
 (evil-org-agenda-set-keys)
 
-(setq org-directory "~/org"
+(setq org-directory "~/orgfiles"
+      org-default-notes-file (expand-file-name "agenda.org" org-directory)
       org-startup-indented t
       org-hide-emphasis-markers t
       org-return-follows-link t
       org-src-window-setup 'current-window
       org-edit-src-content-indentation 0
-      org-log-done 'time)
+      org-log-done 'time
+      org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAITING(w@)" "|" "DONE(d!)" "CANCELLED(c@)")))
 (make-directory org-directory t)
 
 (add-hook 'org-mode-hook #'visual-line-mode)
@@ -95,9 +97,24 @@
 ;; Useful starting points for Org exploration.
 (global-set-key (kbd "C-c c") #'org-capture)
 (global-set-key (kbd "C-c a") #'org-agenda)
-(setq org-agenda-files (list org-directory))
+(setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
+(setq org-capture-templates
+      '(("t" "Task" entry
+         (file+headline org-default-notes-file "Inbox")
+         "* TODO %?\n  %U")
+        ("n" "Note" entry
+         (file+headline org-default-notes-file "Notes")
+         "* %?\n  %U")))
 
-(load-theme 'tokyo-night t)
- 
+(evil-define-key 'normal global-map
+  (kbd "<leader>oa") #'org-agenda
+  (kbd "<leader>oc") #'org-capture
+  (kbd "<leader>oo") (lambda ()
+                         (interactive)
+                         (find-file org-default-notes-file)))
+
+(when (member 'tokyo-night (custom-available-themes))
+  (load-theme 'tokyo-night t))
+
 (provide 'init)
 ;;; init.el ends here

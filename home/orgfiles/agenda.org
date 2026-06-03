@@ -1,0 +1,31 @@
+#+title: Example Agenda
+#+startup: overview
+
+* Inbox
+Use this file as a small playground for Org agenda commands.  Change dates,
+mark things DONE, schedule new tasks, and see how the agenda updates.
+
+** TODO Read the agenda guide
+SCHEDULED: <2026-06-03 Wed>
+Open =~/orgfiles/guide.org= and follow the first walkthrough.
+
+** TODO Try changing a task state
+DEADLINE: <2026-06-05 Fri>
+Put point on this heading and press =t= in normal mode, or use =C-c C-t=.
+
+** TODO Schedule a new Org practice session
+SCHEDULED: <2026-06-06 Sat 10:00>
+In an Org file: =C-c C-s= sets or changes SCHEDULED.
+
+** WAITING Look up capture templates
+SCHEDULED: <2026-06-07 Sun>
+This is intentionally not TODO; it shows custom todo states in the agenda.
+
+* Habits and recurring examples
+** TODO Weekly Org review
+SCHEDULED: <2026-06-08 Mon +1w>
+The =+1w= repeater means this comes back weekly after you mark it DONE.
+
+* Notes
+** Org agenda is built from files in =org-agenda-files=
+This setup points Emacs at every =.org= file in =~/orgfiles=.
