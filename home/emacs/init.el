@@ -97,5 +97,7 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (setq org-agenda-files (list org-directory))
 
+(load-theme 'tokyo-night t)
+ 
 (provide 'init)
 ;;; init.el ends here
