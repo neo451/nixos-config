@@ -7,6 +7,7 @@
       pp = "~/scripts/wp";
       cat = "bat";
       rpi = "ssh -t fe3o4@172.20.10.14 'tmux attach 2>/dev/null || tmux new -s main'";
+      nvim-dev = "VIMRUNTIME=/home/n451/Clone/neovim/runtime /home/n451/Clone/neovim/build/bin/nvim --luamod-dev";
     };
     shellInit = ''
       set -gx BROWSER wsl-open
