@@ -11,6 +11,7 @@
     };
     shellInit = ''
       set -gx BROWSER wsl-open
+      fish_add_path "/home/n451/.local/bin"
       fish_add_path ~/.npm-global/bin
       if test -f ~/.config/private-env
         source ~/.config/private-env
