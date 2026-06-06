@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda;
-    loadModels = ["nomic-embed-text"];
-  };
   imports = [
     ./home/starship.nix
     ./home/fish.nix
