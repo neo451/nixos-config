@@ -180,12 +180,6 @@
     };
   };
 
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda;
-    loadModels = ["nomic-embed-text"];
-  };
-
   # docker
   virtualisation.docker = {
     enable = true;
