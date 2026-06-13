@@ -89,6 +89,7 @@
     marksman
     qpdf
     iwe
+    opencc
 
     # notebook
     # marimo
