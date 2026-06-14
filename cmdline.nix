@@ -81,7 +81,6 @@
     write-good
     quarto
     typst
-    pandoc
     texliveFull
     zk
     rime-ls
