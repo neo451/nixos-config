@@ -84,6 +84,13 @@ in {
     ];
   };
 
+  # Run the Docker daemon on startup on both bare-metal NixOS and WSL.
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+    storageDriver = lib.mkIf (!isWsl) "btrfs";
+  };
+
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [

@@ -186,12 +186,6 @@
     loadModels = ["nomic-embed-text"];
   };
 
-  # docker
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
-  };
-
   services = {
     xserver = {videoDrivers = ["nvidia"];};
     blueman.enable = true;
