@@ -38,6 +38,9 @@
   };
 
   home.packages = with pkgs; [
+    # gui
+    zathura
+
     # pi
     rpi-imager
 
