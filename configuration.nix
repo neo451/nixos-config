@@ -131,6 +131,14 @@
 
   environment.sessionVariables = {NIXOS_OZONE_WL = "1";};
 
+  # Keep large C++/Qt builds (e.g. quickshell) from exhausting the sandbox /build tmpdir.
+  # The previous generated nix.conf used max-jobs=auto and cores=0, which can fan out
+  # too many compiler jobs at once.
+  nix.settings = {
+    max-jobs = 2;
+    cores = 4;
+  };
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
