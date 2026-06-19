@@ -57,6 +57,22 @@
             rust-overlay.overlays.default
             neovim-nightly-overlay.overlays.default
             (final: prev: {
+              vcv-rack = prev.vcv-rack.overrideAttrs (old: {
+                # Upstream GitHub PR pages can 404 while patch-diff still serves
+                # the same patch; keep nixpkgs' expected normalized hash.
+                patches =
+                  builtins.filter
+                  (patch: !(final.lib.hasInfix "fix-segfault-on-linux.patch" (toString patch)))
+                  (old.patches or [])
+                  ++ [
+                    (prev.fetchpatch {
+                      name = "fix-segfault-on-linux.patch";
+                      url = "https://patch-diff.githubusercontent.com/raw/VCVRack/Rack/pull/1944.patch";
+                      hash = "sha256-dlndyCfCznGDzlWNWrQTgh+FtmsrrL2DVuRE0xCxUck=";
+                    })
+                  ];
+              });
+
               ly = prev.ly.overrideAttrs (old: {
                 # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
                 prePatch =
