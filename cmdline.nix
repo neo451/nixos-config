@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  hunk,
   ...
 }: {
   imports = [
@@ -56,8 +56,7 @@
     lazyjj
     gh
     gh-dash
-
-    inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
+    hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
 
     # life
     hledger
