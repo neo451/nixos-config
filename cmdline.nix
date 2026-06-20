@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./home/starship.nix
     ./home/fish.nix
@@ -52,6 +56,8 @@
     lazyjj
     gh
     gh-dash
+
+    inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
 
     # life
     hledger
