@@ -17,7 +17,7 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
-      configurationLimit = 4;
+      configurationLimit = 2;
       extraEntries = ''
         menuentry "Windows" {
         	search --file --no-floppy --set=root /EFI/Microsoft/Boot/bootmgfw/efi
@@ -92,6 +92,7 @@
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
+    enableGtk2 = true;
     fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       rime-data
@@ -101,6 +102,26 @@
       fcitx5-rose-pine
       fcitx5-mozc
     ];
+    fcitx5.settings.inputMethod = {
+      "Groups/0" = {
+        Name = "Default";
+        "Default Layout" = "us";
+        DefaultIM = "rime";
+      };
+      "Groups/0/Items/0" = {
+        Name = "keyboard-us";
+        Layout = "";
+      };
+      "Groups/0/Items/1" = {
+        Name = "rime";
+        Layout = "";
+      };
+      "Groups/0/Items/2" = {
+        Name = "mozc";
+        Layout = "";
+      };
+      GroupOrder."0" = "Default";
+    };
   };
 
   fonts = {
@@ -129,7 +150,13 @@
     };
   };
 
-  environment.sessionVariables = {NIXOS_OZONE_WL = "1";};
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    SDL_IM_MODULE = "fcitx";
+    GLFW_IM_MODULE = "ibus";
+  };
 
   # Keep large C++/Qt builds (e.g. quickshell) from exhausting the sandbox /build tmpdir.
   # The previous generated nix.conf used max-jobs=auto and cores=0, which can fan out
