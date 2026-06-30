@@ -18,6 +18,8 @@
     wslConf = {
       automount.root = "/mnt";
       # Keep the Windows PATH out of the Linux shell: faster, avoids binary shadowing.
+      # Interop itself stays enabled so explicit Windows command wrappers work.
+      interop.enabled = true;
       interop.appendWindowsPath = false;
       # Leave resolv.conf / hosts generation at defaults unless using a custom DNS/VPN.
     };
@@ -31,6 +33,19 @@
 
   environment.systemPackages = with pkgs; [
     wsl-open
+
+    # Keep appendWindowsPath=false, but expose the Windows tools we actually use.
+    # Useful for scripts that expect common Windows commands without polluting
+    # PATH with all of C:\Windows\System32.
+    (writeShellScriptBin "cmd.exe" ''
+      exec /mnt/c/Windows/System32/cmd.exe "$@"
+    '')
+    (writeShellScriptBin "powershell.exe" ''
+      exec /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "$@"
+    '')
+    (writeShellScriptBin "explorer.exe" ''
+      exec /mnt/c/Windows/explorer.exe "$@"
+    '')
   ];
 
   # Windows Cursor/VS Code WSL installers run non-login shells where NixOS
