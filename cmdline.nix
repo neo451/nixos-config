@@ -81,10 +81,7 @@ in {
     # ai
     opencode
     codex
-    claude-code
-    # claude-agent-acp
     llama-cpp
-    cursor-cli
     copilot-language-server
     pi-coding-agent
     piAcp
