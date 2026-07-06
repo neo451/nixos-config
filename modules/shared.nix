@@ -98,6 +98,7 @@ in {
     imports =
       [
         ../cmdline.nix
+        ../home/rime.nix
       ]
       ++ lib.optionals (!isWsl) [
         inputs.caelestia-shell.homeManagerModules.default

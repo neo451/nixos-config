@@ -152,7 +152,6 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     SDL_IM_MODULE = "fcitx";
     GLFW_IM_MODULE = "ibus";
