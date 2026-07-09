@@ -154,7 +154,6 @@
       };
       services = {
         lyricsBackend = "Auto";
-        showLyrics = false;
       };
     };
   };
