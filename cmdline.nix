@@ -193,7 +193,7 @@ in {
     mpd
     mpc
 
-    # sync
+    # file sync
     rsync
     rclone
     syncthing
