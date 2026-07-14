@@ -1,8 +1,4 @@
-{
-  pkgs,
-  hunk,
-  ...
-}: let
+{pkgs, ...}: let
   piAcp = pkgs.buildNpmPackage rec {
     pname = "pi-acp";
     version = "0.0.31";
@@ -70,7 +66,6 @@ in {
     lazyjj
     gh
     gh-dash
-    hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
 
     # life
     hledger
