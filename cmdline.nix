@@ -194,7 +194,7 @@ in {
     rsync
     rclone
     syncthing
-    opendrop
+    # opendrop
 
     # ssh
     sshfs
