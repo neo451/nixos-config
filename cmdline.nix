@@ -19,6 +19,7 @@ in {
     ./home/newsboat.nix
     ./home/atuin.nix
     ./home/emacs.nix
+    ./home/tmux.nix
   ];
 
   home.file."scripts" = {
@@ -172,7 +173,6 @@ in {
     unzip
 
     # tui
-    tmux
     htop
     w3m
     tokei
