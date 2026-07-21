@@ -25,11 +25,11 @@
     };
   };
 
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cpu;
-    loadModels = ["nomic-embed-text"];
-  };
+  # services.ollama = {
+  #   enable = true;
+  #   package = pkgs.ollama-cpu;
+  #   loadModels = ["nomic-embed-text"];
+  # };
 
   environment.systemPackages = with pkgs; [
     wsl-open

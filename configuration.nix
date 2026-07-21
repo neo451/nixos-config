@@ -180,11 +180,11 @@
     };
   };
 
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda;
-    loadModels = ["nomic-embed-text"];
-  };
+  # services.ollama = {
+  #   enable = true;
+  #   package = pkgs.ollama-cuda;
+  #   loadModels = ["nomic-embed-text"];
+  # };
 
   services = {
     xserver = {videoDrivers = ["nvidia"];};
