@@ -115,6 +115,9 @@ in {
     pom
     pomodoro
 
+    awscli2
+    mpv
+
     # cmdline
     starship
     bat
