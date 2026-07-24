@@ -105,6 +105,7 @@ in {
     qpdf
     iwe
     opencc
+    poppler-utils
 
     # notebook
     # marimo
