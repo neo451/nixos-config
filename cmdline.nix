@@ -82,7 +82,7 @@ in {
     pi-coding-agent
     piAcp
 
-    espeack
+    espeak
 
     brightnessctl
     udisks
