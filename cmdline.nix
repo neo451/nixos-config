@@ -116,7 +116,6 @@ in {
     pom
     pomodoro
 
-    awscli2
     mpv
 
     # cmdline
@@ -132,7 +131,6 @@ in {
 
     # shell
     fish
-    xonsh
     atuin
     shellcheck
 
