@@ -32,6 +32,12 @@
       set LEDGER_FILE ~/Documents/Notes/ledger.md
       zoxide init fish | source
     '';
+    interactiveShellInit = ''
+      # Keep every terminal on both NixOS hosts in one persistent tmux session.
+      if not set -q TMUX
+        exec tmux new-session -A -s main
+      end
+    '';
     shellAbbrs = {
       rack = "cd Binaries/Rack2Pro/ ; steam-run ./Rack";
       nfu = "cd ~/nixos-config; sudo nix flake update";
