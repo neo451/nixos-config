@@ -160,7 +160,6 @@ in {
     openssl
     chrony
     websocat
-    owl
     iw
     wormhole-rs
     inetutils
