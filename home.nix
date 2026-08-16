@@ -127,8 +127,8 @@
     qbittorrent # download
 
     # ladders
-    # clash-verge-rev
-    # nekoray
+    clash-verge-rev
+    nekoray
 
     # widgets
     networkmanagerapplet
