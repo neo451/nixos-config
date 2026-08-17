@@ -163,6 +163,9 @@
   nix.settings = {
     max-jobs = 2;
     cores = 4;
+    substituters = [
+      "https://mirros.tuna.tsinghua.edu.cn/nix-channels/store"
+    ];
   };
 
   hardware.bluetooth = {
