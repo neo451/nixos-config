@@ -41,6 +41,9 @@
     # gui
     zathura
 
+    # browser
+    firefox
+
     # pi
     rpi-imager
 
