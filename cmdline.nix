@@ -78,7 +78,7 @@ in {
     opencode
     codex
     llama-cpp
-    copilot-language-server
+    # copilot-language-server
     pi-coding-agent
     piAcp
 

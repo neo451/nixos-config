@@ -73,7 +73,7 @@
     karere
     wine-wayland
     steam-run
-    obsidian
+    # obsidian
     calibre
     # tor-browser
     wireshark
