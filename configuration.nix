@@ -82,6 +82,13 @@
 
   networking.networkmanager.enable = true;
 
+  programs.throne = {
+    enable = true;
+    tunMode = {
+      enable = true;
+    };
+  };
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play

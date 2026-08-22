@@ -136,12 +136,6 @@
     # widgets
     networkmanagerapplet
   ];
-  programs.throne = {
-    enable = true;
-    tunMode = {
-      enable = true;
-    };
-  };
 
   # https://github.com/caelestia-dots/shell
   programs.caelestia = {
