@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: $0 <youtube-video-or-playlist-url>" >&2
+  exit 1
+fi
+
+if ! command -v yt-dlp >/dev/null 2>&1; then
+  echo "Error: yt-dlp is not installed or not in PATH." >&2
+  exit 1
+fi
+
+if ! command -v ffmpeg >/dev/null 2>&1; then
+  echo "Error: ffmpeg is required to merge video+audio into Resolve-friendly MP4 files." >&2
+  exit 1
+fi
+
+url=$1
+archive_file=".youtube-download-archive"
+
+# The archive makes repeated runs incremental: videos that were downloaded
+# successfully before are skipped, while newly added playlist items are fetched.
+# Playlist items use their playlist index; standalone videos fall back to an
+# automatic index and are saved under ./Single Videos/.
+#
+# Prefer DaVinci Resolve-friendly files: MP4 container, H.264 video, AAC/M4A
+# audio. This avoids YouTube's default WEBM/Opus downloads, whose audio tracks
+# Resolve may ignore.
+yt-dlp \
+  --yes-playlist \
+  --ignore-errors \
+  --download-archive "$archive_file" \
+  -f "bv*[ext=mp4][vcodec^=avc1]+ba[ext=m4a][acodec^=mp4a]/b[ext=mp4][vcodec^=avc1][acodec^=mp4a]" \
+  --merge-output-format mp4 \
+  -o "%(playlist_title|Single Videos)s/%(playlist_index,autonumber)03d - %(title)s [%(id)s].%(ext)s" \
+  "$url"
