@@ -273,7 +273,7 @@
   programs.firefox.enable = true;
 
   environment.systemPackages = [
-    # inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
