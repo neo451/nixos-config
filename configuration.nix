@@ -82,6 +82,24 @@
 
   networking.networkmanager.enable = true;
 
+  programs.clash-verge = {
+    enable = true;
+    package = pkgs.clash-verge-rev;
+
+    # TUN 推荐开启服务模式
+    serviceMode = true;
+    tunMode = true;
+
+    # 可选
+    autoStart = true;
+  };
+
+  # TUN 内核模块，一般可以自动加载，加上更保险
+  boot.kernelModules = ["tun"];
+
+  # TUN / Mihomo 和 rp_filter 容易冲突
+  networking.firewall.checkReversePath = "loose";
+
   programs.throne = {
     enable = true;
     tunMode = {
