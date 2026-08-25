@@ -2,7 +2,22 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  caelestiaShellSettings = {
+    notifs = {
+      actionOnClick = true;
+      openExpanded = true;
+      expire = false;
+      fullscreen = "on";
+      defaultExpireTimeout = 7000;
+      fullscreenExpireTimeout = 3000;
+      groupPreviewNum = 3;
+    };
+    services = {
+      lyricsBackend = "Auto";
+    };
+  };
+in {
   imports = [
     ./home/ghostty.nix
   ];
@@ -76,7 +91,7 @@
     karere
     wine-wayland
     steam-run
-    # obsidian
+    obsidian
     calibre
     # tor-browser
     wireshark
@@ -145,19 +160,23 @@
       "PATH=${lib.makeBinPath [pkgs.app2unit pkgs.libnotify pkgs.systemd pkgs.xdg-utils]}:/etc/profiles/per-user/n451/bin:/run/current-system/sw/bin"
     ];
     cli.enable = true;
-    settings = {
-      notifs = {
-        actionOnClick = true;
-        openExpanded = true;
-        expire = false;
-        fullscreen = "on";
-        defaultExpireTimeout = 7000;
-        fullscreenExpireTimeout = 3000;
-        groupPreviewNum = 3;
-      };
-      services = {
-        lyricsBackend = "Auto";
-      };
-    };
+    # `settings` is deliberately not used: it generates
+    # ~/.config/caelestia/shell.json as a read-only symlink into the Nix store,
+    # and Caelestia writes that file back at runtime, producing a
+    # "Failed to save config" toast on startup. Seed a writable file below.
   };
+
+  home.activation.seedCaelestiaConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run mkdir -p "$HOME/.config/caelestia"
+
+    # Replace a store symlink (from a previous `settings`-based config) with a real file.
+    if [ -L "$HOME/.config/caelestia/shell.json" ]; then
+      run rm "$HOME/.config/caelestia/shell.json"
+    fi
+
+    # Only seed if missing so runtime changes made by the shell are preserved.
+    if [ ! -e "$HOME/.config/caelestia/shell.json" ]; then
+      run cp ${pkgs.writeText "caelestia-shell.json" (builtins.toJSON caelestiaShellSettings)} "$HOME/.config/caelestia/shell.json"
+    fi
+  '';
 }
