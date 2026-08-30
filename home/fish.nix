@@ -37,7 +37,9 @@
     '';
     shellAbbrs = {
       rack = "cd Binaries/Rack2Pro/ ; steam-run ./Rack";
-      nfu = "cd ~/nixos-config; sudo nix flake update";
+      # Flake updates modify user-owned files and must keep the user's VPN
+      # proxy and GitHub credentials, both of which sudo normally strips.
+      nfu = "cd ~/nixos-config; and nix flake update";
       nrs = "~/scripts/rebuild-os";
       gd = "git diff --output-indicator-new=' ' --output-indicator-old=' '";
       em = "emacs -nw";

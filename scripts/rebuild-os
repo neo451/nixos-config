@@ -55,7 +55,9 @@ fi
 if [ "$(id -u)" -eq 0 ]; then
     SUDO=""
 else
-    SUDO="sudo"
+    # WSL receives the Windows VPN proxy through the user's environment.
+    # Preserve it for the root Nix client; sudo drops these variables by default.
+    SUDO="sudo --preserve-env=HTTP_PROXY,HTTPS_PROXY,http_proxy,https_proxy,NO_PROXY,no_proxy"
 fi
 
 # Verify we're in a git repo

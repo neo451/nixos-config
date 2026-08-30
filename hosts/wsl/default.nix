@@ -25,6 +25,18 @@
     };
   };
 
+  # The Windows VPN exposes its HTTP proxy through localhost in WSL mirrored
+  # networking. The system Nix daemon does not inherit the user's proxy
+  # variables, so give it the proxy explicitly for binary-cache downloads.
+  systemd.services.nix-daemon.environment = {
+    HTTP_PROXY = "http://127.0.0.1:7897";
+    HTTPS_PROXY = "http://127.0.0.1:7897";
+    http_proxy = "http://127.0.0.1:7897";
+    https_proxy = "http://127.0.0.1:7897";
+    NO_PROXY = "127.0.0.1,localhost";
+    no_proxy = "127.0.0.1,localhost";
+  };
+
   # services.ollama = {
   #   enable = true;
   #   package = pkgs.ollama-cpu;
