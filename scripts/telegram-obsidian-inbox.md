@@ -16,7 +16,9 @@ It runs as the `telegram-obsidian-inbox.service` NixOS system service. The servi
 - Appends each message as a timestamped Markdown list item.
 - Records a hidden `telegram:<chat-id>:<message-id>` marker to prevent duplicates.
 - Persists the Telegram update offset under `~/.local/state/telegram-obsidian-inbox/`.
-- Replies with `Saved … ✓` after processing.
+- Writes timestamped, rotating logs to `~/.local/state/telegram-obsidian-inbox/daemon.log` (up to three 1 MiB backups).
+- Runs a one-time `ob sync` from the vault directory after saving each new message.
+- Replies after processing and reports sync failures without discarding the saved note.
 - Supports `/start` and `/status` without writing those commands to the vault.
 
 Example:
@@ -63,6 +65,9 @@ New files must be known to Git before a Git-backed Nix flake can reference them:
 
 ```sh
 git -C ~/nixos-config add scripts/telegram-obsidian-inbox.py scripts/telegram-obsidian-inbox.md
+# WSL:
+sudo nixos-rebuild switch --flake ~/nixos-config#wsl
+# Bare metal:
 sudo nixos-rebuild switch --flake ~/nixos-config#nixos
 ```
 
@@ -79,9 +84,18 @@ sudo systemctl status telegram-obsidian-inbox.service
 sudo journalctl -u telegram-obsidian-inbox.service -f
 ```
 
-Send `/status` to the bot, then send a normal text message. It should appear in today's inbox file.
+Send `/status` to the bot, then send a normal text message. It should appear in today's inbox file and trigger a one-time Obsidian Sync. The vault must already be configured for the headless client (`ob sync-setup`).
 
 ## Operations
+
+Inspect or follow the dedicated log file:
+
+```sh
+less ~/.local/state/telegram-obsidian-inbox/daemon.log
+tail -F ~/.local/state/telegram-obsidian-inbox/daemon.log
+```
+
+The same output remains available in the systemd journal. `daemon.log.1` through `daemon.log.3` are retained automatically.
 
 Restart after changing the environment file:
 
@@ -114,6 +128,7 @@ If the token leaks, revoke it immediately through `@BotFather`, update the envir
 - Messages pass through Telegram and are not a private end-to-end-encrypted path into the vault.
 - The bot token grants control of the bot. Keep the environment file mode at `0600`.
 - Text is stored as written, without converting Telegram formatting entities to Markdown.
+- Sync is attempted only for newly saved messages, not commands or duplicate updates. A sync failure is logged and reported to Telegram, while the local note remains saved.
 - Photos, files, voice notes, message edits, and deletions are not yet supported.
 - Only one process may poll a particular bot token. The daemon holds a local lock to avoid accidental duplicate instances.
 

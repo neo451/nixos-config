@@ -83,6 +83,32 @@ in {
     storageDriver = lib.mkIf (!isWsl) "btrfs";
   };
 
+  systemd.services.telegram-obsidian-inbox = {
+    description = "Capture Telegram messages in the Obsidian inbox";
+    wantedBy = ["multi-user.target"];
+    wants = ["network-online.target"];
+    after = ["network-online.target"];
+    unitConfig.ConditionPathExists = "/home/n451/.config/telegram-obsidian-inbox.env";
+    path = [pkgs.obsidian-headless];
+    serviceConfig = {
+      Type = "simple";
+      User = "n451";
+      Group = "users";
+      Environment = [
+        "HOME=/home/n451"
+        "PYTHONUNBUFFERED=1"
+      ];
+      EnvironmentFile = "/home/n451/.config/telegram-obsidian-inbox.env";
+      ExecStart = "${pkgs.python3}/bin/python3 ${../scripts/telegram-obsidian-inbox.py}";
+      Restart = "always";
+      RestartSec = "10s";
+      UMask = "0077";
+      NoNewPrivileges = true;
+      PrivateTmp = true;
+      ProtectSystem = "full";
+    };
+  };
+
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [

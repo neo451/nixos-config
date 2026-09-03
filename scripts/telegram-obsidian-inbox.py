@@ -5,8 +5,11 @@ from __future__ import annotations
 
 import fcntl
 import json
+import logging
+import logging.handlers
 import os
 import signal
+import subprocess
 import sys
 import time
 import urllib.error
@@ -16,21 +19,46 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-INBOX_DIR = Path("/home/n451/Documents/Notes/Inbox")
+VAULT_DIR = Path("/home/n451/Documents/Notes")
+INBOX_DIR = VAULT_DIR / "Inbox"
 STATE_DIR = Path("/home/n451/.local/state/telegram-obsidian-inbox")
 OFFSET_FILE = STATE_DIR / "offset"
 LOCK_FILE = STATE_DIR / "daemon.lock"
+LOG_FILE = STATE_DIR / "daemon.log"
 POLL_TIMEOUT_SECONDS = 50
+SYNC_TIMEOUT_SECONDS = 300
 
 stopping = False
+logger = logging.getLogger("telegram-obsidian-inbox")
 
 
 class TelegramError(RuntimeError):
     """A sanitized Telegram API or transport error."""
 
 
-def log(message: str) -> None:
-    print(message, flush=True)
+def configure_logging() -> None:
+    STATE_DIR.mkdir(parents=True, exist_ok=True, mode=0o700)
+    STATE_DIR.chmod(0o700)
+
+    formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setFormatter(formatter)
+    file_handler = logging.handlers.RotatingFileHandler(
+        LOG_FILE,
+        maxBytes=1024 * 1024,
+        backupCount=3,
+        encoding="utf-8",
+    )
+    file_handler.setFormatter(formatter)
+    LOG_FILE.chmod(0o600)
+
+    logger.setLevel(logging.INFO)
+    logger.addHandler(stream_handler)
+    logger.addHandler(file_handler)
+
+
+def log(message: str, level: int = logging.INFO) -> None:
+    logger.log(level, message)
 
 
 def request_telegram(token: str, method: str, parameters: dict[str, Any]) -> Any:
@@ -122,6 +150,44 @@ def append_message(message: dict[str, Any]) -> tuple[Path, bool]:
     return target, True
 
 
+def sync_vault() -> bool:
+    log(f"Running `ob sync` in {VAULT_DIR}")
+    try:
+        result = subprocess.run(
+            ["ob", "sync"],
+            cwd=VAULT_DIR,
+            capture_output=True,
+            text=True,
+            timeout=SYNC_TIMEOUT_SECONDS,
+            check=False,
+        )
+    except FileNotFoundError:
+        error = "the `ob` executable was not found"
+        log(f"Obsidian Sync failed: {error}", logging.ERROR)
+        return False
+    except subprocess.TimeoutExpired:
+        error = f"`ob sync` timed out after {SYNC_TIMEOUT_SECONDS}s"
+        log(f"Obsidian Sync failed: {error}", logging.ERROR)
+        return False
+    except OSError as error:
+        detail = f"could not start `ob sync`: {error}"
+        log(f"Obsidian Sync failed: {detail}", logging.ERROR)
+        return False
+
+    output = "\n".join(
+        part.strip() for part in (result.stdout, result.stderr) if part.strip()
+    )
+    if output:
+        log(f"`ob sync` output:\n{output}")
+    if result.returncode != 0:
+        error = f"`ob sync` exited with status {result.returncode}"
+        log(f"Obsidian Sync failed: {error}", logging.ERROR)
+        return False
+
+    log("Obsidian Sync completed")
+    return True
+
+
 def reply_for_message(
     message: dict[str, Any], allowed_user_id: int
 ) -> tuple[int, str] | None:
@@ -143,9 +209,18 @@ def reply_for_message(
         return chat_id, f"Running. Inbox: {INBOX_DIR}/YYYY-MM-DD.md"
 
     target, created = append_message(message)
-    relative_target = target.relative_to(INBOX_DIR.parent)
-    action = "Saved" if created else "Already saved"
-    return chat_id, f"{action} to {relative_target} ✓"
+    relative_target = target.relative_to(VAULT_DIR)
+    if not created:
+        log(f"Skipped duplicate Telegram message for {relative_target}")
+        return chat_id, f"Already saved to {relative_target} ✓"
+
+    log(f"Saved Telegram message to {relative_target}")
+    if not sync_vault():
+        return (
+            chat_id,
+            f"Saved to {relative_target} ✓, but sync failed; check {LOG_FILE}.",
+        )
+    return chat_id, f"Saved and synced {relative_target} ✓"
 
 
 def get_updates(token: str, offset: int | None) -> list[dict[str, Any]]:
@@ -169,6 +244,7 @@ def stop(_signum: int, _frame: Any) -> None:
 
 
 def main() -> int:
+    configure_logging()
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     allowed_user = os.environ.get("TELEGRAM_ALLOWED_USER_ID", "").strip()
     if not token or not allowed_user:
@@ -180,8 +256,13 @@ def main() -> int:
         log("TELEGRAM_ALLOWED_USER_ID must be an integer")
         return 2
 
-    _instance_lock = acquire_instance_lock()
-    offset = load_offset()
+    try:
+        _instance_lock = acquire_instance_lock()
+        offset = load_offset()
+    except (OSError, RuntimeError) as error:
+        log(f"Startup failed: {error}", logging.ERROR)
+        return 1
+
     backoff = 1
     log(f"Telegram inbox daemon started; writing to {INBOX_DIR}")
 
@@ -200,9 +281,12 @@ def main() -> int:
                     try:
                         send_message(token, *reply)
                     except TelegramError as error:
-                        log(f"Warning: note was processed but reply failed: {error}")
+                        log(
+                            f"Note was processed but Telegram reply failed: {error}",
+                            logging.WARNING,
+                        )
         except (TelegramError, OSError, RuntimeError, KeyError, TypeError) as error:
-            log(f"Error: {error}; retrying in {backoff}s")
+            log(f"{error}; retrying in {backoff}s", logging.ERROR)
             time.sleep(backoff)
             backoff = min(backoff * 2, 60)
 
