@@ -205,6 +205,14 @@
     };
   };
 
+  # The firmware write-protects the DDR5 SPD hub, so spd5118 fails its
+  # resume callback with -ENXIO. Temperature monitoring is nonessential.
+  boot.blacklistedKernelModules = ["spd5118"];
+
+  # Avoid stale GuC command-transport state after s2idle resume. The internal
+  # panel is driven by i915, and this failure coincides with the black screen.
+  boot.kernelParams = ["i915.enable_guc=0"];
+
   # Enable OpenGL
   hardware.graphics = {enable = true;};
 
