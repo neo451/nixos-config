@@ -27,23 +27,23 @@ in {
       "image/jpeg" = "org.gnome.Loupe.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
       "image/gif" = "org.gnome.Loupe.desktop";
-      "x-scheme-handler/obsidian" = "obsidian-nvim.desktop";
+      # "x-scheme-handler/obsidian" = "obsidian-nvim.desktop";
       "x-scheme-handler/http" = "zen-beta.desktop";
       "x-scheme-handler/https" = "zen-beta.desktop";
       "text/html" = "zen-beta.desktop";
     };
   };
 
-  xdg.desktopEntries.obsidian-nvim = {
-    name = "obsidian.nvim";
-    comment = "Handle obsidian:// URIs in Neovim with obsidian.nvim";
-    exec = "obsidian-uri-handler %u";
-    terminal = true;
-    type = "Application";
-    noDisplay = true;
-    mimeType = ["x-scheme-handler/obsidian"];
-    categories = ["Utility" "TextEditor"];
-  };
+  # xdg.desktopEntries.obsidian-nvim = {
+  #   name = "obsidian.nvim";
+  #   comment = "Handle obsidian:// URIs in Neovim with obsidian.nvim";
+  #   exec = "obsidian-uri-handler %u";
+  #   terminal = true;
+  #   type = "Application";
+  #   noDisplay = true;
+  #   mimeType = ["x-scheme-handler/obsidian"];
+  #   categories = ["Utility" "TextEditor"];
+  # };
 
   services.udiskie = {
     enable = true;
