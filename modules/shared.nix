@@ -42,6 +42,24 @@ in {
   environment.variables = {
     EDITOR = "nvim";
     RIME_DATA_DIR = "${pkgs.rime-data}/share/rime-data";
+    LLAMA_BASE_URL = "http://127.0.0.1:8080";
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /home/n451/models 0755 n451 users -"
+  ];
+
+  systemd.services.llama-server = {
+    description = "llama.cpp router server";
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.llama-cpp}/bin/llama-server --models-dir /home/n451/models --no-models-autoload --jinja --host 127.0.0.1 --port 8080";
+      Restart = "on-failure";
+      RestartSec = 5;
+      User = "n451";
+      Group = "users";
+    };
   };
 
   users.users.n451 = {
