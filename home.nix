@@ -131,7 +131,7 @@ in {
     spotify
 
     # processing software
-    davinci-resolve
+    # davinci-resolve
     gimp
     supercollider
     mgba # gameboy!
