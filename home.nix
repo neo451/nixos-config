@@ -131,6 +131,7 @@ in {
 
     # processing software
     # davinci-resolve
+    audacity
     gimp
     supercollider
     mgba # gameboy!
