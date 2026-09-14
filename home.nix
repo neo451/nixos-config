@@ -58,11 +58,11 @@ in {
 
     # browser
     firefox
+    tridactyl-native
+    chromium
 
     # pi
     rpi-imager
-
-    chromium
 
     # bluetooth
     blueman
