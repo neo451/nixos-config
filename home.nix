@@ -2,7 +2,22 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  caelestiaShellSettings = {
+    notifs = {
+      actionOnClick = true;
+      openExpanded = true;
+      expire = false;
+      fullscreen = "on";
+      defaultExpireTimeout = 7000;
+      fullscreenExpireTimeout = 3000;
+      groupPreviewNum = 3;
+    };
+    services = {
+      lyricsBackend = "Auto";
+    };
+  };
+in {
   imports = [
     ./home/ghostty.nix
   ];
@@ -12,23 +27,23 @@
       "image/jpeg" = "org.gnome.Loupe.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
       "image/gif" = "org.gnome.Loupe.desktop";
-      "x-scheme-handler/obsidian" = "obsidian-nvim.desktop";
+      # "x-scheme-handler/obsidian" = "obsidian-nvim.desktop";
       "x-scheme-handler/http" = "zen-beta.desktop";
       "x-scheme-handler/https" = "zen-beta.desktop";
       "text/html" = "zen-beta.desktop";
     };
   };
 
-  xdg.desktopEntries.obsidian-nvim = {
-    name = "obsidian.nvim";
-    comment = "Handle obsidian:// URIs in Neovim with obsidian.nvim";
-    exec = "obsidian-uri-handler %u";
-    terminal = true;
-    type = "Application";
-    noDisplay = true;
-    mimeType = ["x-scheme-handler/obsidian"];
-    categories = ["Utility" "TextEditor"];
-  };
+  # xdg.desktopEntries.obsidian-nvim = {
+  #   name = "obsidian.nvim";
+  #   comment = "Handle obsidian:// URIs in Neovim with obsidian.nvim";
+  #   exec = "obsidian-uri-handler %u";
+  #   terminal = true;
+  #   type = "Application";
+  #   noDisplay = true;
+  #   mimeType = ["x-scheme-handler/obsidian"];
+  #   categories = ["Utility" "TextEditor"];
+  # };
 
   services.udiskie = {
     enable = true;
@@ -41,10 +56,12 @@
     # gui
     zathura
 
+    # browser
+    firefox
+    chromium
+
     # pi
     rpi-imager
-
-    chromium
 
     # bluetooth
     blueman
@@ -114,6 +131,7 @@
 
     # processing software
     # davinci-resolve
+    audacity
     gimp
     supercollider
     mgba # gameboy!
@@ -127,8 +145,8 @@
     qbittorrent # download
 
     # ladders
-    # clash-verge-rev
-    # nekoray
+    clash-verge-rev
+    nekoray
 
     # widgets
     networkmanagerapplet
@@ -142,20 +160,23 @@
       "PATH=${lib.makeBinPath [pkgs.app2unit pkgs.libnotify pkgs.systemd pkgs.xdg-utils]}:/etc/profiles/per-user/n451/bin:/run/current-system/sw/bin"
     ];
     cli.enable = true;
-    settings = {
-      notifs = {
-        actionOnClick = true;
-        openExpanded = true;
-        expire = false;
-        fullscreen = "on";
-        defaultExpireTimeout = 7000;
-        fullscreenExpireTimeout = 3000;
-        groupPreviewNum = 3;
-      };
-      services = {
-        lyricsBackend = "Auto";
-        showLyrics = false;
-      };
-    };
+    # `settings` is deliberately not used: it generates
+    # ~/.config/caelestia/shell.json as a read-only symlink into the Nix store,
+    # and Caelestia writes that file back at runtime, producing a
+    # "Failed to save config" toast on startup. Seed a writable file below.
   };
+
+  home.activation.seedCaelestiaConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run mkdir -p "$HOME/.config/caelestia"
+
+    # Replace a store symlink (from a previous `settings`-based config) with a real file.
+    if [ -L "$HOME/.config/caelestia/shell.json" ]; then
+      run rm "$HOME/.config/caelestia/shell.json"
+    fi
+
+    # Only seed if missing so runtime changes made by the shell are preserved.
+    if [ ! -e "$HOME/.config/caelestia/shell.json" ]; then
+      run cp ${pkgs.writeText "caelestia-shell.json" (builtins.toJSON caelestiaShellSettings)} "$HOME/.config/caelestia/shell.json"
+    fi
+  '';
 }

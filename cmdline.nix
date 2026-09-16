@@ -67,6 +67,7 @@ in {
     lazyjj
     gh
     gh-dash
+    delta
 
     # life
     hledger
@@ -78,7 +79,7 @@ in {
     opencode
     codex
     llama-cpp
-    copilot-language-server
+    # copilot-language-server
     pi-coding-agent
     piAcp
 
@@ -193,7 +194,7 @@ in {
     mpd
     mpc
 
-    # sync
+    # file sync
     rsync
     rclone
     syncthing

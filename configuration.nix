@@ -17,7 +17,7 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
-      configurationLimit = 4;
+      configurationLimit = 2;
       extraEntries = ''
         menuentry "Windows" {
         	search --file --no-floppy --set=root /EFI/Microsoft/Boot/bootmgfw/efi
@@ -82,6 +82,31 @@
 
   networking.networkmanager.enable = true;
 
+  programs.clash-verge = {
+    enable = true;
+    package = pkgs.clash-verge-rev;
+
+    # TUN 推荐开启服务模式
+    serviceMode = true;
+    tunMode = true;
+
+    # 可选
+    autoStart = true;
+  };
+
+  # TUN 内核模块，一般可以自动加载，加上更保险
+  boot.kernelModules = ["tun"];
+
+  # TUN / Mihomo 和 rp_filter 容易冲突
+  networking.firewall.checkReversePath = "loose";
+
+  programs.throne = {
+    enable = true;
+    tunMode = {
+      enable = true;
+    };
+  };
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -92,6 +117,7 @@
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
+    enableGtk2 = true;
     fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       rime-data
@@ -101,6 +127,26 @@
       fcitx5-rose-pine
       fcitx5-mozc
     ];
+    fcitx5.settings.inputMethod = {
+      "Groups/0" = {
+        Name = "Default";
+        "Default Layout" = "us";
+        DefaultIM = "rime";
+      };
+      "Groups/0/Items/0" = {
+        Name = "keyboard-us";
+        Layout = "";
+      };
+      "Groups/0/Items/1" = {
+        Name = "rime";
+        Layout = "";
+      };
+      "Groups/0/Items/2" = {
+        Name = "mozc";
+        Layout = "";
+      };
+      GroupOrder."0" = "Default";
+    };
   };
 
   fonts = {
@@ -129,7 +175,24 @@
     };
   };
 
-  environment.sessionVariables = {NIXOS_OZONE_WL = "1";};
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    QT_IM_MODULE = "fcitx";
+    SDL_IM_MODULE = "fcitx";
+    GLFW_IM_MODULE = "ibus";
+  };
+
+  # Keep large C++/Qt builds (e.g. quickshell) from exhausting the sandbox /build tmpdir.
+  # The previous generated nix.conf used max-jobs=auto and cores=0, which can fan out
+  # too many compiler jobs at once.
+  nix.settings = {
+    max-jobs = 2;
+    cores = 4;
+    substituters = [
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirrors.cernet.edu.cn/nix-channels/store"
+    ];
+  };
 
   hardware.bluetooth = {
     enable = true;
@@ -141,6 +204,14 @@
       };
     };
   };
+
+  # The firmware write-protects the DDR5 SPD hub, so spd5118 fails its
+  # resume callback with -ENXIO. Temperature monitoring is nonessential.
+  boot.blacklistedKernelModules = ["spd5118"];
+
+  # Avoid stale GuC command-transport state after s2idle resume. The internal
+  # panel is driven by i915, and this failure coincides with the black screen.
+  boot.kernelParams = ["i915.enable_guc=0"];
 
   # Enable OpenGL
   hardware.graphics = {enable = true;};
