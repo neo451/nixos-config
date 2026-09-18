@@ -11,6 +11,12 @@
       git_status = {
         disabled = true;
       };
+      nodejs = {
+        disabled = true;
+      };
+      lua = {
+        disabled = true;
+      };
       custom.jj = {
         when = "jj-starship detect";
         shell = ["jj-starship"];
