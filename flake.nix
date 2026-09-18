@@ -1,5 +1,6 @@
 {
   description = "A simple NixOS flake";
+  inputs.jj-starship.url = "github:dmmulroy/jj-starship";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -40,6 +41,7 @@
     home-manager,
     nur,
     nixos-wsl,
+    jj-starship,
     ...
   } @ inputs: let
   in {
@@ -56,6 +58,7 @@
           nixpkgs.overlays = [
             rust-overlay.overlays.default
             neovim-nightly-overlay.overlays.default
+            jj-starship.overlays.default
             (final: prev: {
               vcv-rack = prev.vcv-rack.overrideAttrs (old: {
                 # Upstream GitHub PR pages can 404 while patch-diff still serves
@@ -133,6 +136,7 @@
           nixpkgs.overlays = [
             rust-overlay.overlays.default
             neovim-nightly-overlay.overlays.default
+            jj-starship.overlays.default
           ];
         })
       ];

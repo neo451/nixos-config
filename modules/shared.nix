@@ -156,5 +156,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     rust-bin.stable.latest.default
+    jj-starship
   ];
 }
