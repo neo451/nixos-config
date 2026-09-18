@@ -71,7 +71,7 @@ in {
     sent
 
     # writing
-    libreoffice-fresh
+    libreoffice-stable
     papers
     # wpsoffice-cn
 
@@ -146,7 +146,7 @@ in {
 
     # ladders
     clash-verge-rev
-    nekoray
+    throne
 
     # widgets
     networkmanagerapplet
