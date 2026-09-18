@@ -73,6 +73,19 @@
                   ];
               });
 
+              # GitHub regenerated the v1.63.0 archive without changing the tag.
+              # Keep the package buildable until nixpkgs updates its fixed-output hash.
+              python313Packages = prev.python313Packages.overrideScope (pyFinal: pyPrev: {
+                playwright = pyPrev.playwright.overrideAttrs (old: {
+                  src = prev.fetchFromGitHub {
+                    owner = "microsoft";
+                    repo = "playwright-python";
+                    rev = "v1.63.0";
+                    hash = "sha256-RwIn+0EcHnStjORVFmT7gp4bGjl+qer1FgtI3+aPF2w=";
+                  };
+                });
+              });
+
               ly = prev.ly.overrideAttrs (old: {
                 # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
                 prePatch =

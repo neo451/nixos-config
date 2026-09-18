@@ -248,8 +248,8 @@ in {
     python3
     pyright
     black
-    python313Packages.playwright
-    python313Packages.pydbus
+    # python313Packages.playwright
+    # python313Packages.pydbus
 
     # js
     typescript-language-server
