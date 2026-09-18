@@ -83,6 +83,7 @@ in {
     kitty
     ghostty
     wechat-uos
+    qq
     zotero
     zed-editor
     loupe
