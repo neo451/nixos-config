@@ -33,6 +33,12 @@
         source ~/secret/OPENAI.fish
       end
       set LEDGER_FILE ~/Documents/Notes/ledger.md
+
+      function print_osc7 --on-event fish_prompt
+        printf '\e]7;file://%s\e\\' "$PWD"
+        printf '\e]133;A\a'
+      end
+
       zoxide init fish | source
     '';
     shellAbbrs = {
