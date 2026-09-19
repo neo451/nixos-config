@@ -2,6 +2,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
+      nv = "nvim --server ~/.cache/nvim/server.pipe";
       vi = "nvim";
       timer = "~/bin/timer";
       pp = "~/scripts/wp";
@@ -38,6 +39,7 @@
         printf '\e]7;file://%s\e\\' "$PWD"
         printf '\e]133;A\a'
       end
+      nvim --listen ~/.cache/nvim/server.pipe --headless
 
       zoxide init fish | source
     '';
