@@ -52,6 +52,10 @@ in {
     tray = "auto";
   };
 
+  # Hyprland is started outside systemd's graphical-session.target, so the
+  # Home Manager default target would otherwise never start udiskie.
+  systemd.user.services.udiskie.Install.WantedBy = lib.mkForce ["default.target"];
+
   home.packages = with pkgs; [
     # gui
     zathura
@@ -131,7 +135,7 @@ in {
     spotify
 
     # processing software
-    # davinci-resolve
+    davinci-resolve
     audacity
     gimp
     supercollider
