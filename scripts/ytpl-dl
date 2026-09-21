@@ -12,7 +12,7 @@ if ! command -v yt-dlp >/dev/null 2>&1; then
 fi
 
 if ! command -v ffmpeg >/dev/null 2>&1; then
-  echo "Error: ffmpeg is required to merge video+audio into Resolve-friendly MP4 files." >&2
+  echo "Error: ffmpeg is required to merge video+audio into Resolve-friendly MOV files." >&2
   exit 1
 fi
 
@@ -24,16 +24,18 @@ archive_file=".youtube-download-archive"
 # Playlist items use their playlist index; standalone videos fall back to an
 # automatic index and are saved under ~/Resources/Single Videos/.
 #
-# Prefer DaVinci Resolve-friendly files: MP4 container, H.264 video, AAC/M4A
-# audio. This avoids YouTube's default WEBM/Opus downloads, whose audio tracks
-# Resolve may ignore.
+# Prefer DaVinci Resolve Free on Linux-compatible files: H.264 video in a MOV
+# container with uncompressed PCM audio. AAC audio is not supported reliably by
+# the free Linux build, and YouTube's default WEBM/Opus files are less useful
+# for Resolve.
 yt-dlp \
   --yes-playlist \
   --paths "$HOME/Resources" \
   --ignore-errors \
   --download-archive "$archive_file" \
-  -f "bv*[ext=mp4][vcodec^=avc1]+ba[ext=m4a][acodec^=mp4a]/b[ext=mp4][vcodec^=avc1][acodec^=mp4a]" \
-  --merge-output-format mp4 \
+  -f "bv[ext=mp4][vcodec^=avc1]+ba[ext=m4a][acodec^=mp4a]/bv[vcodec^=avc1]+ba[acodec^=mp4a]" \
+  --merge-output-format mov \
+  --postprocessor-args "Merger+ffmpeg:-c:v copy -c:a pcm_s16le" \
   -o "%(playlist_title|Single Videos)s/%(playlist_index,autonumber)03d - %(title)s [%(id)s].%(ext)s" \
   --paths "/mnt/e/Resources/" \
   "$url"
