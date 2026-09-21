@@ -3,6 +3,20 @@
   pkgs,
   ...
 }: let
+  davinciResolveNvidia = pkgs.callPackage "${pkgs.path}/pkgs/by-name/da/davinci-resolve/package.nix" {
+    # Resolve's CUDA device and OpenGL viewer must use the same GPU. This
+    # laptop's display is wired to Intel, so force Resolve through NVIDIA PRIME.
+    buildFHSEnv = args:
+      pkgs.buildFHSEnv (args // {
+        extraBwrapArgs = (args.extraBwrapArgs or []) ++ [
+          "--setenv" "__NV_PRIME_RENDER_OFFLOAD" "1"
+          "--setenv" "__GLX_VENDOR_LIBRARY_NAME" "nvidia"
+          # Resolve does not currently work with native Wayland.
+          "--setenv" "QT_QPA_PLATFORM" "xcb"
+          "--setenv" "QT_XCB_GL_INTEGRATION" "glx"
+        ];
+      });
+  };
   caelestiaShellSettings = {
     notifs = {
       actionOnClick = true;
@@ -135,7 +149,7 @@ in {
     spotify
 
     # processing software
-    davinci-resolve
+    davinciResolveNvidia
     audacity
     gimp
     supercollider

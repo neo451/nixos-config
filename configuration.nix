@@ -246,6 +246,13 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
+      # Keep the Intel GPU as the display renderer, but make the NVIDIA GPU
+      # available for applications that need CUDA/OpenGL interop.
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
@@ -258,7 +265,7 @@
   # };
 
   services = {
-    xserver = {videoDrivers = ["nvidia"];};
+    xserver = {videoDrivers = ["modesetting" "nvidia"];};
     blueman.enable = true;
   };
 
