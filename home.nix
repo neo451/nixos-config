@@ -83,7 +83,6 @@ in {
     kitty
     ghostty
     wechat-uos
-    keet # p2p chat app
     qq
     zotero
     zed-editor

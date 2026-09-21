@@ -22,13 +22,14 @@ archive_file=".youtube-download-archive"
 # The archive makes repeated runs incremental: videos that were downloaded
 # successfully before are skipped, while newly added playlist items are fetched.
 # Playlist items use their playlist index; standalone videos fall back to an
-# automatic index and are saved under ./Single Videos/.
+# automatic index and are saved under ~/Resources/Single Videos/.
 #
 # Prefer DaVinci Resolve-friendly files: MP4 container, H.264 video, AAC/M4A
 # audio. This avoids YouTube's default WEBM/Opus downloads, whose audio tracks
 # Resolve may ignore.
 yt-dlp \
   --yes-playlist \
+  --paths "$HOME/Resources" \
   --ignore-errors \
   --download-archive "$archive_file" \
   -f "bv*[ext=mp4][vcodec^=avc1]+ba[ext=m4a][acodec^=mp4a]/b[ext=mp4][vcodec^=avc1][acodec^=mp4a]" \
