@@ -35,3 +35,4 @@ yt-dlp \
   --merge-output-format mp4 \
   -o "%(playlist_title|Single Videos)s/%(playlist_index,autonumber)03d - %(title)s [%(id)s].%(ext)s" \
   "$url"
+  --paths "/mnt/e/Resources/"
