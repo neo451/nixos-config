@@ -34,5 +34,5 @@ yt-dlp \
   -f "bv*[ext=mp4][vcodec^=avc1]+ba[ext=m4a][acodec^=mp4a]/b[ext=mp4][vcodec^=avc1][acodec^=mp4a]" \
   --merge-output-format mp4 \
   -o "%(playlist_title|Single Videos)s/%(playlist_index,autonumber)03d - %(title)s [%(id)s].%(ext)s" \
-  --paths "/mnt/e/Resources/"
+  --paths "/mnt/e/Resources/" \
   "$url"
