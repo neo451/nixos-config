@@ -82,7 +82,6 @@ in {
     # copilot-language-server
     pi-coding-agent
     piAcp
-    dsh
 
     espeak
 
