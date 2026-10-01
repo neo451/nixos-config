@@ -14,8 +14,8 @@
         evil-collection
         evil-org
         evil-surround
-        which-key
-        tokyo-night
+        # which-key
+        # tokyo-night
       ];
   };
 
