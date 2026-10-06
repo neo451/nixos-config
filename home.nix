@@ -7,15 +7,26 @@
     # Resolve's CUDA device and OpenGL viewer must use the same GPU. This
     # laptop's display is wired to Intel, so force Resolve through NVIDIA PRIME.
     buildFHSEnv = args:
-      pkgs.buildFHSEnv (args // {
-        extraBwrapArgs = (args.extraBwrapArgs or []) ++ [
-          "--setenv" "__NV_PRIME_RENDER_OFFLOAD" "1"
-          "--setenv" "__GLX_VENDOR_LIBRARY_NAME" "nvidia"
-          # Resolve does not currently work with native Wayland.
-          "--setenv" "QT_QPA_PLATFORM" "xcb"
-          "--setenv" "QT_XCB_GL_INTEGRATION" "glx"
-        ];
-      });
+      pkgs.buildFHSEnv (args
+        // {
+          extraBwrapArgs =
+            (args.extraBwrapArgs or [])
+            ++ [
+              "--setenv"
+              "__NV_PRIME_RENDER_OFFLOAD"
+              "1"
+              "--setenv"
+              "__GLX_VENDOR_LIBRARY_NAME"
+              "nvidia"
+              # Resolve does not currently work with native Wayland.
+              "--setenv"
+              "QT_QPA_PLATFORM"
+              "xcb"
+              "--setenv"
+              "QT_XCB_GL_INTEGRATION"
+              "glx"
+            ];
+        });
   };
   caelestiaShellSettings = {
     notifs = {
@@ -71,6 +82,8 @@ in {
   systemd.user.services.udiskie.Install.WantedBy = lib.mkForce ["default.target"];
 
   home.packages = with pkgs; [
+    herdr
+
     # gui
     zathura
 
