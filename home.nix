@@ -82,8 +82,6 @@ in {
   systemd.user.services.udiskie.Install.WantedBy = lib.mkForce ["default.target"];
 
   home.packages = with pkgs; [
-    herdr
-
     # gui
     zathura
 

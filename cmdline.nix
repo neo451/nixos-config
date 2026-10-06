@@ -82,6 +82,7 @@ in {
     # copilot-language-server
     pi-coding-agent
     piAcp
+    herdr
 
     espeak
 
@@ -100,7 +101,7 @@ in {
     pandoc
     texliveFull
     zk
-    # rime-ls
+    rime-ls
     translate-shell
     marksman
     qpdf
