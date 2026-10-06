@@ -100,7 +100,7 @@ in {
     pandoc
     texliveFull
     zk
-    rime-ls
+    # rime-ls
     translate-shell
     marksman
     qpdf
