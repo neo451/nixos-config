@@ -59,7 +59,22 @@
             rust-overlay.overlays.default
             neovim-nightly-overlay.overlays.default
             jj-starship.overlays.default
-            (final: prev: {
+            (final: prev:
+              let
+                zoteroFirefox = prev.stdenvNoCC.mkDerivation {
+                  pname = "firefox-esr-unwrapped";
+                  version = "140.15.0esr";
+                  src = prev.fetchurl {
+                    url = "https://ftp.mozilla.org/pub/firefox/releases/140.15.0esr/linux-x86_64/en-US/firefox-140.15.0esr.tar.xz";
+                    hash = "sha256-yTquYQ8Rd9962ngjve9DPe1P9r/k5rrtppQav06ZLz8=";
+                  };
+                  dontBuild = true;
+                  installPhase = ''
+                    mkdir -p $out/lib
+                    cp -r . $out/lib/firefox
+                  '';
+                };
+              in {
               vcv-rack = prev.vcv-rack.overrideAttrs (old: {
                 # Upstream GitHub PR pages can 404 while patch-diff still serves
                 # the same patch; keep nixpkgs' expected normalized hash.
@@ -88,6 +103,11 @@
                   };
                 });
               });
+
+              # Zotero 10.0.4 patches Firefox ESR 140, not the newer ESR 153.
+              zotero = prev.zotero.override {
+                firefox-esr-153-unwrapped = zoteroFirefox;
+              };
 
               ly = prev.ly.overrideAttrs (old: {
                 # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
