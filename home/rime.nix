@@ -35,6 +35,11 @@
   rimeConfigVersion = builtins.hashString "sha256" (
     lib.concatMapStringsSep ":" (file: builtins.hashFile "sha256" (./rime + "/${file}")) rimeFiles
   );
+
+  # Shared exchange directory for rime's native sync. Both the fcitx-rime and
+  # rime-ls frontends point their sync_dir here; it is a Syncthing folder so
+  # learned-word exports flow between the `nixos` and `wsl` targets.
+  rimeSyncDir = "${config.home.homeDirectory}/sync/cmdline/rime";
 in {
   home.sessionVariables = {
     # Fcitx and rime-ls must not share a live user directory: both lock the
@@ -74,27 +79,32 @@ in {
     done
   '';
 
-  # Seed a distinct, writable rime-ls installation. sync_dir intentionally
-  # points at Fcitx's exchange directory; :RimeSync exports/imports through it
-  # without either frontend opening the other's live database.
-  home.activation.seedRimeLsInstallation = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    installation="${rimeLsDir}/installation.yaml"
-    $DRY_RUN_CMD mkdir -p "${rimeLsDir}" "${fcitxRimeDir}/sync"
-    if [ ! -e "$installation" ]; then
-      if [ -z "$DRY_RUN_CMD" ]; then
-        installation_id="$(${pkgs.coreutils}/bin/cat /proc/sys/kernel/random/uuid)"
-        ${pkgs.coreutils}/bin/cat > "$installation" <<EOF
-    distribution_code_name: "rime-ls"
-    distribution_name: "Rime LS"
-    distribution_version: "0.4.3"
-    installation_id: "$installation_id"
-    sync_dir: "${fcitxRimeDir}/sync"
-    EOF
+  # Point both frontends' installation.yaml at the shared exchange directory.
+  # fcitx-rime and rime-ls each keep their own installation_id and live userdb;
+  # they only exchange plaintext *.userdb.txt snapshots through sync_dir, so
+  # they never open each other's live database. :RimeSync (nvim) and fcitx's
+  # "同步用户数据" both export/import through this directory.
+  home.activation.setRimeSyncDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    set_rime_sync_dir() {
+      dir="$1"
+      $DRY_RUN_CMD mkdir -p "$dir" "${rimeSyncDir}"
+      installation="$dir/installation.yaml"
+      if [ ! -e "$installation" ]; then
+        if [ -z "$DRY_RUN_CMD" ]; then
+          installation_id="$(${pkgs.coreutils}/bin/cat /proc/sys/kernel/random/uuid)"
+          ${pkgs.coreutils}/bin/printf 'distribution_code_name: "rime"\ninstallation_id: "%s"\nsync_dir: "%s"\n' "$installation_id" "${rimeSyncDir}" > "$installation"
+        fi
+      elif ${pkgs.gnugrep}/bin/grep -q '^sync_dir:' "$installation"; then
+        if [ -z "$DRY_RUN_CMD" ]; then
+          ${pkgs.gnused}/bin/sed -i 's|^sync_dir:.*|sync_dir: "${rimeSyncDir}"|' "$installation"
+        fi
+      else
+        if [ -z "$DRY_RUN_CMD" ]; then
+          ${pkgs.coreutils}/bin/printf '\nsync_dir: "%s"\n' "${rimeSyncDir}" >> "$installation"
+        fi
       fi
-    elif ! ${pkgs.gnugrep}/bin/grep -q '^sync_dir:' "$installation"; then
-      if [ -z "$DRY_RUN_CMD" ]; then
-        printf '\nsync_dir: "%s"\n' '${fcitxRimeDir}/sync' >> "$installation"
-      fi
-    fi
+    }
+    set_rime_sync_dir "${fcitxRimeDir}"
+    set_rime_sync_dir "${rimeLsDir}"
   '';
 }

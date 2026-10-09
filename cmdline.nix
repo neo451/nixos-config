@@ -34,6 +34,11 @@ in {
 
   home.sessionVariables = {
     REF = "/home/n451/Documents/refs.bib";
+    # State that must survive switching between the `nixos` and `wsl` targets.
+    # These live under ~/sync/cmdline, a Syncthing folder shared only between
+    # the two machines (never with the phone device).
+    _ZO_DATA_DIR = "/home/n451/sync/cmdline/zoxide";
+    PI_CODING_AGENT_SESSION_DIR = "/home/n451/sync/cmdline/pi/sessions";
   };
 
   accounts.email.accounts = {
