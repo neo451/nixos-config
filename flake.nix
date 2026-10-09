@@ -105,9 +105,45 @@
               });
 
               # Zotero 10.0.4 patches Firefox ESR 140, not the newer ESR 153.
-              zotero = prev.zotero.override {
-                firefox-esr-153-unwrapped = zoteroFirefox;
-              };
+              zotero =
+                (prev.zotero.override {
+                  firefox-esr-153-unwrapped = zoteroFirefox;
+                }).overrideAttrs (old: {
+                  # The Mozilla binary tarball is not built by Nix, so its
+                  # GTK/X11/ALSA dependencies do not have Nix store paths
+                  # embedded in them. The upstream Firefox derivation
+                  # normally supplies those paths; preserve them when using
+                  # the ESR 140 tarball above.
+                  preFixup =
+                    (old.preFixup or "")
+                    + ''
+                      gappsWrapperArgs+=(--prefix LD_LIBRARY_PATH : ${prev.lib.makeLibraryPath (with prev; [
+                        alsa-lib
+                        atk
+                        cairo
+                        dbus
+                        fontconfig
+                        freetype
+                        gdk-pixbuf
+                        glib
+                        gtk3
+                        libX11
+                        libXcomposite
+                        libXcursor
+                        libXdamage
+                        libXext
+                        libXfixes
+                        libXi
+                        libXrandr
+                        libXrender
+                        libxcb
+                        libxkbcommon
+                        pango
+                        stdenv.cc.cc
+                        wayland
+                      ])})
+                    '';
+                });
 
               ly = prev.ly.overrideAttrs (old: {
                 # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
