@@ -3,6 +3,9 @@
     enable = true;
 
     extraConfig = {
+      rerere = {
+        enabled = true;
+      };
       core = {
         compression = 9;
         whitespace = "error";
