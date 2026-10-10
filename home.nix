@@ -141,6 +141,7 @@ in {
     wl-clipboard # copy & paste
     rofi # app launcher
     hyprlock
+    awww
 
     # suckless
     dmenu-wayland
