@@ -143,6 +143,8 @@ in {
     hyprlock
     awww
 
+    niri
+
     # suckless
     dmenu-wayland
 
