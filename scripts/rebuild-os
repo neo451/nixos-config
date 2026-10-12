@@ -66,13 +66,6 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     exit 1
 fi
 
-if [ -n "$(git status --porcelain)" ] && [ "${REBUILD_OS_ALLOW_DIRTY:-0}" != 1 ]; then
-    echo "Error: Working tree is not clean. Commit or stash existing changes before rebuilding." >&2
-    echo "To retry a failed rebuild with its remaining changes, set REBUILD_OS_ALLOW_DIRTY=1." >&2
-    echo "That opt-in stages and may commit all current repo changes after a successful rebuild." >&2
-    exit 1
-fi
-
 # Edit configuration files
 # nvim -c 'lua Snacks.picker.files({cwd = [[~/nixos-config]] })'
 
@@ -81,52 +74,39 @@ if ! "${EDITOR:-nvim}" "$CONFIG_DIR"; then
     exit 1
 fi
 
-# Stage before building so new files are included in the flake source.
+# Stage and commit edits before rebuilding so the flake includes new files.
 if ! git add -A; then
     echo "Error: Could not stage configuration changes." >&2
     exit 1
 fi
 
 if git diff --cached --quiet; then
-    HAS_CHANGES=0
+    echo "No changes to commit."
 else
     diff_status=$?
     if [ "$diff_status" -ne 1 ]; then
         echo "Error: Could not inspect staged changes." >&2
         exit 1
     fi
-    HAS_CHANGES=1
+    timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+    if ! git commit -m "nixos: $timestamp"; then
+        echo "Error: Commit failed; not rebuilding." >&2
+        exit 1
+    fi
+    echo "Changes committed:"
+    git diff HEAD~1 HEAD
 fi
 
 # Rebuild even when there are no source changes, to reconcile this machine.
 echo "Rebuilding system using flake configuration: $SYSTEM_CONFIG"
 if ! $SUDO nixos-rebuild switch --flake "$CONFIG_DIR#$SYSTEM_CONFIG"; then
-    echo "Rebuild failed; no commit was created. Changes remain staged." >&2
-    echo "Fix the issue, then retry with REBUILD_OS_ALLOW_DIRTY=1." >&2
+    echo "Rebuild failed; commit remains local. Fix the issue and retry." >&2
     exit 1
 fi
 
 echo "Successfully rebuilt $SYSTEM_CONFIG!"
 
-COMMIT_FAILED=0
-if [ "$HAS_CHANGES" -eq 1 ]; then
-    timestamp=$(date "+%Y-%m-%d %H:%M:%S")
-    if ! git commit -m "nixos: $timestamp"; then
-        echo "Error: Rebuild succeeded, but commit failed. Changes remain staged." >&2
-        COMMIT_FAILED=1
-    else
-        echo "Changes applied:"
-        git diff HEAD~1 HEAD
-    fi
-else
-    echo "No changes to commit."
-fi
-
 if ! git push; then
     echo "Error: Rebuild succeeded, but push failed; this machine may be out of sync." >&2
-    exit 1
-fi
-
-if [ "$COMMIT_FAILED" -eq 1 ]; then
     exit 1
 fi
