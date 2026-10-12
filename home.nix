@@ -199,6 +199,15 @@ in {
     # "Failed to save config" toast on startup. Seed a writable file below.
   };
 
+  # A stale, dangling default.target symlink in ~/.config shadows NixOS's
+  # system-wide default and prevents systemd --user (including PipeWire) starting.
+  home.activation.removeDanglingUserDefaultTarget = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    target="$HOME/.config/systemd/user/default.target"
+    if [ -L "$target" ] && [ ! -e "$target" ]; then
+      run rm "$target"
+    fi
+  '';
+
   home.activation.seedCaelestiaConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
     run mkdir -p "$HOME/.config/caelestia"
 
