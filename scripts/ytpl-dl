@@ -18,23 +18,46 @@ fi
 
 url=$1
 archive_file=".youtube-download-archive"
+output_dir=${YTPL_OUTPUT_DIR:-/mnt/e/Resources}
+temp_dir=${YTPL_TEMP_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/ytpl-dl}
+
+mkdir -p "$output_dir" "$temp_dir"
+
+# yt-dlp captures ffmpeg's output, so post-processing otherwise appears frozen.
+# Report growth of active intermediate files until yt-dlp finishes.
+monitor_postprocessing() {
+  while sleep 15; do
+    find "$temp_dir" -type f -name '*.temp.mov' -mmin -1 -printf '%s\t%p\n' 2>/dev/null |
+      while IFS=$'\t' read -r bytes path; do
+        printf '[postprocess] Still working: %s written to %s\n' \
+          "$(numfmt --to=iec-i --suffix=B "$bytes")" "$path" >&2
+      done
+  done
+}
+
+monitor_postprocessing &
+monitor_pid=$!
+trap 'kill "$monitor_pid" 2>/dev/null || true' EXIT
 
 # The archive makes repeated runs incremental: videos that were downloaded
 # successfully before are skipped, while newly added playlist items are fetched.
 # Playlist items use their playlist index; standalone videos fall back to an
-# automatic index and are saved under ~/Resources/Single Videos/.
+# automatic index and are saved under the output directory's Single Videos/.
 #
-# Prefer DaVinci Resolve Free on Linux-compatible files: DNxHR video in a MOV
-# container with uncompressed PCM audio. H.264/AAC playback is restricted in the
-# free Linux build, so H.264 is downloaded as the source and transcoded below.
+# Keep YouTube's H.264 video without re-encoding and convert only the audio to
+# uncompressed PCM in a MOV container. This is much faster and smaller than
+# DNxHR, while remaining useful in Resolve installations that can read H.264.
+printf 'Output: %s\nTemporary files: %s\nVideo mode: H.264 stream copy; PCM audio\n' \
+  "$output_dir" "$temp_dir" >&2
+
 yt-dlp \
   --yes-playlist \
-  --paths "$HOME/Resources" \
+  --paths "home:$output_dir" \
+  --paths "temp:$temp_dir" \
   --ignore-errors \
   --download-archive "$archive_file" \
   -f "bv[ext=mp4][vcodec^=avc1]+ba[ext=m4a][acodec^=mp4a]/bv[vcodec^=avc1]+ba[acodec^=mp4a]" \
   --merge-output-format mov \
-  --postprocessor-args "Merger+ffmpeg:-c:v dnxhd -profile:v dnxhr_hq -pix_fmt yuv422p -c:a pcm_s16le" \
+  --postprocessor-args "Merger+ffmpeg:-c:v copy -c:a pcm_s16le" \
   -o "%(playlist_title|Single Videos)s/%(playlist_index,autonumber)03d - %(title)s [%(id)s].%(ext)s" \
-  --paths "/mnt/e/Resources/" \
   "$url"
