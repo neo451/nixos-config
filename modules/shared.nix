@@ -131,6 +131,8 @@ in {
     allowUnfree = true;
     permittedInsecurePackages = [
       "electron-36.9.5"
+      # Zotero 10.0.4 currently bundles Firefox ESR 140, which is EOL.
+      "firefox-esr-140-bin-unwrapped-140.17.0esr"
     ];
   };
 
