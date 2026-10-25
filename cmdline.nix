@@ -142,6 +142,7 @@ in {
 
     # file
     ripgrep
+    ripgrep-all
     fd
     fzf
     file
