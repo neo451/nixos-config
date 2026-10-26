@@ -87,6 +87,7 @@ in {
     pi-coding-agent
     piAcp
     herdr
+    tuios
 
     espeak
 
