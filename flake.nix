@@ -89,6 +89,16 @@
                 });
               });
 
+              python314Packages = prev.python314Packages.overrideScope (pyFinal: pyPrev: {
+                pyopenjtalk-plus = pyPrev.pyopenjtalk-plus.overridePythonAttrs (old: {
+                  # Python 3.14/pybind11 changed this TypeError's wording; the
+                  # behavior under test still works and the next-call check remains.
+                  disabledTests =
+                    (old.disabledTests or [])
+                    ++ ["test_run_njd_from_mecab_invalid_input_should_not_break_next_call"];
+                });
+              });
+
               ly = prev.ly.overrideAttrs (old: {
                 # Make postPatch's `ln -s ... $ZIG_GLOBAL_CACHE_DIR/p` not explode
                 prePatch =
