@@ -1,8 +1,22 @@
 {
   lib,
   pkgs,
+  caelestia-shell,
   ...
 }: let
+  # Caelestia CLI puts this setuptools-scm variable outside `env`, where
+  # Python's structured-attrs builder does not export it. Export it explicitly
+  # until upstream moves the variable to `env.SETUPTOOLS_SCM_PRETEND_VERSION`.
+  caelestiaCli = caelestia-shell.inputs.caelestia-cli.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
+    preBuild =
+      (old.preBuild or "")
+      + ''
+        export SETUPTOOLS_SCM_PRETEND_VERSION=${toString (old.SETUPTOOLS_SCM_PRETEND_VERSION or 1)}
+      '';
+  });
+  caelestiaShell = caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli.override {
+    caelestia-cli = caelestiaCli;
+  };
   davinciResolveNvidia = pkgs.callPackage "${pkgs.path}/pkgs/by-name/da/davinci-resolve/package.nix" {
     # Resolve's CUDA device and OpenGL viewer must use the same GPU. This
     # laptop's display is wired to Intel, so force Resolve through NVIDIA PRIME.
@@ -153,7 +167,7 @@ in {
     spotify
 
     # processing software
-    davinciResolveNvidia
+    # davinciResolveNvidia
     audacity
     gimp
     supercollider
@@ -176,11 +190,15 @@ in {
   # https://github.com/caelestia-dots/shell
   programs.caelestia = {
     enable = true;
+    package = caelestiaShell;
     systemd.enable = true;
     systemd.environment = [
       "PATH=${lib.makeBinPath [pkgs.app2unit pkgs.libnotify pkgs.systemd pkgs.xdg-utils]}:/etc/profiles/per-user/n451/bin:/run/current-system/sw/bin"
     ];
-    cli.enable = true;
+    cli = {
+      enable = true;
+      package = caelestiaCli;
+    };
     # `settings` is deliberately not used: it generates
     # ~/.config/caelestia/shell.json as a read-only symlink into the Nix store,
     # and Caelestia writes that file back at runtime, producing a
