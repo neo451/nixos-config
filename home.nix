@@ -153,7 +153,6 @@ in {
     dmenu-wayland
 
     # wallpaper
-    pywal16
     awww # wallpaper daemon
 
     # pdf reader
