@@ -125,7 +125,7 @@
       kdePackages.fcitx5-qt
       fcitx5-rime
       fcitx5-rose-pine
-      fcitx5-mozc
+      # fcitx5-mozc
     ];
     fcitx5.settings.inputMethod = {
       "Groups/0" = {
@@ -141,10 +141,10 @@
         Name = "rime";
         Layout = "";
       };
-      "Groups/0/Items/2" = {
-        Name = "mozc";
-        Layout = "";
-      };
+      # "Groups/0/Items/2" = {
+      #   Name = "mozc";
+      #   Layout = "";
+      # };
       GroupOrder."0" = "Default";
     };
   };
