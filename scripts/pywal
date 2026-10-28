@@ -1,3 +1,0 @@
-#!/bin/sh
-mkdir -p $HOME/.config/ghostty/themes
-cp $HOME/.cache/wal/ghostty.conf $HOME/.config/ghostty/themes/pywal
