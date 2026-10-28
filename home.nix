@@ -168,7 +168,7 @@ in {
     # processing software
     supercollider
     mgba # gameboy!
-    vcv-rack
+    # vcv-rack
     # bitwig-studio
     # davinciResolveNvidia
     # audacity
