@@ -82,8 +82,8 @@ in {
   systemd.user.services.udiskie.Install.WantedBy = lib.mkForce ["default.target"];
 
   home.packages = with pkgs; [
-    # gui
-    zathura
+    # experiments
+    niri
 
     # browser
     firefox
@@ -94,19 +94,6 @@ in {
 
     # bluetooth
     blueman
-    adw-bluetooth
-
-    # presentation
-    sent
-
-    # writing
-    libreoffice-stable
-    papers
-    # wpsoffice-cn
-
-    webcord
-
-    thunderbird
 
     # gui apps
     kitty
@@ -124,12 +111,16 @@ in {
     calibre
     # tor-browser
     wireshark
+    webcord
+    thunderbird
+
+    # writing
+    libreoffice-stable
+    papers
+    wpsoffice-cn
 
     # video
     obs-studio # screen recording
-
-    ## display manager
-    ly
 
     # hyprland
     waybar # bar
@@ -142,8 +133,7 @@ in {
     rofi # app launcher
     hyprlock
     awww
-
-    niri
+    ly # display manager
 
     # suckless
     dmenu-wayland
@@ -169,13 +159,11 @@ in {
     supercollider
     mgba # gameboy!
     vcv-rack
-    # jre
     # bitwig-studio
-    # kdePackages.kdenlive # video
     # inkscape-with-extensions # vector grahpics editor
 
     # download
-    qbittorrent # download
+    qbittorrent
 
     # ladders
     clash-verge-rev
