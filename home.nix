@@ -122,11 +122,11 @@ in {
     wine-wayland
     steam-run
     obsidian
-    calibre
-    # tor-browser
     wireshark
     webcord
     thunderbird
+    # calibre
+    # tor-browser
 
     # writing
     libreoffice-stable
