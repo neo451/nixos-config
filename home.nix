@@ -166,13 +166,13 @@ in {
     spotify
 
     # processing software
-    # davinciResolveNvidia
-    audacity
-    gimp
     supercollider
     mgba # gameboy!
     vcv-rack
     # bitwig-studio
+    # davinciResolveNvidia
+    # audacity
+    # gimp
     # inkscape-with-extensions # vector grahpics editor
 
     # download
