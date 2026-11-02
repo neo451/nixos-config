@@ -23,7 +23,13 @@ in {
   ];
 
   home.file."scripts" = {
-    source = ./scripts;
+    # yt-dlp writes this archive at runtime. Keep it out of Home Manager's
+    # read-only links so existing download history remains writable.
+    source = builtins.path {
+      path = ./scripts;
+      name = "home-scripts";
+      filter = path: type: builtins.baseNameOf path != ".youtube-download-archive";
+    };
     recursive = true;
     executable = true;
   };
@@ -277,5 +283,8 @@ in {
 
     readline
     lsof
+
+    # game
+    love
   ];
 }
