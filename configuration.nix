@@ -117,7 +117,7 @@
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
-    enableGtk2 = true;
+    enableGtk2 = false;
     fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       rime-data
