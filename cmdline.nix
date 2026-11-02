@@ -284,7 +284,7 @@ in {
     readline
     lsof
 
-    # game
-    love
+    # # game
+    # love
   ];
 }
