@@ -158,6 +158,7 @@
       liberation_ttf
       noto-fonts
       noto-fonts-cjk-sans
+      sarasa-gothic
       # noto-fonts-cjk-serif
       # noto-fonts-color-emoji
       corefonts
