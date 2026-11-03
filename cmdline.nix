@@ -77,14 +77,11 @@ in {
     lazygit
     lazyjj
     gh
-    gh-dash
     delta
+    # gh-dash
 
     # life
     hledger
-
-    # ocr
-    tesseract
 
     # ai
     codex
@@ -94,31 +91,32 @@ in {
     piAcp
     herdr
     tuios
-
-    espeak
+    # ocr
+    # tesseract
 
     brightnessctl
     udisks
 
     # presentation
-    slides
-    marp-cli
+    # slides
+    # marp-cli
     # presentterm
 
     # writing
-    write-good
-    quarto
-    typst
     pandoc
     texliveFull
-    zk
+    poppler-utils
     rime-ls
     translate-shell
-    marksman
     qpdf
-    iwe
-    opencc
-    poppler-utils
+    # opencc
+    # zk
+    # iwe
+    # marksman
+    # write-good
+    # quarto
+    # typst
+    # espeak
 
     # notebook
     # marimo
@@ -145,7 +143,7 @@ in {
     # shell
     fish
     atuin
-    shellcheck
+    # shellcheck
 
     # file
     ripgrep
@@ -200,12 +198,11 @@ in {
     # audio and video cli
     yt-dlp
     ffmpeg
-    go-musicfox
-    sox
     playerctl
-    rmpc
+    sox
     mpd
     mpc
+    # rmpc
 
     # file sync
     rsync
@@ -249,13 +246,13 @@ in {
 
     lua-language-server
     stylua
-    luajitPackages.luacheck
     selene
-    luajitPackages.busted
-    luajitPackages.luacov
     emmylua-ls
     emmylua-check
     emmylua-doc-cli
+    # luajitPackages.busted
+    # luajitPackages.luacov
+    # luajitPackages.luacheck
 
     # python
     python3
