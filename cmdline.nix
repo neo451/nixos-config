@@ -94,9 +94,6 @@ in {
     # ocr
     # tesseract
 
-    brightnessctl
-    udisks
-
     # presentation
     # slides
     # marp-cli
@@ -172,15 +169,10 @@ in {
     openssl
     chrony
     websocat
-    iw
     wormhole-rs
     inetutils
     nmap
     mtr
-
-    btop
-    iotop
-    powertop
 
     which
     bc
@@ -189,20 +181,17 @@ in {
 
     # tui
     htop
-    w3m
+    btop
     tokei
-    vhs
-    neomutt
-    glow
+    # w3m
+    # neomutt
+    # glow
+    # vhs
 
     # audio and video cli
     yt-dlp
     ffmpeg
-    playerctl
     sox
-    mpd
-    mpc
-    # rmpc
 
     # file sync
     rsync
@@ -218,10 +207,6 @@ in {
     nodejs
     deno
     prettier
-
-    # docker
-    docker
-    docker-compose
 
     # nix
     nix-output-monitor

@@ -165,6 +165,23 @@ in {
     pipewire
     spotify
 
+    powertop
+    iotop
+
+    iw
+
+    # docker
+    docker
+    docker-compose
+
+    udisks
+    brightnessctl
+    playerctl
+
+    mpd
+    mpc
+    # rmpc
+
     # processing software
     supercollider
     mgba # gameboy!
