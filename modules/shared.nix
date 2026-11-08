@@ -91,6 +91,10 @@ in {
     libraries = with pkgs; [
       stdenv.cc.cc.lib
       zlib
+      libxcb
+      libxkbcommon
+      wayland
+      vulkan-loader
     ];
   };
 
