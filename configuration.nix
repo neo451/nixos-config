@@ -31,6 +31,18 @@
     };
   };
 
+  services.openssh = {
+    enable = true;
+    ports = [2222];
+    openFirewall = true;
+
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
+
   security.rtkit.enable = true; # allows real-time audio scheduling
   security.pam.loginLimits = [
     {
@@ -292,9 +304,6 @@
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true; # TODO: enable this on the other laptop??
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }
