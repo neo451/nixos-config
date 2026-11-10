@@ -78,7 +78,7 @@ in {
     lazyjj
     gh
     delta
-    # gh-dash
+    gh-dash
 
     # life
     hledger
