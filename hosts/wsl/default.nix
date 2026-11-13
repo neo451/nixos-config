@@ -25,6 +25,18 @@
     };
   };
 
+  services.openssh = {
+    enable = true;
+    ports = [2222];
+    openFirewall = true;
+
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
+
   # The Windows VPN exposes its HTTP proxy through localhost in WSL mirrored
   # networking. The system Nix daemon does not inherit the user's proxy
   # variables, so give it the proxy explicitly for binary-cache downloads.

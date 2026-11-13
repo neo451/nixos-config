@@ -31,18 +31,6 @@
     };
   };
 
-  services.openssh = {
-    enable = true;
-    ports = [2222];
-    openFirewall = true;
-
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
-
   security.rtkit.enable = true; # allows real-time audio scheduling
   security.pam.loginLimits = [
     {

@@ -20,6 +20,54 @@ url=$1
 archive_file=".youtube-download-archive"
 output_dir=${YTPL_OUTPUT_DIR:-/mnt/e/Resources}
 temp_dir=${YTPL_TEMP_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/ytpl-dl}
+default_cookies_file=${XDG_CONFIG_HOME:-$HOME/.config}/ytpl-dl/cookies.txt
+cookies_file=${YTPL_COOKIES_FILE:-}
+cookies_from_browser=${YTPL_COOKIES_FROM_BROWSER:-}
+cookie_args=()
+auth_source="none"
+video_mode=${YTPL_VIDEO_MODE:-h264}
+
+case "$video_mode" in
+  h264)
+    # Re-encode instead of copying YouTube's H.264 bitstream. Some YouTube
+    # streams contain unusual SEI/GOP data that FFmpeg tolerates but Resolve's
+    # decoder can reject during full-resolution rendering.
+    video_description="standard H.264 transcode; PCM audio"
+    ffmpeg_output_args="-c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -profile:v high -g 50 -keyint_min 25 -c:a pcm_s16le -movflags +faststart"
+    ;;
+  dnxhr)
+    video_description="DNxHR LB transcode; PCM audio (largest, most Resolve-compatible)"
+    ffmpeg_output_args="-c:v dnxhd -profile:v dnxhr_lb -pix_fmt yuv422p -c:a pcm_s16le"
+    ;;
+  copy)
+    video_description="H.264 stream copy; PCM audio (fastest, compatibility risk)"
+    ffmpeg_output_args="-c:v copy -c:a pcm_s16le -movflags +faststart"
+    ;;
+  *)
+    echo "Error: unsupported YTPL_VIDEO_MODE '$video_mode' (use h264, dnxhr, or copy)." >&2
+    exit 1
+    ;;
+esac
+
+if [[ -n "$cookies_file" && -n "$cookies_from_browser" ]]; then
+  echo "Error: set only one of YTPL_COOKIES_FILE and YTPL_COOKIES_FROM_BROWSER." >&2
+  exit 1
+fi
+
+if [[ -n "$cookies_file" ]]; then
+  if [[ ! -r "$cookies_file" ]]; then
+    echo "Error: YTPL_COOKIES_FILE is not readable: $cookies_file" >&2
+    exit 1
+  fi
+  cookie_args=(--cookies "$cookies_file")
+  auth_source="cookie file ($cookies_file)"
+elif [[ -n "$cookies_from_browser" ]]; then
+  cookie_args=(--cookies-from-browser "$cookies_from_browser")
+  auth_source="browser ($cookies_from_browser)"
+elif [[ -r "$default_cookies_file" ]]; then
+  cookie_args=(--cookies "$default_cookies_file")
+  auth_source="cookie file ($default_cookies_file)"
+fi
 
 mkdir -p "$output_dir" "$temp_dir"
 
@@ -44,20 +92,29 @@ trap 'kill "$monitor_pid" 2>/dev/null || true' EXIT
 # Playlist items use their playlist index; standalone videos fall back to an
 # automatic index and are saved under the output directory's Single Videos/.
 #
-# Keep YouTube's H.264 video without re-encoding and convert only the audio to
-# uncompressed PCM in a MOV container. This is much faster and smaller than
-# DNxHR, while remaining useful in Resolve installations that can read H.264.
-printf 'Output: %s\nTemporary files: %s\nVideo mode: H.264 stream copy; PCM audio\n' \
-  "$output_dir" "$temp_dir" >&2
+# Convert audio to uncompressed PCM in a MOV container. By default, also
+# normalize YouTube's H.264 stream through libx264 so Resolve never sees the
+# source stream's unusual SEI/GOP data. Set YTPL_VIDEO_MODE=dnxhr for an
+# intraframe editing codec, or YTPL_VIDEO_MODE=copy to opt back into speed.
+printf 'Output: %s\nTemporary files: %s\nVideo mode: %s\nAuthentication: %s\n' \
+  "$output_dir" "$temp_dir" "$video_description" "$auth_source" >&2
+
+if [[ ${#cookie_args[@]} -eq 0 ]]; then
+  printf 'Tip: age-restricted videos require logged-in YouTube cookies. Export them to %s or set YTPL_COOKIES_FILE.\n' \
+    "$default_cookies_file" >&2
+fi
 
 yt-dlp \
+  "${cookie_args[@]}" \
   --yes-playlist \
   --paths "home:$output_dir" \
   --paths "temp:$temp_dir" \
   --ignore-errors \
   --download-archive "$archive_file" \
-  -f "bv[ext=mp4][vcodec^=avc1]+ba[ext=m4a][acodec^=mp4a]/bv[vcodec^=avc1]+ba[acodec^=mp4a]" \
+  -f "bv[ext=mp4][vcodec^=avc1]+ba[ext=m4a][acodec^=mp4a]/bv[vcodec^=avc1]+ba[acodec^=mp4a]/b[ext=mp4][vcodec^=avc1][acodec^=mp4a]" \
   --merge-output-format mov \
-  --postprocessor-args "Merger+ffmpeg:-c:v copy -c:a pcm_s16le" \
+  --remux-video mov \
+  --postprocessor-args "Merger+ffmpeg:$ffmpeg_output_args" \
+  --postprocessor-args "VideoRemuxer+ffmpeg:$ffmpeg_output_args" \
   -o "%(playlist_title|Single Videos)s/%(playlist_index,autonumber)03d - %(title)s [%(id)s].%(ext)s" \
   "$url"
